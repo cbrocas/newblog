@@ -1,0 +1,25 @@
+baseURL = 'https://blog.brocas.org/'
+languageCode = 'en-us'
+title = 'Blog'
+
+theme = 'hugo-bearneo2'
+
+pygmentsUseClasses = false
+disablePathToLower = true
+
+[params]
+    toc = true
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
+  [markup.highlight]
+    style = 'monokai'
+    codeFences = true
+    noClasses = true
+
+[permalinks]
+  [permalinks.page]
+    posts = '/:year/:month/:day/:slug/'

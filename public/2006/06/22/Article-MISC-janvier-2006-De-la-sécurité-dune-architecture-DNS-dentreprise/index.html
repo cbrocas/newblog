@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise | Blog</title>
+<meta name="title" content="Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise" />
+<meta name="description" content="De la sécurité d&rsquo;une architecture DNS d&rsquo;entreprise Cet article est issu de l’article publié dans le numéro 23 de MISC. Ses auteurs sont Christophe Brocas (christophe.brocas@free.fr) et Jean-Michel Farin (jeanmichel.farin@free.fr). Tous droits réservés à MISC.
+Ces dix dernières années, les entreprises ont vu une interconnexion toujours croissante de leurs systèmes d’informations (SI), entre eux ainsi qu’avec l’internet. Cette interconnexion s’est accompagnée d’une adoption massive de protocoles standards. Parmi ces protocoles, le DNS (Domain Name Service) affiche la double caractéristique d’être le plus systématiquement utilisé et sûrement le moins correctement surveillé." />
+<meta name="keywords" content="" />
+
+<link rel="canonical" href="http://localhost:1313/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/">
+
+
+<meta property="og:title" content="Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise" />
+<meta property="og:description" content="De la sécurité d&rsquo;une architecture DNS d&rsquo;entreprise Cet article est issu de l’article publié dans le numéro 23 de MISC. Ses auteurs sont Christophe Brocas (christophe.brocas@free.fr) et Jean-Michel Farin (jeanmichel.farin@free.fr). Tous droits réservés à MISC.
+Ces dix dernières années, les entreprises ont vu une interconnexion toujours croissante de leurs systèmes d’informations (SI), entre eux ainsi qu’avec l’internet. Cette interconnexion s’est accompagnée d’une adoption massive de protocoles standards. Parmi ces protocoles, le DNS (Domain Name Service) affiche la double caractéristique d’être le plus systématiquement utilisé et sûrement le moins correctement surveillé." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2006-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2006-06-22T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise"/>
+<meta name="twitter:description" content="De la sécurité d&rsquo;une architecture DNS d&rsquo;entreprise Cet article est issu de l’article publié dans le numéro 23 de MISC. Ses auteurs sont Christophe Brocas (christophe.brocas@free.fr) et Jean-Michel Farin (jeanmichel.farin@free.fr). Tous droits réservés à MISC.
+Ces dix dernières années, les entreprises ont vu une interconnexion toujours croissante de leurs systèmes d’informations (SI), entre eux ainsi qu’avec l’internet. Cette interconnexion s’est accompagnée d’une adoption massive de protocoles standards. Parmi ces protocoles, le DNS (Domain Name Service) affiche la double caractéristique d’être le plus systématiquement utilisé et sûrement le moins correctement surveillé."/>
+
+
+
+<meta itemprop="name" content="Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise">
+<meta itemprop="description" content="De la sécurité d&rsquo;une architecture DNS d&rsquo;entreprise Cet article est issu de l’article publié dans le numéro 23 de MISC. Ses auteurs sont Christophe Brocas (christophe.brocas@free.fr) et Jean-Michel Farin (jeanmichel.farin@free.fr). Tous droits réservés à MISC.
+Ces dix dernières années, les entreprises ont vu une interconnexion toujours croissante de leurs systèmes d’informations (SI), entre eux ainsi qu’avec l’internet. Cette interconnexion s’est accompagnée d’une adoption massive de protocoles standards. Parmi ces protocoles, le DNS (Domain Name Service) affiche la double caractéristique d’être le plus systématiquement utilisé et sûrement le moins correctement surveillé."><meta itemprop="datePublished" content="2006-06-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2006-06-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3890">
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+     
+    :root {
+        --width-max: 720px;
+        --font-primary: Verdana, sans-serif;
+        --font-secondary: monospace;
+        --font-size-primary: 1em;
+        --font-size-secondary: 0.8em;
+        --bg-color-primary: #fdfdfd;
+        --bg-color-secondary: #f2f4f7;
+        --text-color-primary: #1a1a1a;
+        --text-color-secondary: #444;
+        --text-color-tertiary: #8c8c8c;
+        --link-color: #0066cc;
+        --link-visited-color: #551a8b;
+        --border-color: #d0d7de;
+        --upvoted-color: #fa8072;
+    }
+
+    @media (prefers-color-scheme: dark) {
+         
+        :root {
+            --bg-color-primary: #121212;
+            --bg-color-secondary: #1c1f24;
+            --text-color-primary: #e5e5e5;
+            --text-color-secondary: #b3b3b7;
+            --text-color-tertiary: #a0a0a0;
+            --link-color: #6da6ff;
+            --link-visited-color: #b388ff;
+            --border-color: #30363d;
+            --upvoted-color: #ff6b6b;
+        }
+    }
+
+    body {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-primary);
+        margin: auto;
+        padding: 20px;
+        max-width: var(--width-max);
+        text-align: left;
+        background-color: var(--bg-color-primary);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.5;
+        color: var(--text-color-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+        color: var(--text-color-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 16px 0;
+    }
+
+    a {
+        color: var(--link-color);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .title {
+        text-decoration: none;
+        border: 0;
+    }
+
+    .title:hover {
+        text-decoration: none;
+    }
+
+    .title span {
+        font-weight: 400;
+    }
+
+    nav a {
+        margin-right: 8px;
+    }
+
+    textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    content {
+        line-height: 1.6;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+    }
+
+    th,
+    td {
+        border: 1px solid var(--border-color);
+        padding: 4px;
+    }
+
+    th {
+        background-color: var(--bg-color-secondary);
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px dashed;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+         
+        border-radius: 4px;
+        content-visibility: auto;
+    }
+
+    img[src*="#minipic"] {
+        max-width: 50%;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .image-caption figcaption {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.8em;
+        margin-top: 0.6em;
+        color: var(--text-color-secondary);
+    }
+
+    .image-caption {
+        margin: auto;
+    }
+
+    i {
+        font-style: normal;
+    }
+
+    time {
+        font-family: var(--font-secondary);
+        font-size: 15px;
+    }
+
+    code {
+        font-family: var(--font-secondary);
+         
+        padding: 2px;
+        border-radius: 4px;
+    }
+
+    pre code {
+        display: block;
+        padding: 16px;
+        white-space: pre-wrap;
+        overflow-x: auto;
+    }
+
+    div.highlight pre {
+        border-radius: 4px;
+    }
+
+    div.highlight code {
+         
+    }
+
+    blockquote {
+        border-left: 4px solid var(--border-color);
+        color: var(--text-color-secondary);
+        margin: 0;
+        padding-left: 8px;
+        font-style: normal;
+    }
+
+    blockquote p {
+        margin: 0;
+    }
+
+    footer {
+        padding: 25px 0;
+        text-align: center;
+        font-size: var(--font-size-secondary);
+    }
+
+    ul li:has(input) {
+        list-style-type: none;
+        margin-left: -25.5px;
+    }
+
+     
+    ul.blog-posts {
+        list-style-type: none;
+        padding: unset;
+    }
+
+    ul.blog-posts li {
+        display: flex;
+    }
+
+    ul.blog-posts li span {
+        flex: 0 0 130px;
+    }
+
+    ul.blog-posts li span.grouped {
+        flex: 0 0 80px;
+    }
+
+    ul.blog-posts li a:visited {
+        color: var(--link-visited-color);
+    }
+
+     
+    div.toc {
+        position: fixed;  
+        top: 50%;  
+        left: calc(
+            (100vw + var(--width-max)) / 2
+        );  
+        transform: translateY(-50%);  
+        width: calc((90vw - var(--width-max)) / 2);  
+        max-height: 80vh;  
+        overflow-y: auto;  
+        border: none;  
+        padding: 0;  
+        margin: 0;  
+        z-index: 99;  
+
+         
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+
+    div.toc::-webkit-scrollbar {
+         
+        display: none;  
+    }
+
+    .toc-nav {
+         
+        padding: 1.5rem;  
+    }
+
+    .toc-nav ul {
+         
+        list-style: none;  
+        padding: 0;  
+        margin: 0;  
+    }
+
+    .toc-nav li {
+         
+        margin: 8px 0;  
+    }
+
+    .toc-nav a {
+         
+        display: block;  
+        text-decoration: none;  
+        color: transparent;  
+        padding: 0 12px;  
+        transition: all 0.2s ease;  
+        font-size: 0.9rem;  
+        line-height: 1.4;  
+        text-align: left;  
+        white-space: nowrap;  
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+        max-width: 100%;  
+    }
+
+    .toc-nav:hover a {
+        color: var(--text-color-tertiary);  
+    }
+
+    .toc-nav a::before {
+         
+        content: "";  
+        display: inline-block;  
+        width: 16px;  
+        height: 4px;  
+        background-color: var(--text-color-tertiary);
+        border-radius: 16px;  
+        margin-right: 12px;  
+        vertical-align: middle;  
+    }
+
+    .toc-nav ul ul a::before {
+         
+        width: 12px;  
+        margin-right: 16px;  
+    }
+
+    .toc-nav ul ul ul a::before {
+         
+        width: 8px;  
+        margin-right: 20px;  
+    }
+
+    .toc-nav a.active,
+    .toc-nav a:hover {
+        text-decoration: none;
+        color: var(--text-color-primary);
+    }
+
+    .toc-nav a.active::before,
+    .toc-nav a:hover::before {
+        background-color: var(--text-color-primary);
+    }
+
+     
+    button.upvote-btn {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-color-primary);
+    }
+
+    button.upvoted {
+        color: var(--upvoted-color);
+    }
+
+    span.upvote-count {
+        margin-top: -4px;
+        font-size: smaller;
+    }
+
+     
+    body:has(.image-zoom-toggle:checked) {
+        overflow: hidden;
+    }
+
+    .image-zoom-container {
+        position: relative;
+        display: block;
+    }
+
+    .image-zoom-toggle {
+        display: none;
+    }
+
+    .image-zoom-label {
+        cursor: zoom-in;
+        display: block;
+        position: relative;
+    }
+
+    .image-zoom-label:focus {
+        outline: 2px solid var(--link-color);
+        outline-offset: 2px;
+    }
+
+    .zoomable-image {
+        transition: transform 0.3s ease;
+    }
+
+     
+    .image-zoom-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay {
+        display: flex;
+        cursor: zoom-out;
+    }
+
+     
+    .image-zoom-toggle:checked ~ .image-zoom-label {
+        cursor: default;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay .zoomable-image {
+        max-width: 90vw;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        transform: scale(1);
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay::after {
+        content: "✕";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay figcaption {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 1001;
+        max-width: 80vw;
+        text-align: center;
+    }
+
+     
+    @media (max-width: 800px) {
+        img[src*="#minipic"] {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        div.toc {
+            display: none;
+        }
+
+        .image-zoom-label {
+            cursor: pointer;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay {
+            padding: 10px;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay::before,
+        .image-zoom-toggle:checked ~ .image-zoom-overlay::after {
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay figcaption {
+            bottom: 10px;
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+    }
+</style>
+
+<style>
+  .divider {
+  background: linear-gradient(to right, rgba(255,255,255,0), #ccc, rgba(255,255,255,0));
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(204, 204, 204), rgba(255, 255, 255, 0));
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+  height: 1px;
+  margin: 2em 0;
+  }
+  .logo a .logo-avatar {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  }
+  .logo {
+  position: relative;
+  margin: 0 auto 35px;
+  text-align: center;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+  animation-name: bounce;
+  -webkit-animation-duration: 0.7s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: bounce;
+  }
+</style>
+<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/cbrocas">
+<link rel="icon" type="image/png" href="https://avatars0.githubusercontent.com/cbrocas" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="https://avatars0.githubusercontent.com/cbrocas"></head>
+
+<body>
+  <header>
+<nav><a href="/">&lt;</a>
+<aside class="logo">
+  <a href="https://blog.brocas.org/"> 
+     <img src="https://avatars0.githubusercontent.com/cbrocas" width="15%" alt="home" class="logo-avatar"> 
+  </a>
+</aside>
+
+
+</nav>
+</header>
+  <main>
+
+
+<center>
+<h2>Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise</h2>
+</center>
+
+<center>
+
+<p>
+  <i>
+    <time datetime='2006-06-22' pubdate>
+      22 June 2006
+    </time>
+  </i>
+</p>
+</center>
+<div class="divider"></div>
+
+
+
+ 
+
+<content> <h1 id="de-la-sécurité-dune-architecture-dns-dentreprise">De la sécurité d&rsquo;une architecture DNS d&rsquo;entreprise</h1>
+<p><em>Cet article est issu de l’article publié dans le numéro 23 de MISC. Ses auteurs sont Christophe Brocas (<a href="mailto:christophe.brocas@free.fr">christophe.brocas@free.fr</a>) et Jean-Michel Farin (<a href="mailto:jeanmichel.farin@free.fr">jeanmichel.farin@free.fr</a>). Tous droits réservés à MISC.</em></p>
+<p>Ces dix dernières années, les entreprises ont vu une interconnexion toujours croissante de leurs systèmes d’informations (SI), entre eux ainsi qu’avec l’internet. Cette interconnexion s’est accompagnée d’une adoption massive de protocoles standards. Parmi ces protocoles, le DNS (Domain Name Service) affiche la double caractéristique d’être le plus systématiquement utilisé et sûrement le moins correctement surveillé.</p>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Le DNS est souvent vu comme un protocole utilitaire au fonctionnement opaque. Et à la vue de son caractère primordial pour le bon fonctionnement des protocoles applicatifs tels SMTP ou HTTP, les portes de ce protocole sont souvent laissées grandes ouvertes tout au long de la chaîne de liaison du SI (postes, serveurs, routeurs etc).</p>
+<p>Nous verrons dans cet article comment sécuriser ce protocole et en particulier son implémentation dans un réseau d’entreprise. Les exemples de configuration reposeront sur le logiciel Bind, version 9.1.x et suivantes <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h3 id="11-terminologie">1.1 Terminologie</h3>
+<p>Avant de plonger dans le DNS, accordons nous sur les termes utilisés dans ce document :</p>
+<ul>
+<li><strong>resolver :</strong> logiciel client DNS sollicité par les applications sur les postes clients afin d’obtenir une résolution ;</li>
+<li><strong>serveur cache :</strong> serveur sollicité par les resolvers ou par d’autres serveurs cache. Ce type de serveur assure la fonction de récupération d’informations auprès de serveurs de noms ou d’autres serveurs cache. Il stocke les informations collectées dans son cache. Ce serveur ne gérant aucune zone DNS, le type de recherche supportée est récursif ;</li>
+<li><strong>serveur SOA :</strong> serveur de noms faisant autorité répondant aux requêtes pour une (ou plusieurs) zone(s). Ce serveur n’ayant pour mission que de répondre à des requêtes sur un ou plusieurs domaines, dans notre configuration, nous n’autorisons aucune récursion.</li>
+</ul>
+<h3 id="12-les-vulnérabilités-dns">1.2 Les vulnérabilités DNS</h3>
+<p>À présent, regardons les différents types de menaces pouvant toucher le DNS :</p>
+<ul>
+<li>la <strong>fuite d’informations</strong> via des canaux cachés ;</li>
+<li>la <strong>corruption de résolution DNS</strong> permettant d’abuser les utilisateurs du système, d’informations et de leur dérober des informations sensibles ;</li>
+<li>le <strong>déni de services</strong> par l’acceptation de requêtes illégales ou par corruption de données dans les zones hébergées par les serveurs DNS internes.</li>
+</ul>
+<p><strong>La fuite d’informations</strong>
+La fuite d’informations par tunnel DNS a été couverte de manière complète dans les pages de MISC <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Les contre-mesures pour lutter contre ce type d’évasion se concentreront autour de la politique d’accès au service DNS ainsi qu’aux requêtes autorisées en fonction du type de client. La mise en oeuvre de cette politique sera décrite dans le paragraphe &quot; Configuration du serveur DNS cache interne &ldquo;.</p>
+<p><strong>Corruption de résolution</strong>
+Ce type d’attaque a pour but de corrompre les données DNS fournies au client afin de, par exemple, le diriger à son insu vers des sites différents de ceux visés. Et ainsi, de lui dérober tout type d’informations sensibles.
+Ce type d’attaque peut être réalisé par :</p>
+<ul>
+<li>compromission du processus de résolution ;</li>
+<li>modification du trafic DNS ;</li>
+<li>ou compromission des données dans le cache d’un serveurs de noms.</li>
+</ul>
+<p>Les réponses que cet article amènera viseront à :</p>
+<ul>
+<li>sécuriser le processus de résolution et en maîtriser les possibilités de modification ;</li>
+<li>limiter au strict minimum l’usage des requêtes récursives ;</li>
+<li>s’assurer de l’intégrité des transactions.</li>
+</ul>
+<p><strong>Le déni de services</strong>
+Le déni de services distribué est une menace commune à tous les protocoles TCP/IP implémentés sur les serveurs accessibles de l’internet. En dehors des mesures de protections réseau (IPS) ou de répartition de charges, peu de réponses spécifiques à la configuration DNS peuvent être appliquées. Cependant, les mesures suivantes permettent limiter l’impact et l’implication des serveurs dns dans ces attaques :</p>
+<ul>
+<li>restriction des transferts de zone ;</li>
+<li>interdiction de toute récursion ;</li>
+<li>contrôle des requêtes simples ;</li>
+<li>restriction des notifications.</li>
+</ul>
+<h2 id="2-architecture">2. Architecture</h2>
+<p>Pour maitriser au mieux le DNS et son utilisation, nous fixons les règles suivantes :</p>
+<ul>
+<li>Aucune machine du réseau interne ne peut accèder à l’internet. Elles utilisent toutes un proxy HTTP pour le web ou un relais SMTP pour la messagerie;</li>
+<li>Aucune machine ne peut donc résoudre autre chose que le domaine <code>mondomaine.fr</code>.
+Cela permet d’être sûr de pouvoir déployer une politique de sécurité maitrisable.</li>
+</ul>
+<h3 id="21-les-serveurs-dns-et-leur-rôle">2.1 Les serveurs DNS et leur rôle</h3>
+<p>La base pour fixer une politique de résolution est donc de définir un périmètre et des règles d’accès :</p>
+<ul>
+<li>Un <strong>serveur DNS cache interne</strong> assure la résolution de tout type de requête issue d’une machine du réseau interne ;</li>
+<li>Un <strong>serveur DNS SOA</strong> assure la gestion du domaine de l’entreprise pour le réseau interne de l’entreprise. Ce serveur ne peut être sollicité que par le serveur de résolution ;</li>
+<li>Un <strong>serveur DNS cache en DMZ</strong> assure la résolution des requêtes sur les noms internet issues du serveur DNS cache interne ;</li>
+<li>Un <strong>serveur DNS SOA externe</strong> assure la gestion du domaine de l’entreprise pour les macines de l’internet. Ce serveur sera sollicitable par toute machine sur l’internet.</li>
+</ul>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/archi-dns/archi.png" alt="Architecture DNS et rôles de chaque serveur" loading="lazy" />
+    
+    <figcaption>Architecture DNS et rôles de chaque serveur</figcaption>
+</figure>
+</p>
+<h3 id="22-résolution-dune-requête-interne-du-domaine-ou-dun-sous-domaine-de-lentreprise">2.2 Résolution d’une requête interne du domaine ou d’un sous-domaine de l’entreprise</h3>
+<p>Tout d’abord, le resolver envoie sa requête au serveur DNS référencé dans sa configuration. Ce serveur est un DNS cache qui vérifie que le resolver est habilité à demander des résolutions pour le domaine ou sous-domaine demandé via la mise en place d’ACL sur adresses IP (directive <code>acl</code>) et de vues (directive <code>view</code>). Le DNS cache ne contient aucune zone mais sait trouver le serveur maître de la zone interrogée (directive <code>forwarders</code>). Nous utilisons les fonctionnalités de retransmission sélective pour ce type de résolution (définition de zones de type forward et non maître ou esclave). Afin de préserver les serveurs maîtres au mieux des attaques, ceux-ci sont placés dans des DMZ et seuls les serveurs cache sont autorisés à y accéder.</p>
+<h3 id="23-résolution-dune-requête-interne-dun-domaine-internet">2.3 Résolution d’une requête interne d’un domaine Internet</h3>
+<p>Le resolver interroge le serveur cache référencé. Le serveur cache vérifie que le resolver est habilité à résoudre les domaines inconnus (donc Internet). Le domaine interrogé n’étant pas connu par le serveur cache comme zone faisant l’objet d’une retransmission sélective, le serveur cache retransmet la requête au serveur cache délégué aux résolutions externes que nous avons pris soin de positionner dans une DMZ. Ici aussi, seuls les serveurs cache sont autorisés à y accéder.</p>
+<p>En cas d’attaque (via une hypothétique mauvaise implémentation du contrôle d’état UDP sur notre pare-feu par exemple!), l’attaquant n’accédera qu’à un serveur en DMZ uniquement capable de résoudre des requêtes vers Internet.</p>
+<h3 id="24-résolution-dune-requête-externe-du-domaine-de-lentreprise">2.4 Résolution d’une requête externe du domaine de l’entreprise</h3>
+<p>Dans ce cas, les requêtes proveniennent d’Internet vers un serveur que nous hébergeons. Bien entendu ce serveur est en DMZ. Étant donné le peu de sûreté que constitue Internet, il ne nous semble pas utile de mettre en place des habilitations pour les résolutions. Nous restreignons les données de notre domaine au strict minimum pour Internet. Le resolver trouve alors sa réponse dans le DNS que nous lui proposons, la requête ne doit jamais entrer dans l’entreprise.</p>
+<h2 id="3-serveur-dns-cache-interne">3. Serveur DNS cache interne</h2>
+<h3 id="31-attention-au-poste-de-travail">3.1 Attention au poste de travail !</h3>
+<p>Comme nous le disions en introduction, la corruption de données de résolution est le problème majeur du DNS.</p>
+<p>Et bien, la première attaque DNS est d’éviter toute requête DNS ! En effet, la résolution de noms dans les systèmes d’exploitation modernes impliquent des composants autres que les serveurs DNS.</p>
+<p>Par exemple sous un système Microsoft Windows, le processus de résolution suit les étapes suivantes :</p>
+<ul>
+<li>vérification si on demande la résolution du propre nom de la machine ;</li>
+<li>présence du nom dans le fichier hosts (<code>%Systemroot%\System32\Drives\Etc\hosts</code>) ;</li>
+<li>DNS ;</li>
+<li>WINS ;</li>
+<li>broadcast réseaux ;</li>
+<li>LMHOSTS.</li>
+</ul>
+<p>Ainsi, si vous modifier le contenu du fichier hosts, la chaîne de résolution DNS est corrompue. Toute la politique de sécurité DNS est déjà réduite à néant !</p>
+<p>Cette méthode est utilisée par exemple par les vers de la lignée MYTOB <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> qui font ainsi pointer des sites de type <code>symantec.com</code> ou <code>update.symantec.com</code> vers <code>127.0.0.1</code> et empêcher ainsi toute mise à jour de l’antivirus.</p>
+<p>La solution est donc de s’assurer que les utilisateurs n’ont pas les droits administrateur et donc ne peuvent exécuter de processus pouvant modifier le fichier hosts. Idem pour ce qui est de l’accès aux paramètres DNS.</p>
+<h3 id="32-configuration-du-serveur-dns-cache-interne">3.2 Configuration du serveur DNS cache interne</h3>
+<p>Une fois que le poste client nous semble correctement configuré, voyons la configuration du serveur de cache interne. Dans notre exemple, les machines du réseau interne sont dans le réseau <code>10.1.0.0/16</code> et le serveur cache interne a l’adresse <code>10.1.255.4</code>.</p>
+<p><strong>Les vues sous Bind</strong></p>
+<p>Nos besoins nous conduiront dans le paragraphe suivant à vouloir faire varier les résultats des requêtes en fonction du type de client (ici PC normaux et machines proxies/pivots). Or, Bind nous donne le moyen de réaliser cela : les vues. Une vue est une configuration de Bind pour répondre à certains clients certains résultats grâce aux instructions suivantes :</p>
+<ul>
+<li><code>acl</code> : permet de définir sous un nom un jeu de clients (adresses IP);</li>
+<li><code>view</code> : définit une configuration complète pour un type de client;</li>
+<li><code>match-clients</code> : instruction indiquant les clients à qui s’adressent une vue.</li>
+</ul>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/archi-dns/vues.png" alt="Principes des vues DNS" loading="lazy" />
+    
+    <figcaption>Principes des vues DNS</figcaption>
+</figure>
+</p>
+<p>Au chapitre 2, nous avons défini différents types de clients au sein du réseau interne (machines standards et machines passerelles). Ces différents types de clients vont se traduire par 2 ACLs différentes :</p>
+<p><strong>NB:</strong> tous les fichiers de configuration sont disponibles sur le site <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// ENTETE DU FICHIER NAMED.CONF du DNS CACHE INTERNE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Definition des différents types de clients
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// les proxies
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;passerelles&#34;</span> { <span style="color:#ae81ff">10.1.255.3</span><span style="color:#f92672">/</span><span style="color:#ae81ff">32</span>; };
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// les machines du reseau interne de l entreprise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;reseaulocal&#34;</span> { <span style="color:#ae81ff">10.1.0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">16</span>; };
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// le DNS cache en DMZ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;dns-cache-internet&#34;</span> { <span style="color:#ae81ff">10.255.1.4</span><span style="color:#f92672">/</span><span style="color:#ae81ff">32</span>; };
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// le DNS soa interne
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;dns-soa&#34;</span> { <span style="color:#ae81ff">10.255.2.4</span><span style="color:#f92672">/</span><span style="color:#ae81ff">32</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// localisation des fichiers de configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">options</span> { <span style="color:#a6e22e">directory</span> <span style="color:#e6db74">&#34;/var/named&#34;</span>; 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">version</span> <span style="color:#e6db74">&#34;unavailable&#34;</span>; };
+</span></span></code></pre></div><p>À ces 2 types de clients vont correspondre 2 types de vues qui fourniront 2 types de résolution . Voici la vue fournie aux clients de type proxies ou passerelles.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Suite du FICHIER NAMED.CONF du DNS CACHE INTERNE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// vue s adressant aux proxies
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">view</span> <span style="color:#e6db74">&#34;passerelles&#34;</span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// machines a qui s&#39;adressent cette vue. Ici les proxies de l&#39;entreprise.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">match</span><span style="color:#f92672">-</span><span style="color:#a6e22e">clients</span> { <span style="color:#e6db74">&#34;passerelles&#34;</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// en cas de requete faite sur un domaine non géré par ce serveur,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// envoi des requêtes sur le DNS cache internet
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">forward</span> <span style="color:#a6e22e">only</span>;        
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">forwarders</span> { <span style="color:#ae81ff">10.255.1.4</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// requete sur le mondomaine.fr :
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// redirection de la requete vers le DNS SOA interne
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;mondomaine.fr&#34;</span> {
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">forward</span>;
+</span></span><span style="display:flex;"><span>	  <span style="color:#a6e22e">forwarders</span> { <span style="color:#ae81ff">10.255.2.4</span>;};
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">forward</span> <span style="color:#a6e22e">only</span>;
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// redirection identique pour les requetes sur la zone reverse
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;10.in-addr.arpa&#34;</span> {
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">forward</span>;
+</span></span><span style="display:flex;"><span>	  <span style="color:#a6e22e">forwarders</span> { <span style="color:#ae81ff">10.255.2.4</span>; };
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">forward</span> <span style="color:#a6e22e">only</span>;
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/archi-dns/resolution-dns-proxy.png" alt="Résolution DNS d&amp;rsquo;un serveur proxy" loading="lazy" />
+    
+    <figcaption>Résolution DNS d&amp;rsquo;un serveur proxy</figcaption>
+</figure>
+</p>
+<p>Les passerelles peuvent effectuer tout type de requête. Ces requêtes seront satisfaites de la maniêre suivante :</p>
+<ul>
+<li>requête sur le domaine <code>mondomaine.fr</code> : envoi d’une requête auprès du serveur maître interne (IP : <code>10.255.2.4</code>) ;</li>
+<li>requête sur tout autre domaine : envoi vers le serveur cache en DMZ (adresse IP <code>10.255.1.4</code>).</li>
+</ul>
+<p>Voici ensuite la vue pour les postes lambda du réseau local :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Fin du FICHIER NAMED.CONF du DNS CACHE INTERNE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// vue s adressant aux PC du reseau interne de l entreprise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">view</span> <span style="color:#e6db74">&#34;reseaulocal&#34;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Machines a qui s adressent cette vue. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// Ici, les machines lambda (PC) du reseau interne.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">match</span><span style="color:#f92672">-</span><span style="color:#a6e22e">clients</span> { <span style="color:#e6db74">&#34;reseaulocal&#34;</span>; };
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// requete sur le mondomaine.fr :
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// redirection de la requete vers le DNS SOA interne
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;mondomaine.fr&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">forward</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">forwarders</span> { <span style="color:#ae81ff">10.255.2.4</span>; };
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">forward</span> <span style="color:#a6e22e">only</span>;
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// redirection identique pour les requetes sur la zone reverse
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;10.in-addr.arpa&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">forward</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">forwarders</span> { <span style="color:#ae81ff">10.255.2.4</span>; };
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">forward</span> <span style="color:#a6e22e">only</span>;
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>Note :</strong> les zones de type forward ont été introduites en version 9.1.x de Bind.</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/archi-dns/resolution-dns-poste-client.png" alt="Resolution poste" loading="lazy" />
+    
+    <figcaption>Resolution poste</figcaption>
+</figure>
+</p>
+<p>Cette configuration ne permet de résoudre que des noms dans le domaine <code>mondomaine.fr</code>. Les autres noms de domaines ne sont résolus que pour les machines passerelles.</p>
+<p>Cette mesure combinée à la fermeture de tous les ports réseaux (comme HTTP/S ou SMTP) pour les machines du LAN au niveau du firewall empêche toute capacité d’évasion par tunnel DNS autonome. Pour que l’évasion soit désormais possible, il faut que l’attaquant dispose du code d’authentification de l’utilisateur sur le proxy applicatif ce qui limite grandement la menace des attaques automatisées. Et nous sortons là du périmètre de la sécurisation du DNS.</p>
+<h3 id="41-mise-en-sûreté-des-informations">4.1 Mise en sûreté des informations</h3>
+<p>Les informations contenues dans le DNS SOA interne font de ce DNS le coeur de notre système. En effet, il est le seul à contenir les données de résolution et doit à ce titre être le plus protégé. Ce DNS est placé derrière un pare-feu voire un IPS implémentant un contrôle d’état sur UDP performant. Des règles de sécurité sont mises en place pour n’autoriser que les DNS cache interne à interroger notre DNS SOA interne. Ces règles sont mises en place sur l’équipement de sécurité réseau et dans la configuration du DNS.</p>
+<p>Ces restrictions limitent les risques de déni de services sur notre DNS SOA interne, le nombre de clients simultanés étant limité par le nombre de DNS cache.</p>
+<h3 id="42-les-mises-à-jour-dynamiques">4.2 Les mises à jour dynamiques</h3>
+<p>Certaines applications de l’entreprise peuvent nécessiter la mise en place des mises à jour dynamiques (serveur DHCP, contrôleur de domaine, etc.) sur notre DNS SOA. Dans ce cas, il est intéressant de créer des sous-domaines particuliers pour ces applications, celles-ci ne peuvent alors pas tout modifier dans notre DNS.</p>
+<p>Par exemple, on peut créer le sous-domaine dhcp.mondomaine.fr sur notre DNS et autoriser le serveur DHCP à y effectuer ses mises à jour sans lui donner de droits sur mondomaine.fr. L’option <code>update-policy</code> permet de plus de limiter les opérations possibles sur la zone. Ainsi, nous pouvons n’autoriser le serveur DHCP à ne modifier que les enregistrements de type A, garantissant ainsi l’impossibilité de modification nos enregistrements de type NS par exemple.</p>
+<p>L’utilisation de clef TSIG est également une sécurité à mettre en oeuvre autant que possible.</p>
+<h3 id="43-création-dune-clef-pour-mises-à-jour-dynamiques">4.3 Création d’une clef pour mises à jour dynamiques</h3>
+<p>Nous commençons par mettre en place des clefs TSIG pour les serveurs utilisant les mises à jour dynamiques et acceptant d’utiliser ce type de clefs. Nous générerons notre clef avec l’outil dnssec-keygen. Prenons par exemple la mise en place d’une clef pour notre serveur DHCP: <code>dnssec-keygen -a HMAC-MD5 -b 512 -n HOST dhcp.mondomaine.fr</code></p>
+<p>Explication des options :</p>
+<ul>
+<li>L’option <code>-a</code> permet de choisir l’algorithme utilisé par la clef (ici HMAC-MD5) ;</li>
+<li>L’option <code>-b</code> est la longueur de la clef (ici 512 bits) ;</li>
+<li>L’option <code>-n</code> spécifie le type de clef créé (dans notre cas, il s’agit d’une clef de type HOST) ;</li>
+<li>Le dernier paramètre est le nom de la clef.</li>
+</ul>
+<p>Nous obtenons deux fichiers du type <code>Kdhcp.mondomaine.fr.+157+55315.key</code> et <code>Kdhcp.mondomaine.fr.+157+55315.private</code> contenant chacun la clef. En effet, dans notre cas ces deux fichiers sont identiques. Les noms de ces fichiers sont toujours formés par la lettre K majuscule, suivie du nom de la clef, puis de l’identifiant de l’algorithme utilisé et un identifiant.</p>
+<p>Le fichier en <code>.key</code> contient notre clef sous la forme:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">dhcp</span>.<span style="color:#a6e22e">mondomaine</span>.<span style="color:#a6e22e">fr</span>. <span style="color:#a6e22e">IN</span> <span style="color:#a6e22e">KEY</span> <span style="color:#ae81ff">512</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">157</span> <span style="color:#a6e22e">S5m</span><span style="color:#f92672">+</span><span style="color:#ae81ff">161i</span><span style="color:#a6e22e">Ltk6Y7</span><span style="color:#f92672">+</span><span style="color:#a6e22e">nK</span><span style="color:#f92672">+</span><span style="color:#ae81ff">8</span><span style="color:#a6e22e">jpV1fll2AHLxN8SqVeZqzxQyg</span><span style="color:#f92672">+</span><span style="color:#a6e22e">L1187PbT5wO</span> <span style="color:#a6e22e">pteHcN4NdwO59t2TYZkpsbUocMv1</span><span style="color:#f92672">+</span><span style="color:#a6e22e">g</span><span style="color:#f92672">==</span>
+</span></span></code></pre></div><p>et le fichier <code>.private</code> contient cette même clef mais sous la forme:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">Private</span><span style="color:#f92672">-</span><span style="color:#a6e22e">key</span><span style="color:#f92672">-</span><span style="color:#a6e22e">format</span>: <span style="color:#a6e22e">v1</span><span style="color:#ae81ff">.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Algorithm</span>: <span style="color:#ae81ff">157</span> (<span style="color:#a6e22e">HMAC_MD5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Key</span>: <span style="color:#a6e22e">S5m</span><span style="color:#f92672">+</span><span style="color:#ae81ff">161i</span><span style="color:#a6e22e">Ltk6Y7</span><span style="color:#f92672">+</span><span style="color:#a6e22e">nK</span><span style="color:#f92672">+</span><span style="color:#ae81ff">8</span><span style="color:#a6e22e">jpV1fll2AHLxN8SqVeZqzxQyg</span><span style="color:#f92672">+</span><span style="color:#a6e22e">L1187PbT5wOpteHcN4NdwO59t2TYZkpsbUocMv1</span><span style="color:#f92672">+</span><span style="color:#a6e22e">g</span><span style="color:#f92672">==</span>
+</span></span></code></pre></div><p>Pour nos besoins, nous créons un nouveau fichier ne contenant que la clef. Ce fichier s’appelle <code>clefdhcp.key</code> et contient :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">secret</span> <span style="color:#e6db74">&#34;S5m+161iLtk6Y7+nK+8jpV1fll2AHLxN8SqVeZqzxQyg+L1187PbT5wOpteHcN4NdwO59t2TYZkpsbUocMv1+g==&#34;</span>;
+</span></span></code></pre></div><h3 id="44-configuration">4.4 Configuration</h3>
+<p>Nous filtrons les adresses ip source via l’option <code>allow-query</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;dns-cache-interne&#34;</span> { <span style="color:#ae81ff">10.1.255.4</span><span style="color:#f92672">/</span><span style="color:#ae81ff">32</span>; };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;updateservers&#34;</span> { <span style="color:#ae81ff">10.1.255.7</span><span style="color:#f92672">/</span><span style="color:#ae81ff">32</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">options</span> { 
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Répertoire où se trouvent les fichiers de zone
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">directory</span> <span style="color:#e6db74">&#34;/var/named&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Modification du nom de version renvoyé
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">version</span> <span style="color:#e6db74">&#34;unavailable&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Interdiction des transferts de zone
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">transfer</span>{<span style="color:#e6db74">&#34;none&#34;</span>;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Interdiction des notifications de mise à jour
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">notify</span> {<span style="color:#a6e22e">none</span>;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Autorisations de requêtes internes et pour le DNS cache
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">query</span> {<span style="color:#ae81ff">127.0.0.1</span>; <span style="color:#e6db74">&#34;dns-cache-interne&#34;</span>;<span style="color:#e6db74">&#34;updateservers&#34;</span>;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Pas de récursion
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">recursion</span> <span style="color:#a6e22e">no</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Définition de la clef du serveur DHCP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">key</span> <span style="color:#e6db74">&#34;key.dhcp.mondomaine.fr&#34;</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">algorithm</span> <span style="color:#a6e22e">hmac</span><span style="color:#f92672">-</span><span style="color:#a6e22e">md5</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">include</span> <span style="color:#e6db74">&#34;clefdhcp.key&#34;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Définition de la sous-zone maitre dhcp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;dhcp.mondomaine.fr&#34;</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">master</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;db.dhcp.mondomaine.fr&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Définition des droits de mise à jour (type A pour le serveur utilisant la clef dhcp)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">update</span><span style="color:#f92672">-</span><span style="color:#a6e22e">policy</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">grant</span> <span style="color:#a6e22e">key</span>.<span style="color:#a6e22e">dhcp</span>.<span style="color:#a6e22e">mondomaine</span>.<span style="color:#a6e22e">fr</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">dhcp</span>.<span style="color:#a6e22e">mondomaine</span>.<span style="color:#a6e22e">fr</span> <span style="color:#a6e22e">A</span> ;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">forwarders</span> {};
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Définition de la zone maitre
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;mondomaine.fr&#34;</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">master</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;db.mondomaine.fr&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">forwarders</span> {};
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="5-serveur-dns-cache-en-dmz">5. Serveur DNS cache en DMZ</h2>
+<p>Ce serveur a pour vocation d’effectuer pour le compte du serveur DNS cache interne les résolutions de noms de domaines internet. Cette particularité nous permet de restreindre les clients pouvant le solliciter à ce seul serveur.</p>
+<p><strong>Note :</strong> si vous utilisez une version de Bind inférieure à 9.x, il faut prendre soin de se prémunir de 2 risques majeurs de corruption de caches:</p>
+<ul>
+<li>le glue fetching qui consiste pour un serveur, recevant un enregistrement NS sans enregistrement de type A, à chercher à obtenir cet enregistrement A entrainant des risques de corruption du cache,</li>
+<li>la prédiction du numéro de l’ID du message DNS <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> qui rend le serveur sensible aux attaques de force brute.</li>
+</ul>
+<p>Voici la configuration du serveur :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// définition d une ACL pointant le DNS cache interne
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">acl</span> <span style="color:#e6db74">&#34;dns-cache-interne&#34;</span> { <span style="color:#ae81ff">10.255.1.4</span><span style="color:#f92672">/</span><span style="color:#ae81ff">32</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">options</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// repertoire contenant les fichiers de configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">directory</span> <span style="color:#e6db74">&#34;/var/named&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// aucun transfert de zone autorise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">transfer</span>{<span style="color:#e6db74">&#34;none&#34;</span>;};
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// seul le dns cache interne est autorisé à 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">query</span> { <span style="color:#e6db74">&#34;dns-cache-interne&#34;</span>; };
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// pour BIND 8 : randomisation de l ID de message DNS 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//use-id-pool yes; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// pour Bind 8 : pas de glue fetching
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//fetch-glue no;   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Definition de la zone racine :
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Elle contient la liste des serveurs racines à qui le serveur va s adresser 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// pour commencer à resoudre les requetes.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;.&#34;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">hint</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;/var/named/named.root&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Ports DNS et Firewall</strong>
+Voici un petit mémento sur les ports utilisés pour les requêtes DNS :</p>
+<ul>
+<li>envoi de la requête port &gt; 1023 vers port 53 en tcp ou udp ;</li>
+<li>réponse à la requête : port 53 vers port &gt; 1023 en tcp ou udp.</li>
+</ul>
+<p>On dit généralement que l’udp est utilisée pour les requêtes simples et tcp pour les transferts de zones. Mais, en fait, en fonction de la taille de la réponse, tcp peut être obligatoire même pour les requêtes simples.</p>
+<h2 id="6-serveur-dns-soa-externe">6. Serveur DNS SOA externe</h2>
+<p>Le serveur DNS Internet est celui le plus exposé en considérant le danger extérieur (nous ne reviendrons pas sur ce vaste sujet&hellip;). Il est donc important de bien lui appliquer les règles de sécurité appliquées à tout serveur disponible sur Internet. Au niveau de la configuration DNS, elle est très simple. Il suffit de créer une zone de type maître sur ce serveur et d’interdire toute récursion. Il faut ensuite remplir la zone avec les données devant être disponibles sur Internet.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">options</span> { 
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Répertoire où se trouvent les fichiers de zone
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">directory</span> <span style="color:#e6db74">&#34;/var/named&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Modification du nom de version renvoyé
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">version</span> <span style="color:#e6db74">&#34;unavailable&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Interdiction des transferts de zone
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">transfer</span>{<span style="color:#e6db74">&#34;none&#34;</span>;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Interdiction des notifications de mise à jour
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">notify</span> {<span style="color:#a6e22e">none</span>;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Autorisations de requêtes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">query</span> {<span style="color:#a6e22e">any</span>;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Pas de récursion
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">recursion</span> <span style="color:#a6e22e">no</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Définition de la zone maitre
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">zone</span> <span style="color:#e6db74">&#34;mondomaine.fr&#34;</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">master</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;db.mondomaine.fr&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">forwarders</span> {};
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/archi-dns/resolution-dns-depuis-internet.png" alt="Résolution depuis Internet" loading="lazy" />
+    
+    <figcaption>Résolution depuis Internet</figcaption>
+</figure>
+</p>
+<p><strong>Note :</strong> Nous pouvons fusionner physiquement les 2 serveurs DNS Internet (le cache et le serveur DNS internet). La configuration utiliserait alors le principe des vues en fonction de l’adresse appelante comme nous l’avons vu en chapitre 3 pour la configuration du DNS cache interne.</p>
+<h2 id="7-les-logs">7. Les logs</h2>
+<p>Par défaut, le démon named envoie tous ses messages au syslog de la machine qui peut aussi recevoir les messages des autres démons du système. Le manque de lisibilité d’un tel syslog nuit de manière à la sécurité du DNS en gênant sa supervision.</p>
+<p>Heureusement, il est possible de configurer les logs de named via des canaux de logs afin de, dans notre cas, rediriger certains types de messages dans des fichiers spécifiques. Named peut utiliser plusieurs canaux de logs en parallèle traitant les mêmes informations ou non. Dans notre exemple, nous utilisons deux canaux de logs, un premier pour les messages concernant les problèmes de sécurité et les transferts de zone et un second pour les autres messages et les transferts de zone (messages par défaut).</p>
+<p>Ces lignes de configuration sont à placer dans les fichiers <code>/etc/named.conf</code> de tous les DNS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">logging</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// Paramétrage du canal des messages de sécurité
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#a6e22e">channel</span> <span style="color:#a6e22e">securitylogs</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Envoi vers le fichier dns_security.log avec roulement de 10 archives de 5Mo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;/var/log/named-sec.log&#34;</span> <span style="color:#a6e22e">versions</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">size</span> <span style="color:#ae81ff">5</span><span style="color:#a6e22e">m</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affichage de tous les messages (+messages debug si activation du mode debug)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">severity</span> <span style="color:#a6e22e">dynamic</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche le nom de la catégorie du message
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">category</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche la sévérité du message dans les logs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">severity</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche la date du message dans les logs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>   };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// Paramétrage du canal par défaut
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#a6e22e">channel</span> <span style="color:#a6e22e">defaultlogs</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Envoi vers le fichier dns_default.log avec roulement de 10 archives de 5Mo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;/var/log/named-default.log&#34;</span> <span style="color:#a6e22e">versions</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">size</span> <span style="color:#ae81ff">5</span><span style="color:#a6e22e">m</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche les messages de sévérité &#34;info&#34; et supérieur
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">severity</span> <span style="color:#a6e22e">info</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche le nom de la catégorie du message
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">category</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche la sévérité du message dans les logs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">severity</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// Affiche la date du message dans les logs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>       };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// Envoi des messages par défaut à notre canal defaultlogs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">category</span> <span style="color:#66d9ef">default</span> { <span style="color:#a6e22e">defaultlogs</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// Envoi des messages de transferts a nos canaux defaultlogs et securitylogs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">category</span> <span style="color:#a6e22e">xfer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">in</span> {  <span style="color:#a6e22e">securitylogs</span>; <span style="color:#a6e22e">defaultlogs</span>; };
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">category</span> <span style="color:#a6e22e">xfer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">out</span> {  <span style="color:#a6e22e">securitylogs</span>; <span style="color:#a6e22e">defaultlogs</span>; };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// Envoi des messages de sécurité à notre canal securitylogs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">category</span> <span style="color:#a6e22e">security</span> { <span style="color:#a6e22e">securitylogs</span>; };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Il est également possible de créer un canal spécial pour les mises a jour dynamiques sur les serveurs utilisant ce service :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">channel</span> <span style="color:#a6e22e">updatelogs</span> {
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">file</span> <span style="color:#e6db74">&#34;/var/log/named-update.log&#34;</span> <span style="color:#a6e22e">versions</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">size</span> <span style="color:#ae81ff">5</span><span style="color:#a6e22e">m</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">severity</span> <span style="color:#a6e22e">dynamic</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">category</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">severity</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#a6e22e">print</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">yes</span>;
+</span></span><span style="display:flex;"><span>       };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">category</span> <span style="color:#a6e22e">update</span> { <span style="color:#a6e22e">updatelogs</span>; };
+</span></span></code></pre></div><p>Voici deux exemples de messages lus dans le fichier de logs de sécurité :</p>
+<pre tabindex="0"><code>Nov 25 10:34:57.910 security: info: client 192.168.9.9#1349: query (cache) denied
+Nov 25 15:22:53.390 security: error: client 192.168.9.9#32776: zone transfer &#39;mondomaine.fr/IN&#39; denied
+</code></pre><p>Ces deux messages ont les significations suivantes :</p>
+<ul>
+<li>Le premier est une interdiction d’interrogation ;</li>
+<li>Le second est une interdiction de transfert de zone.</li>
+</ul>
+<h2 id="8-conclusion">8. Conclusion</h2>
+<p>Comme nous avons pu le voir, la sécurisation du DNS passe avant tout par le fait de se poser les bonnes questions sur son utilisation : qui l’utilise ? pour quels types de résolution ? est-ce légitime ?</p>
+<p>La réponse à ces questions sous l’angle de la sécurité nous a permis d’arriver aux solutions suivantes :</p>
+<ul>
+<li>une séparation des différents services DNS (résolution internet vs résolution du domaine interne) par spécialisation des serveurs ;</li>
+<li>une politique centralisée et maîtrisée d’accès à l’internet limitant le spectre de clients pouvant solliciter et donc potentiellement exploiter le DNS.</li>
+</ul>
+<p>Une amélioration supplémentaire pourrait être l’utilisation de DNSSEC <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> pour le contrôle d’intégrité et l’authentification des demandes de résolutions de noms et les réponses associées. Cette utilisation serait à implémenter au niveau du DNS SOA internet.</p>
+<p><strong>Références :</strong></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>[BIND] Page d’accueil de BIND,&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>[TUN] VUILLARD, V. Tunnel DNS : fuite d’information universelle. In:MISC 18, Mars-Avril 2005.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>[VER] TREND Micro System. Description du virus MYTOB.KG,&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>[MISC23] BROCAS C., FARIN J.M.. fichiers de configuration des différents serveurs DNS décrits dans l’article.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>[HEADER] RFC 1035, domain names - implementation and specification, chapitre 4.1.1&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>[DNSSEC] RFC 4033, 4034 et 4035, Ressources DNSSEC&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+ </content>
+
+<p>
+  
+</p>
+
+
+
+
+
+
+ 
+<div class="toc">
+
+
+<aside class="toc-nav" role="navigation" aria-label="目录">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#de-la-sécurité-dune-architecture-dns-dentreprise">De la sécurité d&rsquo;une architecture DNS d&rsquo;entreprise</a>
+      <ul>
+        <li><a href="#1-introduction">1. Introduction</a>
+          <ul>
+            <li><a href="#11-terminologie">1.1 Terminologie</a></li>
+            <li><a href="#12-les-vulnérabilités-dns">1.2 Les vulnérabilités DNS</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-architecture">2. Architecture</a>
+          <ul>
+            <li><a href="#21-les-serveurs-dns-et-leur-rôle">2.1 Les serveurs DNS et leur rôle</a></li>
+            <li><a href="#22-résolution-dune-requête-interne-du-domaine-ou-dun-sous-domaine-de-lentreprise">2.2 Résolution d’une requête interne du domaine ou d’un sous-domaine de l’entreprise</a></li>
+            <li><a href="#23-résolution-dune-requête-interne-dun-domaine-internet">2.3 Résolution d’une requête interne d’un domaine Internet</a></li>
+            <li><a href="#24-résolution-dune-requête-externe-du-domaine-de-lentreprise">2.4 Résolution d’une requête externe du domaine de l’entreprise</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-serveur-dns-cache-interne">3. Serveur DNS cache interne</a>
+          <ul>
+            <li><a href="#31-attention-au-poste-de-travail">3.1 Attention au poste de travail !</a></li>
+            <li><a href="#32-configuration-du-serveur-dns-cache-interne">3.2 Configuration du serveur DNS cache interne</a></li>
+            <li><a href="#41-mise-en-sûreté-des-informations">4.1 Mise en sûreté des informations</a></li>
+            <li><a href="#42-les-mises-à-jour-dynamiques">4.2 Les mises à jour dynamiques</a></li>
+            <li><a href="#43-création-dune-clef-pour-mises-à-jour-dynamiques">4.3 Création d’une clef pour mises à jour dynamiques</a></li>
+            <li><a href="#44-configuration">4.4 Configuration</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-serveur-dns-cache-en-dmz">5. Serveur DNS cache en DMZ</a></li>
+        <li><a href="#6-serveur-dns-soa-externe">6. Serveur DNS SOA externe</a></li>
+        <li><a href="#7-les-logs">7. Les logs</a></li>
+        <li><a href="#8-conclusion">8. Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tocNav = document.querySelector('.toc-nav');
+    if (!tocNav) return;
+
+    const tocLinks = Array.from(tocNav.querySelectorAll('a'));
+    if (!tocLinks.length) return;
+
+    
+    const idToLink = new Map();
+    const headings = [];
+    const seen = new Set();
+
+    for (const link of tocLinks) {
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') continue;
+        const id = decodeURIComponent(hash.slice(1));
+        idToLink.set(id, link);
+
+        if (!seen.has(id)) {
+            const h = document.getElementById(id);
+            if (h) {
+                headings.push(h);
+                seen.add(id);
+            }
+        }
+    }
+
+    if (!headings.length) return;
+
+    const OFFSET = 100; 
+
+    
+    let currentActive = null;
+    let currentChain = [];
+
+    function buildChainFromLink(link) {
+        const chain = [];
+        if (!link) return chain;
+        chain.push(link);
+        let li = link.closest('li');
+        while (li) {
+            const parentLi = li.parentElement ? li.parentElement.closest('li') : null;
+            if (parentLi) {
+                const parentLink = parentLi.querySelector('a');
+                if (parentLink) chain.push(parentLink);
+            }
+            li = parentLi;
+        }
+        return chain;
+    }
+
+    function applyActiveChain(newLink) {
+        if (newLink === currentActive) return;
+        const newChain = buildChainFromLink(newLink);
+
+        
+        for (const el of currentChain) {
+            if (!newChain.includes(el)) el.classList.remove('active');
+        }
+        
+        for (const el of newChain) {
+            if (!el.classList.contains('active')) el.classList.add('active');
+        }
+
+        currentActive = newLink || null;
+        currentChain = newChain;
+    }
+
+    
+    tocNav.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (!link || !tocNav.contains(link)) return;
+
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return;
+
+        const id = decodeURIComponent(hash.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
+
+        
+        applyActiveChain(link);
+    });
+
+    
+    function updateActiveLink() {
+        let linkToActivate = null;
+        for (let i = headings.length - 1; i >= 0; i--) {
+            const top = headings[i].getBoundingClientRect().top;
+            if (top <= OFFSET) {
+                linkToActivate = idToLink.get(headings[i].id) || null;
+                break;
+            }
+        }
+        applyActiveChain(linkToActivate);
+    }
+
+    
+    let ticking = false;
+    function onScrollOrResize() {
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                updateActiveLink();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+
+    
+    updateActiveLink();
+});
+</script>
+
+
+</div>
+
+
+
+  </main>
+  <footer>
+
+
+
+
+
+
+
+
+
+
+
+Made with
+<a href="https://gohugo.io/">Hugo</a> & customized Bear Neo theme.
+<br />
+
+
+<a href="https://www.brocas.org">My homepage</a> | 
+
+
+
+<a href="/index.xml">RSS</a> | 
+
+
+
+
+
+
+<a href="/sitemap.xml">Sitemap</a>
+
+</footer>
+
+    
+
+
+</body>
+
+</html>

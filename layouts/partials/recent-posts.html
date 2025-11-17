@@ -1,0 +1,8 @@
+<h2>Posts</h2>
+<ul>
+  {{ range first 500 (where .Site.RegularPages "Type" "posts") }}
+    <li>
+      <span class="date">{{ .Date.Format "2006/01/02" }}</span> | <a href="{{ .Permalink }}">{{ .Title }}</a><br>
+    </li>
+  {{ end }}
+</ul>

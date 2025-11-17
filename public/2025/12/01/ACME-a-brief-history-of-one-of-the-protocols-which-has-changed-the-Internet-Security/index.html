@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ACME, a brief history of one of the protocols which has changed the Internet Security | Blog</title>
+<meta name="title" content="ACME, a brief history of one of the protocols which has changed the Internet Security" />
+<meta name="description" content="*** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT *** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
+By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders." />
+<meta name="keywords" content="" />
+
+<link rel="canonical" href="http://localhost:1313/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/">
+
+
+<meta property="og:title" content="ACME, a brief history of one of the protocols which has changed the Internet Security" />
+<meta property="og:description" content="*** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT *** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
+By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-12-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-12-01T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="ACME, a brief history of one of the protocols which has changed the Internet Security"/>
+<meta name="twitter:description" content="*** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT *** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
+By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders."/>
+
+
+
+<meta itemprop="name" content="ACME, a brief history of one of the protocols which has changed the Internet Security">
+<meta itemprop="description" content="*** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT *** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
+By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders."><meta itemprop="datePublished" content="2025-12-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2025-12-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3601">
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+     
+    :root {
+        --width-max: 720px;
+        --font-primary: Verdana, sans-serif;
+        --font-secondary: monospace;
+        --font-size-primary: 1em;
+        --font-size-secondary: 0.8em;
+        --bg-color-primary: #fdfdfd;
+        --bg-color-secondary: #f2f4f7;
+        --text-color-primary: #1a1a1a;
+        --text-color-secondary: #444;
+        --text-color-tertiary: #8c8c8c;
+        --link-color: #0066cc;
+        --link-visited-color: #551a8b;
+        --border-color: #d0d7de;
+        --upvoted-color: #fa8072;
+    }
+
+    @media (prefers-color-scheme: dark) {
+         
+        :root {
+            --bg-color-primary: #121212;
+            --bg-color-secondary: #1c1f24;
+            --text-color-primary: #e5e5e5;
+            --text-color-secondary: #b3b3b7;
+            --text-color-tertiary: #a0a0a0;
+            --link-color: #6da6ff;
+            --link-visited-color: #b388ff;
+            --border-color: #30363d;
+            --upvoted-color: #ff6b6b;
+        }
+    }
+
+    body {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-primary);
+        margin: auto;
+        padding: 20px;
+        max-width: var(--width-max);
+        text-align: left;
+        background-color: var(--bg-color-primary);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.5;
+        color: var(--text-color-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+        color: var(--text-color-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 16px 0;
+    }
+
+    a {
+        color: var(--link-color);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .title {
+        text-decoration: none;
+        border: 0;
+    }
+
+    .title:hover {
+        text-decoration: none;
+    }
+
+    .title span {
+        font-weight: 400;
+    }
+
+    nav a {
+        margin-right: 8px;
+    }
+
+    textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    content {
+        line-height: 1.6;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+    }
+
+    th,
+    td {
+        border: 1px solid var(--border-color);
+        padding: 4px;
+    }
+
+    th {
+        background-color: var(--bg-color-secondary);
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px dashed;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+         
+        border-radius: 4px;
+        content-visibility: auto;
+    }
+
+    img[src*="#minipic"] {
+        max-width: 50%;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .image-caption figcaption {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.8em;
+        margin-top: 0.6em;
+        color: var(--text-color-secondary);
+    }
+
+    .image-caption {
+        margin: auto;
+    }
+
+    i {
+        font-style: normal;
+    }
+
+    time {
+        font-family: var(--font-secondary);
+        font-size: 15px;
+    }
+
+    code {
+        font-family: var(--font-secondary);
+         
+        padding: 2px;
+        border-radius: 4px;
+    }
+
+    pre code {
+        display: block;
+        padding: 16px;
+        white-space: pre-wrap;
+        overflow-x: auto;
+    }
+
+    div.highlight pre {
+        border-radius: 4px;
+    }
+
+    div.highlight code {
+         
+    }
+
+    blockquote {
+        border-left: 4px solid var(--border-color);
+        color: var(--text-color-secondary);
+        margin: 0;
+        padding-left: 8px;
+        font-style: normal;
+    }
+
+    blockquote p {
+        margin: 0;
+    }
+
+    footer {
+        padding: 25px 0;
+        text-align: center;
+        font-size: var(--font-size-secondary);
+    }
+
+    ul li:has(input) {
+        list-style-type: none;
+        margin-left: -25.5px;
+    }
+
+     
+    ul.blog-posts {
+        list-style-type: none;
+        padding: unset;
+    }
+
+    ul.blog-posts li {
+        display: flex;
+    }
+
+    ul.blog-posts li span {
+        flex: 0 0 130px;
+    }
+
+    ul.blog-posts li span.grouped {
+        flex: 0 0 80px;
+    }
+
+    ul.blog-posts li a:visited {
+        color: var(--link-visited-color);
+    }
+
+     
+    div.toc {
+        position: fixed;  
+        top: 50%;  
+        left: calc(
+            (100vw + var(--width-max)) / 2
+        );  
+        transform: translateY(-50%);  
+        width: calc((90vw - var(--width-max)) / 2);  
+        max-height: 80vh;  
+        overflow-y: auto;  
+        border: none;  
+        padding: 0;  
+        margin: 0;  
+        z-index: 99;  
+
+         
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+
+    div.toc::-webkit-scrollbar {
+         
+        display: none;  
+    }
+
+    .toc-nav {
+         
+        padding: 1.5rem;  
+    }
+
+    .toc-nav ul {
+         
+        list-style: none;  
+        padding: 0;  
+        margin: 0;  
+    }
+
+    .toc-nav li {
+         
+        margin: 8px 0;  
+    }
+
+    .toc-nav a {
+         
+        display: block;  
+        text-decoration: none;  
+        color: transparent;  
+        padding: 0 12px;  
+        transition: all 0.2s ease;  
+        font-size: 0.9rem;  
+        line-height: 1.4;  
+        text-align: left;  
+        white-space: nowrap;  
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+        max-width: 100%;  
+    }
+
+    .toc-nav:hover a {
+        color: var(--text-color-tertiary);  
+    }
+
+    .toc-nav a::before {
+         
+        content: "";  
+        display: inline-block;  
+        width: 16px;  
+        height: 4px;  
+        background-color: var(--text-color-tertiary);
+        border-radius: 16px;  
+        margin-right: 12px;  
+        vertical-align: middle;  
+    }
+
+    .toc-nav ul ul a::before {
+         
+        width: 12px;  
+        margin-right: 16px;  
+    }
+
+    .toc-nav ul ul ul a::before {
+         
+        width: 8px;  
+        margin-right: 20px;  
+    }
+
+    .toc-nav a.active,
+    .toc-nav a:hover {
+        text-decoration: none;
+        color: var(--text-color-primary);
+    }
+
+    .toc-nav a.active::before,
+    .toc-nav a:hover::before {
+        background-color: var(--text-color-primary);
+    }
+
+     
+    button.upvote-btn {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-color-primary);
+    }
+
+    button.upvoted {
+        color: var(--upvoted-color);
+    }
+
+    span.upvote-count {
+        margin-top: -4px;
+        font-size: smaller;
+    }
+
+     
+    body:has(.image-zoom-toggle:checked) {
+        overflow: hidden;
+    }
+
+    .image-zoom-container {
+        position: relative;
+        display: block;
+    }
+
+    .image-zoom-toggle {
+        display: none;
+    }
+
+    .image-zoom-label {
+        cursor: zoom-in;
+        display: block;
+        position: relative;
+    }
+
+    .image-zoom-label:focus {
+        outline: 2px solid var(--link-color);
+        outline-offset: 2px;
+    }
+
+    .zoomable-image {
+        transition: transform 0.3s ease;
+    }
+
+     
+    .image-zoom-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay {
+        display: flex;
+        cursor: zoom-out;
+    }
+
+     
+    .image-zoom-toggle:checked ~ .image-zoom-label {
+        cursor: default;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay .zoomable-image {
+        max-width: 90vw;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        transform: scale(1);
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay::after {
+        content: "✕";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay figcaption {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 1001;
+        max-width: 80vw;
+        text-align: center;
+    }
+
+     
+    @media (max-width: 800px) {
+        img[src*="#minipic"] {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        div.toc {
+            display: none;
+        }
+
+        .image-zoom-label {
+            cursor: pointer;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay {
+            padding: 10px;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay::before,
+        .image-zoom-toggle:checked ~ .image-zoom-overlay::after {
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay figcaption {
+            bottom: 10px;
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+    }
+</style>
+
+<style>
+  .divider {
+  background: linear-gradient(to right, rgba(255,255,255,0), #ccc, rgba(255,255,255,0));
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(204, 204, 204), rgba(255, 255, 255, 0));
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+  height: 1px;
+  margin: 2em 0;
+  }
+  .logo a .logo-avatar {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  }
+  .logo {
+  position: relative;
+  margin: 0 auto 35px;
+  text-align: center;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+  animation-name: bounce;
+  -webkit-animation-duration: 0.7s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: bounce;
+  }
+</style>
+<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/cbrocas">
+<link rel="icon" type="image/png" href="https://avatars0.githubusercontent.com/cbrocas" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="https://avatars0.githubusercontent.com/cbrocas"></head>
+
+<body>
+  <header>
+<nav><a href="/">&lt;</a>
+<aside class="logo">
+  <a href="https://blog.brocas.org/"> 
+     <img src="https://avatars0.githubusercontent.com/cbrocas" width="15%" alt="home" class="logo-avatar"> 
+  </a>
+</aside>
+
+
+</nav>
+</header>
+  <main>
+
+
+<center>
+<h2>ACME, a brief history of one of the protocols which has changed the Internet Security</h2>
+</center>
+
+<center>
+
+<p>
+  <i>
+    <time datetime='2025-12-01' pubdate>
+      01 December 2025
+    </time>
+  </i>
+</p>
+</center>
+<div class="divider"></div>
+
+
+
+ 
+
+<content> <p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/acme-meme.jpg" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+</p>
+<h2 id="-draft-article-current-content-can-be-modified-at-any-time-do-not-trust-it-for-the-moment-">*** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT ***</h2>
+<h2 id="internet-and-network-protocols">Internet and Network Protocols</h2>
+<h3 id="open-and-standardized-protocols-at-the-heart-of-the-internets-success">Open and Standardized Protocols at the Heart of the Internet’s Success</h3>
+<p>During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan <a href="https://en.wikipedia.org/wiki/The_Network_is_the_Computer"><em>&ldquo;The Network is the Computer&rdquo;</em></a>.</p>
+<p>By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders.</p>
+<p>This unrestricted interconnection emerged at a pivotal moment in modern history: the opposition between the West and the Eastern Bloc led by the USSR had—albeit temporarily, as we now know—faded away, China was becoming the world’s factory, and the movement and collaboration between were much freer and open than ever.</p>
+<p>The Internet supported a kind of utopia of instant communication and sharing, previously unknown. This utopia was made possible by a set of open and standardized protocols. This was the key to enabling all kinds of different systems to cooperate and communicate seamlessly.</p>
+<p>There were, of course, isolationist or monopolistic temptations from certain manufacturers or software editors. But open and standardized protocols ultimately prevailed, enabling unprecedented expansion. Built on top of TCP/IP, UDP, and DNS, among others, the HTTP and HTML duo would propel the Web as the Internet’s preferred communication platform for the next 30 years.</p>
+<h3 id="limited-use-of-encryption">Limited Use of Encryption</h3>
+<p>The success of this communication utopia was achieved without much concern for ensuring authentication, integrity, and confidentiality of exchanges.</p>
+<p>In 2015, less than 30% of websites used encryption. The consequences of this negligence in addressing security risks were confirmed by Edward Snowden’s revelations in 2013: our data was exposed to anyone who wanted and could intercept and collect it.</p>
+<h2 id="lets-encrypt-is-coming">Let&rsquo;s Encrypt is coming</h2>
+<h3 id="the-birth-of-an-automated-and-free-certificate-authority">The Birth of an Automated and Free Certificate Authority</h3>
+<p>When asked about the main obstacles to the widespread adoption of encryption, <a href="https://insufficient.coffee/about/">J.C. Jones</a>, one of the architects of Let’s Encrypt and now a Site Reliability Engineer after leading Firefox’s cryptographic team, responds:</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/jc-jones100.png" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+</p>
+<blockquote>
+<p><em>&ldquo;More and more information was flowing across the Web, and most data being transferred did not have integrity or confidential protections from TLS. The biggest stumbling block to using TLS everywhere was obtaining and managing server-side certificates, and so: Let’s Encrypt&rdquo; &ndash;  <strong>J.C. Jones</strong></em></p>
+</blockquote>
+<p>Obtaining a certificate was the main obstacle, and this was the priority to address.</p>
+<p>This view was shared by a group of partners who, starting in 2014, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. <a href="https://www.linkedin.com/in/sarah-gran-saline/">Sarah Gran</a>, Director of Communications at Let’s Encrypt, shares:</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/sarah-gran100.png" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+</p>
+<blockquote>
+<p><em>&ldquo;Early collaborators included people from Mozilla, Electronic Frontier Foundation, Akamai, Cisco, and the University of Michigan&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+</blockquote>
+<p>And that&rsquo;s how Let&rsquo;s Encrypt was born.</p>
+<p>In the Web ecosystem, certificate authorities are organizations from which you can obtain a certificate for a domain  after proving you control it.</p>
+<p>And so, Let&rsquo;s Encrypt is since 2015 a certificate authority that delivers for free (as in free beer) TLS Server certificates.</p>
+<p>On the legal/administrative side, Let&rsquo;s Encrypt certificate authority operates for the public’s benefit and is a service provided by the Internet Security Research Group (ISRG), a California public benefit corporation.</p>
+<p>Regarding <a href="https://letsencrypt.org/stats/">Let&rsquo;s Encrypt results</a> ten years after its birth, they are really impressive and as Sarah Gran points out, so is the global HTTPS usage:</p>
+<blockquote>
+<p><em>&ldquo;Our stated mission from day one was to get the web to 100% encryption. When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+</blockquote>
+<p>Let&rsquo;s Encrypt delivers certificates in a automated manner using the ACME protocol which implies no manual action from the site owner nor the certificate authority. So, let&rsquo;s speak now a little about the automation aspect!</p>
+<h3 id="automation-the-core-of-the-operation">Automation: The Core of the Operation</h3>
+<p>From the mid-2020s perspective, the automation at the heart of Let’s Encrypt might seem obvious, but in the first half of the 2010s, it was far from the norm. The ecosystem of public certificate authorities issuing server certificates was no exception.</p>
+<p>At first glance, automation appears to be there to help website managers reliably deploy the TLS protocol on their sites, but it was first and foremost an absolute prerequisite for the very viability of the Let&rsquo;s Encrypt project.</p>
+<p>As <a href="https://aarongable.com/#about">Aaron Gable</a>, tech lead of Boulder—the software at the core of Let’s Encrypt—, confirms:</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/aaron-gable100.png" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+</p>
+<blockquote>
+<p><em>&ldquo;Automation was always going to be critical to Let’s Encrypt’s success. From the very beginning, we knew that there was no way we could scale manual validation on a non-profit’s budget&rdquo; &ndash; <strong>Aaron Gable</strong></em></p>
+</blockquote>
+<p>Indeed, it is worth noting that Let’s Encrypt has operated on an Internet scale from the start with a small team of about fifteen engineers, or even fewer at launch. For this team, automation was the only viable way to fulfill the immense mission they had set for themselves.</p>
+<h2 id="acme">ACME</h2>
+<h3 id="the-open-and-automated-protocol-that-powers-lets-encrypt">The Open and automated Protocol That Powers Let’s Encrypt</h3>
+<p>When we talk about automation in relation to Let’s Encrypt, we are talking about ACME (Automated Certificate Management Environment).</p>
+<p>This protocol allows client software to prove to an ACME-compatible certificate authority that it controls the domain for which it is requesting a certificate.</p>
+<p>Sarah Gran clarifies an important point:</p>
+<blockquote>
+<p><em>&ldquo;An important aspect of how Let’s Encrypt works is that we verify control over a domain, not ownership&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+</blockquote>
+<p>Control vs. ownership of a domain—a nuance everyone should keep in mind.</p>
+<p>This proof of control involves the client responding to a challenge issued by the ACME-compatible certificate authority. The challenge can be an HTTP, DNS, or TLS challenge, depending on the client’s choice and certificate authority support. Completing the challenge requires the ACME client to place a value provided by the ACME server—in a standardized HTTP path, a DNS zone, or a TLS response, respectively. All of these operations are cryptographically verified, of course.</p>
+<p>The key point is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.</p>
+<h3 id="birth-of-acme">Birth of ACME</h3>
+<p>One might wonder whether ACME was part of Let’s Encrypt’s design from the beginning.</p>
+<p>J.C. Jones confirms:</p>
+<blockquote>
+<p><em>&ldquo;By late 2014, the idea of an HTTP REST API with &ldquo;/challenge&rdquo; and &ldquo;/certificate&rdquo; existed, but we hadn’t defined much beyond that. We had a series of in-person meetings, in the Mozilla San Francisco office on Embarcadero and the EFF office in the Tenderloin through the spring of 2015 where we worked out the details&rdquo; &ndash; <strong>J.C. Jones</strong></em></p>
+</blockquote>
+<p>ACME was indeed at the core of Let’s Encrypt from the start and underwent a refinement process to cover all use cases as thoroughly as possible.</p>
+<h3 id="securing-the-web-or-the-internet">Securing the Web or the Internet?</h3>
+<p>Speaking of use cases, one might wonder whether the Web was Let’s Encrypt’s primary target, or if securing the Internet with its multiple protocols was also part of the objectives.</p>
+<p>Sarah Gran provides an unambiguous first-level answer:</p>
+<blockquote>
+<p><em>&ldquo;Our stated mission from day one was to get the web to 100% encryption. When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+</blockquote>
+<p>But when asked about the various types of challenges in the protocol, J.C. Jones offers a nuance:</p>
+<blockquote>
+<p><em>&ldquo;DNS, TLS-SNI, and HTTP were all in planning in spring 2015, but many of us were less confident in the procedure around the DNS validation. Which is ironic, as it turned out TLS-SNI had a vulnerability so we had to stop using it and our DNS validation was ultimately fine. In general, the collection of us were simply respectful of the great complexity within the DNS&rdquo; &ndash; <strong>J.C. Jones</strong></em></p>
+</blockquote>
+<p>This is a perspective not often publicly expressed by engineers primarily from the Web: their lack of confidence in implementing a DNS challenge stemmed from their humility regarding the complexity of the DNS ecosystem and the level of expertise required to master it.</p>
+<p>The challenge was ultimately met, and this DNS challenge—though not its primary purpose—enabled multiple protocols outside HTTP like SMTP to be secured by ACME.</p>
+<h2 id="standardization-and-open-source">Standardization and Open Source</h2>
+<h3 id="developed-in-the-open">Developed in the Open</h3>
+<p>ACME was documented openly from the start, and <a href="https://certbot.eff.org/">Certbot</a>, the first open-source ACME client co-developed with the EFF, served as the reference implementation.</p>
+<p>Similarly, a standardization process through the IETF resulted in <a href="https://datatracker.ietf.org/doc/rfc8555/">RFC 8555</a> in March, 2019.</p>
+<p>One of the consequences developing an open and standardized protocol was the creation of a multitude of <a href="https://letsencrypt.org/docs/client-options/">ACME clients covering a very wide range of use cases</a>.</p>
+<p>J.C. Jones confirms that this was the goal:</p>
+<blockquote>
+<p><em>&ldquo;This is what we foresaw, or at least hoped for. The initial client development often had conversations like, ‘oh, if someone wants that, then they’ll write their own client.’ It was a key part of why the REST API needed to be an IETF standard, and was part of the argument at the IETF BoF that resulted in the formation of the ACME Working Group in Q3 2015&rdquo; &ndash; <strong>J.C. Jones</strong></em></p>
+</blockquote>
+<p>Let’s Encrypt has always provided constant support to developers by responding in its forum or on its GitHub issue tracker, and all this work has truly paid off. <a href="https://letsencrypt.org/2025/10/07/ten-yrs-community-forum">An interesting post</a> has been recently written about this topic on Let&rsquo;s Encrypt blog.</p>
+<h3 id="standardization-for-what-benefits">Standardization for what benefits?</h3>
+<p>The other question that can be asked is whether or not the standardization process within the IETF has led to an improvement in the ACME protocol thanks to the cooperation that guides this process.</p>
+<p><a href="https://www.eff.org/about/staff/jacob-hoffman-andrews">Jacob Hoffman-Andrews</a>, one of the <a href="https://datatracker.ietf.org/doc/rfc8555/">RFC 8555</a> authors working for EFF &amp; Let&rsquo;s Encrypt, confirms an initial benefit that the ACME protocol has been able to derive from its standardization process:</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/jacob100.png" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+</p>
+<blockquote>
+<p><em>&ldquo;One of the big changes was from a validation-first flow to a certificate-request-first flow. In other words, earlier drafts had subscribers requesting validation for domain names and then requesting a certificate once those validations were successful. The final RFC has subscribers request a certificate, and then the CA tells the subscriber what validations are needed. This change originated from within the IETF discussion process, and was intended to make handling of wildcard certificates more natural.&rdquo; &ndash; <strong>Jacob Hoffman-Andrews</strong></em></p>
+</blockquote>
+<p>Aside this first design improvement, Jacob details a second major improvement of the security of the protocol, improvement that also landed during the IETF standardization process:</p>
+<blockquote>
+<p><em>&ldquo;Another big change, also originated from within the IETF, was to make all requests authenticated, including GET requests. Since ACME is authenticated with signed POSTs, this necessitated the POST-as-GET concept that’s in ACME today&rdquo; &ndash; <strong>Jacob Hoffman-Andrews</strong></em></p>
+</blockquote>
+<p>We can see there how IETF iterations can challenge the Security of a protocol and leads its development to innovative solutions to tackle the challenge it faces!</p>
+<p>Last, Jacob adds another information that illustrates the benefits of developing a protocol into the open: it allows the community to challenge (and sometimes, fix) its Security level due to the availability of all materials and often, of the  reference implementation:</p>
+<blockquote>
+<p><em>&ldquo;Another very important evolution was the deprecation of the tls-sni-01 challenge method. This was found to be flawed by Frans Rosen, a security researcher. It was replaced with TLS-ALPN-01, developed at IETF with significant input from Google&rdquo; &ndash; <strong>Jacob Hoffman-Andrews</strong></em></p>
+</blockquote>
+<h3 id="lets-encrypt-acme-and-the-public-certificate-authorities-ecosystem">Let’s Encrypt, ACME, and the Public Certificate Authorities Ecosystem</h3>
+<p>In 2015, the arrival of Let’s Encrypt in the public certificate authorities ecosystem raised a number of questions.</p>
+<p>What level of cooperation or hostility? What impact on the viability of existing certificate authorities?</p>
+<p>Here again, the fact that Let’s Encrypt was based on an open protocol, immediately subject to an IETF standardization initiative, enabled collaboration and adoption by the most innovative certificate authorities.</p>
+<p>J.C. Jones confirms this, discussing the External Account Binding (EAB) option of the protocol which is a way for an ACME client to authenticate to the server using an identifier and a key value which are verifiable by the server in repository he maintains:</p>
+<blockquote>
+<p><em>&ldquo;EAB was an early addition at the IETF ACME Working Group. Many in the room were worried that without a means to bind to a payment method, ACME would not get adoption. In fact, some of the counterarguments to forming ACME were blunted by EAB, as such a mechanism wasn’t in the theoretically-competing, already-existent standard: SCEP. SCEP, it was argued, already handled &lsquo;free&rsquo; certificate issuance, for private certificate authorities. Anything else needed a feasible path for usage payment.&rdquo; &ndash; <strong>J.C. Jones</strong></em></p>
+</blockquote>
+<p>Beyond billing, the addition of EAB allowed also existing certificate authorities to integrate their existing domain control validation systems with ACME.</p>
+<p>The IETF standardization process, based on an open process, created the necessary discussion space for cooperation among entities that did not necessarily share the same objectives.</p>
+<p>The result, ten years after the introduction of ACME and the completion of its standardization process in 2019, is that ACME has become the primary means by which all public certificate authorities—both free and commercial—rely on for their transition to an automated future of issuing short-lived certificates.</p>
+<p>Effectively, until march 2026, the maximum lifespan of a public TLS server certificate has been set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. After the vote of the <a href="https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/">ballot SC081</a> at the CA/B Forum, the certificate lifespan will decrease gradually to reach 47 days in March 2029. And the automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.</p>
+<h3 id="created-at-lets-encrypt-adopted-everywhere">Created at Let&rsquo;s Encrypt, adopted everywhere</h3>
+<p>It is important to note that although ACME was developed by the team managing Let&rsquo;s Encrypt, this protocol is now one of the main protocols for automated certificate acquisition adopted by all public certificate authorities.</p>
+<p>And outside the public certificate authorities ecosystem, I think it&rsquo;s fair to say that this protocol is also becoming increasingly popular with technical architects in companies with private certificate authorities.</p>
+<p>This has been the case in my company for several years now, where we have deployed an ACME endpoint in front of our internal certificate authority. Among the benefits we have seen, we have been able to rely on the vast ACME clients ecosystem in order to provide an ACME client to each OS or middleware that powers our infrastructure. We can see there how certificate obtention agility powered by ACME helps organizations in their journey to global IT agility.</p>
+<h2 id="innovation-and-the-adoption-challenge">Innovation and the adoption challenge</h2>
+<h3 id="the-ari-episode">The ARI episode</h3>
+<p>We may fear that the development of a protocol supported primarily by a team as small as Let&rsquo;s Encrypt&rsquo;s will be fairly limited in terms of evolution and innovation.</p>
+<p>But the history of ACME shows that its evolution continues after its initial standardization.</p>
+<p>In 2025, we saw with the ARI (ACME Renewal Information &ndash; <a href="https://www.rfc-editor.org/rfc/rfc9773.html">RFC 9773</a>) extension that the ACME protocol continues to evolve. ARI is a way for a certificate authority to suggest a renewal period to its clients, often earlier than they would have determined themselves. This use case is particularly relevant when the certificate authority needs to mass-revoke certificates that, for example, did not comply with the rules the certificate authority must follow when issuing certificates.</p>
+<p>More specifically, J.C. Jones and Aaron Gable point two incidents that had to be handled by the Let&rsquo;s Encrypt team and that were the start for the ARI initiative:</p>
+<blockquote>
+<p><em>&ldquo;Explicitly, as remediation of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1619179">https://bugzilla.mozilla.org/show_bug.cgi?id=1619179</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1715672">https://bugzilla.mozilla.org/show_bug.cgi?id=1715672</a> &quot; <strong>J.C. Jones and Aaron Gabble</strong></em></p>
+</blockquote>
+<h3 id="support-to-encourage-adoption">Support to encourage adoption</h3>
+<p>Aaron Gable leads the effort of designing and implementing ARI. But even if a new extension to the protocol has been produced, it can only reach its potential users after ACME clients have implemented it into their code base. As previously said, the team and some community members invest a lot on providing support to the community. In the case of ARI, this support is oriented to the ACME clients developers in order to make these clients ARI aware.</p>
+<p>Providing an efficient support and effective resources to the client side ACME actors is a huge part of the challenge in order to keep ACME ecosystem healthy and agile.</p>
+<p>As illustrates by Sarah Gran, another way to give momentum to a new feature is to lift certain restrictions on access to the certificate authority:</p>
+<blockquote>
+<p><em>In order to encourage ARI adoption, we’ve configured Let’s Esement Prématuré : Je dois signaler que la bâche fournie (qui était noire au départ) a rapidement pris une teinte grise à cause du soleil.
+• Fragilité : De plus, elle a tendance à se déchirer facilement.ncrypt to allow subscribers who renew via ARI to bypass our rate limits.&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+</blockquote>
+<p>But despite a good support work and incentive measures, Aaron Gable confirms ARI adoption is just at its start:</p>
+<blockquote>
+<p><em>There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over&quot; <strong>&ndash; Aaron Gable</strong></em></p>
+</blockquote>
+<p>This situation is really shared with a lot of client side softwares that <em>&ldquo;just work&rdquo;(c)</em> and it raises some concerns about how to make an ecosystem keeping track with innovation on its client side.</p>
+<h3 id="evolution-on-server-side-acme-implementation">Evolution on server side ACME implementation</h3>
+<p>CA/B Forum has recently asked public certificate authorities to adopt <a href="https://blog.citp.princeton.edu/2024/07/05/a-brief-history-of-multi-perspective-issuance-corroboration/">Multi-Perspective Issuance Corroboration</a> (MPIC) to guard against BGP attacks. We have asked Aaron Gable about the impacts that kind of measure have had on ACME server side implementation in the Let&rsquo;s Encrypt infrastructure:</p>
+<blockquote>
+<p><em>&ldquo;We’ve had to make few if any changes to our infrastructure to accommodate recent requirements changes such as MPIC and DNSSEC validation. We innovated MPIC (then called Remote Validation) along with a research team at Princeton, and implemented it in 2020. Our experience already running such a service helped inform the requirements as they were incorporated by the CA/B Forum.&rdquo; <strong>&ndash; Aaron Gable</strong></em></p>
+</blockquote>
+<p>The lesson learnt here is that being at the edge of the innovation let you shape part of the future of your ecosystem and significantly lower the impact on your infrastructure of many regulatory measures that come into effect over time.</p>
+<h2 id="future">Future</h2>
+<p>It is really encouraging to see a lot of innovation in the ACME ecosystem.</p>
+<p>So what evolutions can we expect to see in the future?</p>
+<p>We have asked the question to Aaron Gable who gave us two upcoming developments:</p>
+<ul>
+<li><em>&ldquo;We’re currently working on <a href="https://datatracker.ietf.org/doc/draft-ietf-acme-profiles/">standardizing</a> <strong>profile selection for ACME</strong>, and our deployment of the early draft of this standard has already brought some much-needed flexibility to the WebPKI, enabling us to make changes to our certificate contents with minimal disruption.&rdquo;</em></li>
+<li><em>&ldquo;I’m also excited about a potential future change which would <strong>introduce a &lsquo;pubkey&rsquo; identifier type</strong>, along with a set of challenges that allow the client to demonstrate control over the corresponding keypair. This would fix the gap today that presenting a CSR does not actually prove possession of the key in that CSR.&rdquo; &ndash; <strong>Araron Gable</strong></em></li>
+</ul>
+<p>Indeed, we can venture to say that ACME&rsquo;s future looks bright 😊</p>
+<p>Another recent development based on ACME has also shed new light on the potential of this protocol: since 2022, a <a href="https://datatracker.ietf.org/doc/draft-acme-device-attest/">draft</a> is under progress at the IETF in order to write an ACME extension. The goal of this extension is to use ACME to obtain a certificate for a device in order to prove its identity. The challenge is based on device attestation and what&rsquo;s new in this case is the arrival of a third party, the attestation server.</p>
+<p>What is remarkable here is that we are no longer dealing with ACME&rsquo;s initial use case, namely obtaining TLS server certificates: we can see in this IETF draft the potential of ACME as a challenge-based framework to obtain certificate in very different contexts.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>It is heartening to see that, 30 years after the widespread adoption of the Internet, open and standardized protocols continue to revolutionize its use.</p>
+<p>ACME and its Let&rsquo;s Encrypt implementation at scale have enabled the widespread adoption of HTTPS, thereby raising the level of security for billions of Internet users and also of private networks.</p>
+<p>Having been able to do it inside a non profit organization, providing the Internet with an open and standardized protocol is a great success for all people believing in FreeSoftware and an Open Internet.</p>
+<p>As a community, I really think we can thank these organizations, teams, and engineers who continue to uphold the promise of efficiency and Freedom brought about by cooperation around open protocols. They inspire new generations (and older ones I guess 😉) demonstrating big things can still be achevied today in the open for the common good!</p>
+<p>I would like to extend a special thank you to the members of the Let&rsquo;s Encrypt team, <strong>J.C. Jones</strong>, <strong>Aaron Gable</strong>, <strong>Sarah Gran</strong> and <strong>Jacob Hoffman-Andrews</strong>, for the time and effort they dedicated to answering my questions. Without them, this article would not have been possible.</p>
+<p>A big shout out also to <a href="https://github.com/regit">Eric Leblond</a> and <a href="https://infosec.exchange/@doegox">Philippe Teuwen</a> who carefully proofread this article and gave me valuable and insightful advices 🙏</p>
+ </content>
+
+<p>
+  
+</p>
+
+
+
+
+
+
+ 
+<div class="toc">
+
+
+<aside class="toc-nav" role="navigation" aria-label="目录">
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-draft-article-current-content-can-be-modified-at-any-time-do-not-trust-it-for-the-moment-">*** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT ***</a></li>
+        <li><a href="#internet-and-network-protocols">Internet and Network Protocols</a>
+          <ul>
+            <li><a href="#open-and-standardized-protocols-at-the-heart-of-the-internets-success">Open and Standardized Protocols at the Heart of the Internet’s Success</a></li>
+            <li><a href="#limited-use-of-encryption">Limited Use of Encryption</a></li>
+          </ul>
+        </li>
+        <li><a href="#lets-encrypt-is-coming">Let&rsquo;s Encrypt is coming</a>
+          <ul>
+            <li><a href="#the-birth-of-an-automated-and-free-certificate-authority">The Birth of an Automated and Free Certificate Authority</a></li>
+            <li><a href="#automation-the-core-of-the-operation">Automation: The Core of the Operation</a></li>
+          </ul>
+        </li>
+        <li><a href="#acme">ACME</a>
+          <ul>
+            <li><a href="#the-open-and-automated-protocol-that-powers-lets-encrypt">The Open and automated Protocol That Powers Let’s Encrypt</a></li>
+            <li><a href="#birth-of-acme">Birth of ACME</a></li>
+            <li><a href="#securing-the-web-or-the-internet">Securing the Web or the Internet?</a></li>
+          </ul>
+        </li>
+        <li><a href="#standardization-and-open-source">Standardization and Open Source</a>
+          <ul>
+            <li><a href="#developed-in-the-open">Developed in the Open</a></li>
+            <li><a href="#standardization-for-what-benefits">Standardization for what benefits?</a></li>
+            <li><a href="#lets-encrypt-acme-and-the-public-certificate-authorities-ecosystem">Let’s Encrypt, ACME, and the Public Certificate Authorities Ecosystem</a></li>
+            <li><a href="#created-at-lets-encrypt-adopted-everywhere">Created at Let&rsquo;s Encrypt, adopted everywhere</a></li>
+          </ul>
+        </li>
+        <li><a href="#innovation-and-the-adoption-challenge">Innovation and the adoption challenge</a>
+          <ul>
+            <li><a href="#the-ari-episode">The ARI episode</a></li>
+            <li><a href="#support-to-encourage-adoption">Support to encourage adoption</a></li>
+            <li><a href="#evolution-on-server-side-acme-implementation">Evolution on server side ACME implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#future">Future</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tocNav = document.querySelector('.toc-nav');
+    if (!tocNav) return;
+
+    const tocLinks = Array.from(tocNav.querySelectorAll('a'));
+    if (!tocLinks.length) return;
+
+    
+    const idToLink = new Map();
+    const headings = [];
+    const seen = new Set();
+
+    for (const link of tocLinks) {
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') continue;
+        const id = decodeURIComponent(hash.slice(1));
+        idToLink.set(id, link);
+
+        if (!seen.has(id)) {
+            const h = document.getElementById(id);
+            if (h) {
+                headings.push(h);
+                seen.add(id);
+            }
+        }
+    }
+
+    if (!headings.length) return;
+
+    const OFFSET = 100; 
+
+    
+    let currentActive = null;
+    let currentChain = [];
+
+    function buildChainFromLink(link) {
+        const chain = [];
+        if (!link) return chain;
+        chain.push(link);
+        let li = link.closest('li');
+        while (li) {
+            const parentLi = li.parentElement ? li.parentElement.closest('li') : null;
+            if (parentLi) {
+                const parentLink = parentLi.querySelector('a');
+                if (parentLink) chain.push(parentLink);
+            }
+            li = parentLi;
+        }
+        return chain;
+    }
+
+    function applyActiveChain(newLink) {
+        if (newLink === currentActive) return;
+        const newChain = buildChainFromLink(newLink);
+
+        
+        for (const el of currentChain) {
+            if (!newChain.includes(el)) el.classList.remove('active');
+        }
+        
+        for (const el of newChain) {
+            if (!el.classList.contains('active')) el.classList.add('active');
+        }
+
+        currentActive = newLink || null;
+        currentChain = newChain;
+    }
+
+    
+    tocNav.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (!link || !tocNav.contains(link)) return;
+
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return;
+
+        const id = decodeURIComponent(hash.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
+
+        
+        applyActiveChain(link);
+    });
+
+    
+    function updateActiveLink() {
+        let linkToActivate = null;
+        for (let i = headings.length - 1; i >= 0; i--) {
+            const top = headings[i].getBoundingClientRect().top;
+            if (top <= OFFSET) {
+                linkToActivate = idToLink.get(headings[i].id) || null;
+                break;
+            }
+        }
+        applyActiveChain(linkToActivate);
+    }
+
+    
+    let ticking = false;
+    function onScrollOrResize() {
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                updateActiveLink();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+
+    
+    updateActiveLink();
+});
+</script>
+
+
+</div>
+
+
+
+  </main>
+  <footer>
+
+
+
+
+
+
+
+
+
+
+
+Made with
+<a href="https://gohugo.io/">Hugo</a> & customized Bear Neo theme.
+<br />
+
+
+<a href="https://www.brocas.org">My homepage</a> | 
+
+
+
+<a href="/index.xml">RSS</a> | 
+
+
+
+
+
+
+<a href="/sitemap.xml">Sitemap</a>
+
+</footer>
+
+    
+
+
+</body>
+
+</html>

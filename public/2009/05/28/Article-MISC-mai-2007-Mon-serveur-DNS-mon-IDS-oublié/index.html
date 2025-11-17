@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié | Blog</title>
+<meta name="title" content="Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié" />
+<meta name="description" content="Cet article est issu de l’article publié dans le numéro de MISC n°31 de Mai 2007. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC.
+Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.
+Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr
+Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible." />
+<meta name="keywords" content="" />
+
+<link rel="canonical" href="http://localhost:1313/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/">
+
+
+<meta property="og:title" content="Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié" />
+<meta property="og:description" content="Cet article est issu de l’article publié dans le numéro de MISC n°31 de Mai 2007. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC.
+Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.
+Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr
+Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2009-05-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-05-28T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié"/>
+<meta name="twitter:description" content="Cet article est issu de l’article publié dans le numéro de MISC n°31 de Mai 2007. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC.
+Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.
+Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr
+Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible."/>
+
+
+
+<meta itemprop="name" content="Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié">
+<meta itemprop="description" content="Cet article est issu de l’article publié dans le numéro de MISC n°31 de Mai 2007. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC.
+Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.
+Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr
+Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible."><meta itemprop="datePublished" content="2009-05-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2009-05-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2313">
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+     
+    :root {
+        --width-max: 720px;
+        --font-primary: Verdana, sans-serif;
+        --font-secondary: monospace;
+        --font-size-primary: 1em;
+        --font-size-secondary: 0.8em;
+        --bg-color-primary: #fdfdfd;
+        --bg-color-secondary: #f2f4f7;
+        --text-color-primary: #1a1a1a;
+        --text-color-secondary: #444;
+        --text-color-tertiary: #8c8c8c;
+        --link-color: #0066cc;
+        --link-visited-color: #551a8b;
+        --border-color: #d0d7de;
+        --upvoted-color: #fa8072;
+    }
+
+    @media (prefers-color-scheme: dark) {
+         
+        :root {
+            --bg-color-primary: #121212;
+            --bg-color-secondary: #1c1f24;
+            --text-color-primary: #e5e5e5;
+            --text-color-secondary: #b3b3b7;
+            --text-color-tertiary: #a0a0a0;
+            --link-color: #6da6ff;
+            --link-visited-color: #b388ff;
+            --border-color: #30363d;
+            --upvoted-color: #ff6b6b;
+        }
+    }
+
+    body {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-primary);
+        margin: auto;
+        padding: 20px;
+        max-width: var(--width-max);
+        text-align: left;
+        background-color: var(--bg-color-primary);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.5;
+        color: var(--text-color-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+        color: var(--text-color-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 16px 0;
+    }
+
+    a {
+        color: var(--link-color);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .title {
+        text-decoration: none;
+        border: 0;
+    }
+
+    .title:hover {
+        text-decoration: none;
+    }
+
+    .title span {
+        font-weight: 400;
+    }
+
+    nav a {
+        margin-right: 8px;
+    }
+
+    textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    content {
+        line-height: 1.6;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+    }
+
+    th,
+    td {
+        border: 1px solid var(--border-color);
+        padding: 4px;
+    }
+
+    th {
+        background-color: var(--bg-color-secondary);
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px dashed;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+         
+        border-radius: 4px;
+        content-visibility: auto;
+    }
+
+    img[src*="#minipic"] {
+        max-width: 50%;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .image-caption figcaption {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.8em;
+        margin-top: 0.6em;
+        color: var(--text-color-secondary);
+    }
+
+    .image-caption {
+        margin: auto;
+    }
+
+    i {
+        font-style: normal;
+    }
+
+    time {
+        font-family: var(--font-secondary);
+        font-size: 15px;
+    }
+
+    code {
+        font-family: var(--font-secondary);
+         
+        padding: 2px;
+        border-radius: 4px;
+    }
+
+    pre code {
+        display: block;
+        padding: 16px;
+        white-space: pre-wrap;
+        overflow-x: auto;
+    }
+
+    div.highlight pre {
+        border-radius: 4px;
+    }
+
+    div.highlight code {
+         
+    }
+
+    blockquote {
+        border-left: 4px solid var(--border-color);
+        color: var(--text-color-secondary);
+        margin: 0;
+        padding-left: 8px;
+        font-style: normal;
+    }
+
+    blockquote p {
+        margin: 0;
+    }
+
+    footer {
+        padding: 25px 0;
+        text-align: center;
+        font-size: var(--font-size-secondary);
+    }
+
+    ul li:has(input) {
+        list-style-type: none;
+        margin-left: -25.5px;
+    }
+
+     
+    ul.blog-posts {
+        list-style-type: none;
+        padding: unset;
+    }
+
+    ul.blog-posts li {
+        display: flex;
+    }
+
+    ul.blog-posts li span {
+        flex: 0 0 130px;
+    }
+
+    ul.blog-posts li span.grouped {
+        flex: 0 0 80px;
+    }
+
+    ul.blog-posts li a:visited {
+        color: var(--link-visited-color);
+    }
+
+     
+    div.toc {
+        position: fixed;  
+        top: 50%;  
+        left: calc(
+            (100vw + var(--width-max)) / 2
+        );  
+        transform: translateY(-50%);  
+        width: calc((90vw - var(--width-max)) / 2);  
+        max-height: 80vh;  
+        overflow-y: auto;  
+        border: none;  
+        padding: 0;  
+        margin: 0;  
+        z-index: 99;  
+
+         
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+
+    div.toc::-webkit-scrollbar {
+         
+        display: none;  
+    }
+
+    .toc-nav {
+         
+        padding: 1.5rem;  
+    }
+
+    .toc-nav ul {
+         
+        list-style: none;  
+        padding: 0;  
+        margin: 0;  
+    }
+
+    .toc-nav li {
+         
+        margin: 8px 0;  
+    }
+
+    .toc-nav a {
+         
+        display: block;  
+        text-decoration: none;  
+        color: transparent;  
+        padding: 0 12px;  
+        transition: all 0.2s ease;  
+        font-size: 0.9rem;  
+        line-height: 1.4;  
+        text-align: left;  
+        white-space: nowrap;  
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+        max-width: 100%;  
+    }
+
+    .toc-nav:hover a {
+        color: var(--text-color-tertiary);  
+    }
+
+    .toc-nav a::before {
+         
+        content: "";  
+        display: inline-block;  
+        width: 16px;  
+        height: 4px;  
+        background-color: var(--text-color-tertiary);
+        border-radius: 16px;  
+        margin-right: 12px;  
+        vertical-align: middle;  
+    }
+
+    .toc-nav ul ul a::before {
+         
+        width: 12px;  
+        margin-right: 16px;  
+    }
+
+    .toc-nav ul ul ul a::before {
+         
+        width: 8px;  
+        margin-right: 20px;  
+    }
+
+    .toc-nav a.active,
+    .toc-nav a:hover {
+        text-decoration: none;
+        color: var(--text-color-primary);
+    }
+
+    .toc-nav a.active::before,
+    .toc-nav a:hover::before {
+        background-color: var(--text-color-primary);
+    }
+
+     
+    button.upvote-btn {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-color-primary);
+    }
+
+    button.upvoted {
+        color: var(--upvoted-color);
+    }
+
+    span.upvote-count {
+        margin-top: -4px;
+        font-size: smaller;
+    }
+
+     
+    body:has(.image-zoom-toggle:checked) {
+        overflow: hidden;
+    }
+
+    .image-zoom-container {
+        position: relative;
+        display: block;
+    }
+
+    .image-zoom-toggle {
+        display: none;
+    }
+
+    .image-zoom-label {
+        cursor: zoom-in;
+        display: block;
+        position: relative;
+    }
+
+    .image-zoom-label:focus {
+        outline: 2px solid var(--link-color);
+        outline-offset: 2px;
+    }
+
+    .zoomable-image {
+        transition: transform 0.3s ease;
+    }
+
+     
+    .image-zoom-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay {
+        display: flex;
+        cursor: zoom-out;
+    }
+
+     
+    .image-zoom-toggle:checked ~ .image-zoom-label {
+        cursor: default;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay .zoomable-image {
+        max-width: 90vw;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        transform: scale(1);
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay::after {
+        content: "✕";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    .image-zoom-toggle:checked ~ .image-zoom-overlay figcaption {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 1001;
+        max-width: 80vw;
+        text-align: center;
+    }
+
+     
+    @media (max-width: 800px) {
+        img[src*="#minipic"] {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        div.toc {
+            display: none;
+        }
+
+        .image-zoom-label {
+            cursor: pointer;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay {
+            padding: 10px;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay::before,
+        .image-zoom-toggle:checked ~ .image-zoom-overlay::after {
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+        }
+
+        .image-zoom-toggle:checked ~ .image-zoom-overlay figcaption {
+            bottom: 10px;
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+    }
+</style>
+
+<style>
+  .divider {
+  background: linear-gradient(to right, rgba(255,255,255,0), #ccc, rgba(255,255,255,0));
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(204, 204, 204), rgba(255, 255, 255, 0));
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+  height: 1px;
+  margin: 2em 0;
+  }
+  .logo a .logo-avatar {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  }
+  .logo {
+  position: relative;
+  margin: 0 auto 35px;
+  text-align: center;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+  animation-name: bounce;
+  -webkit-animation-duration: 0.7s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: bounce;
+  }
+</style>
+<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/cbrocas">
+<link rel="icon" type="image/png" href="https://avatars0.githubusercontent.com/cbrocas" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="https://avatars0.githubusercontent.com/cbrocas"></head>
+
+<body>
+  <header>
+<nav><a href="/">&lt;</a>
+<aside class="logo">
+  <a href="https://blog.brocas.org/"> 
+     <img src="https://avatars0.githubusercontent.com/cbrocas" width="15%" alt="home" class="logo-avatar"> 
+  </a>
+</aside>
+
+
+</nav>
+</header>
+  <main>
+
+
+<center>
+<h2>Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié</h2>
+</center>
+
+<center>
+
+<p>
+  <i>
+    <time datetime='2009-05-28' pubdate>
+      28 May 2009
+    </time>
+  </i>
+</p>
+</center>
+<div class="divider"></div>
+
+
+
+ 
+
+<content> <p><em>Cet article est issu de l’article publié dans le numéro de <strong>MISC n°31 de Mai 2007</strong>. J’en suis l’auteur (<a href="mailto:christophe.brocas@free.fr">christophe.brocas@free.fr</a>). Tous droits réservés à MISC.</em></p>
+<p>Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/dns-mort1.jpg" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+</p>
+<h1 id="mon-serveur-dns-mon-ids-préféré">Mon serveur DNS, mon IDS préféré</h1>
+<p><em>Christophe Brocas, <a href="mailto:christophe.brocas@free.fr">christophe.brocas@free.fr</a></em></p>
+<p>Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible. Pour détecter des postes compromis sur le réseau de l’entreprise, des solutions complexes et onéreuses sont souvent proposées aux Directeurs Informatiques (DSI) mais le plus souvent, peu de solutions de détection anti-intrusions sont effectivement en place. Or, la bonne compréhension à la fois de son architecture et du comportement des codes malicieux présents sur les postes compromis permet de proposer une première réponse élégante, peu couteuse et efficiente à cette problématique.</p>
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-compromission-de-postes--une-détection-quelle-détection-">1.1 Compromission de postes : une détection, quelle détection ?</h3>
+<p>Afin de sécuriser son SI, une entreprise doit déployer une interconnexion applicative filtrée par des proxies et des serveurs dédiées (exemples : filtrage http/smtp, relais dns) afin de pouvoir fixer des règles de sécurité consistantes.</p>
+<p>Cependant, une fois cette architecture déployée, la majorité des entreprises ne semble pas se préoccuper des tentatives de contournement/d’accès direct à l’extérieur depuis un poste du LAN compromis. Elles se reposent généralement sur les différentes alertes que peuvent remonter les solutions d’antivirus postes et serveurs.</p>
+<p>Or, si les protections amont de filtrages des flux HTTP/SMTP sont utiles, la détection des postes compromis est nécessaire tant sur le plan de l’intégrité des données de son SI que sur le plan de la responsabilité de l’entreprise qui pourrait ainsi fournir, par exemple, une base à des réseaux de postes zombies.</p>
+<h3 id="12-avoir-un-ids-sans-le-savoir">1.2 Avoir un IDS sans le savoir</h3>
+<p>La solution ? L’analyse des serveurs applicatifs est un moyen simple de connaître les compromissions potentielles dans son LAN. Les logs du serveur DNS et, dans une moindre mesure, ceux du pare-feu sont des sources de données disponibles pour effectuer cette veille anti-intrusion.</p>
+<p>Concentrons-nous sur le DNS : comment diable un serveur DNS peut-il nous révéler les intrusions déjà effectuées sur son réseau ? Et les réponses sont :</p>
+<ul>
+<li>comprendre le comportement des différents types de codes malicieux présents sur les postes compromis ;</li>
+<li>en déduire les types de requêtes DNS pouvant être émis par ces codes ;</li>
+<li>en fonction de ces profils, analyser les logs du serveur DNS et isoler les postes susceptibles d’être compromis.</li>
+</ul>
+<h2 id="2-architecture-à-base-de-proxies-et-de-relais--un-pré-requis-nécessaire">2. Architecture à base de proxies et de relais : un pré-requis nécessaire</h2>
+<p>Mais, attention, dans les logs d’un serveur DNS, rien ne distingue une requête émise par un poste de celle émise par un autre. Le seul moyen de stigmatiser une requête émise par un poste en particulier est de pouvoir définir le comportement normal d’un poste en termes de requêtes DNS. Et ce, par rapport à celui, différent, des serveurs de type proxies ou relais.</p>
+<h3 id="21-flux-vers-linternet--authentication-required-">2.1 Flux vers l’Internet : &ldquo;authentication required&rdquo; !</h3>
+<p>Les flux émis vers l’Internet depuis un poste de travail sont nombreux :</p>
+<ul>
+<li>émis consciemment par l’utilisateur : envoi d’email, navigation sur le web ou téléchargement de fichiers etc ;</li>
+<li>mais aussi émis de manière invisible pour l’utilisateur : mise à jour du système d’exploitation, rapatriement de mises à jour antivirales etc .</li>
+</ul>
+<p>Et je ne parle que des flux légitimes !</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/dns-ids-oublie/trame11.jpg" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+
+<em><strong>Figure 1 :</strong> architecture proxies et serveurs relais</em></p>
+<p>Et pour être reconnus comme légitimes, l’ensemble de ces flux doivent être soumis à habilitation. Pour cela, il faut que ces flux soient reroutés de manière systématique vers des équipements de filtrage nécessitant une habilitation, à savoir les proxies ou serveur relais. Habilitation que devra renseigner l’utilisateur pour chaque type de flux.</p>
+<h3 id="22-proxies-et-relais-uniques-émetteurs-de-requêtes-dns-vers-internet">2.2 Proxies et relais, uniques émetteurs de requêtes DNS vers Internet</h3>
+<p>Les machines proxies ou relais se doivent, pour être utilisées, d’exiger de l’utilisateur une authentification. Cela se traduit par des demandes d’identification HTTP par le proxy HTTP ou l’utilisation de SMTP AUTH pour l’envoi de mail via le serveur SMTP de votre entreprise. Les flux émis par les postes vers Internet sont alors authentifiés, donc moins sujet à être vecteur d’attaques.</p>
+<p><figure
+    class="image-caption"
+>
+    
+    <img src="/assets/articles/dns-ids-oublie/trame31.jpg" alt="" loading="lazy" />
+    
+    <figcaption></figcaption>
+</figure>
+
+<em><strong>Figure 2 :</strong> étapes d’une requête HTTP</em></p>
+<p>Le gain de cette architecture en termes de détection d’intrusion ? Tout le trafic émis par les postes à destination de l’Internet est dans un premier temps redirigé vers ces machines intermédiaires. Les requêtes DNS de résolution de domaines internet ne sont alors plus émises que par ces équipements proxies et relais :</p>
+<ul>
+<li>En effet, afin de pouvoir router, par exemple, les requêtes HTTP vers <code>google.fr</code> émises par un poste (point 1 sur la figure 2) ;</li>
+<li>Le proxy de l’entreprise demande une résolution DNS de type A sur le domaine <code>google.fr</code> (point 2) pour le compte de ce poste ;</li>
+<li>La requête peut ensuite être émise vers le serveur HTTP cible (point 3).</li>
+</ul>
+<p><strong>NB :</strong> Il en est de même pour les envois de mails où le serveur SMTP joue le rôle du proxy HTTP.</p>
+<p>Comme vous pouvez le voir, grâce à cette architecture centralisée et maîtrisée, les logs de votre serveur DNS deviennent de manière mécanique des sources fiables de données de détection d’intrusion : toute demande de résolution DNS d’un domaine internet émise par un poste lambda peut être considérée comme une alerte d’une compromission potentielle.</p>
+<h2 id="3-configuration-du-serveur-dns-bind">3. Configuration du serveur DNS Bind</h2>
+<h3 id="31-configuration-par-défaut--état-des-lieux">3.1 Configuration par défaut : état des lieux</h3>
+<p>Les configurations figurant dans cet article décrivent la configuration d’un serveur DNS Bind et ont été testées avec un serveur Bind en version stable 9.3.2 sous Ubuntu 6.06.</p>
+<p>La configuration par défaut d’un serveur DNS Bind ne collecte pas dans ses fichiers de logs les requêtes émises par les clients DNS. En effet, ces requêtes peuvent générer beaucoup d’écritures dans ces fichiers dont la taille peut donc augmenter rapidement. Nous allons donc utiliser la gestion automatique des fichiers de logs fournie par Bind, gestion améliorée depuis la version 9.3 par la gestion d’une taille maximale de fichiers de logs. Une présentation des options de logging de Bind a été faite dans un article précédent de MISC.</p>
+<h3 id="32-collecte-des-requêtes-clientes-dans-les-logs-de-bind">3.2 Collecte des requêtes clientes dans les logs de Bind</h3>
+<p>Voici un exemple de définition d’un channel permettant de collecter les requêtes émises par les clients :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Declenchement du log des requetes au demarrage de Bind</span>
+</span></span><span style="display:flex;"><span>querylog;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># paragraphe definissant le logging</span>
+</span></span><span style="display:flex;"><span>logging {
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">//</span> Parametrage du canal des requetes
+</span></span><span style="display:flex;"><span>   channel querieslogs {
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">//</span> Envoi vers le fichier queries<span style="color:#f92672">.</span>log avec roulement de <span style="color:#ae81ff">10</span> archives de <span style="color:#ae81ff">20</span>Mo
+</span></span><span style="display:flex;"><span>              file <span style="color:#e6db74">&#34;queries.log&#34;</span> versions <span style="color:#ae81ff">10</span> size <span style="color:#ae81ff">20</span>m;
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">//</span> Affiche la date du message dans les logs
+</span></span><span style="display:flex;"><span>              print<span style="color:#f92672">-</span>time yes;
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">//</span> Affiche le nom de la categorie du message
+</span></span><span style="display:flex;"><span>              print<span style="color:#f92672">-</span>category yes;
+</span></span><span style="display:flex;"><span>   };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">//</span> Envoi des requetes dans notre canal querieslogs
+</span></span><span style="display:flex;"><span>       category queries { querieslogs; };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Des fichiers de configuration complets pour chaque type de serveur (cache interne, cache internet, maitre interne et maitre internet avec des sections de logs complètes sont disponibles sur le site de MISC. De plus, vous trouverez la documentation exhaustive des options de log de Bind en ligne sur le site du logiciel.</p>
+<h2 id="4-que-chercher-dans-les-logs-">4. Que chercher dans les logs ?</h2>
+<h3 id="41-topologie-du-comportement-réseaux-des-codes-malicieux">4.1 Topologie du comportement réseaux des codes malicieux</h3>
+<p>Un poste de travail compromis par un code malicieux a pour vocation de devenir une source d’informations émises à destination de serveurs externes, ou une source d’attaques pouvant être pilôtées ou pas depuis Internet. Dans les deux cas, une communication vers des serveurs externes tentera d’être initiée. Ces serveurs peuvent être des cibles d’attaques (spams, dénis de services distribuées), des serveurs de contrôle fournissant des instructions aux codes malicieux distribuées ou bien des serveurs de collecte d’informations usurpées à l’utilisateur du poste.</p>
+<h3 id="42-requêtes-dns-émises-par-des-codes-malicieux">4.2 Requêtes DNS émises par des codes malicieux</h3>
+<p>Ils existent deux grands types de requêtes :</p>
+<ul>
+<li>les requêtes de type <code>MX</code> qui sont émises par les moteurs d’envoi de spams et de virus qui sont lancés sur les postes une fois compromis. De même, ces requêtes servent à ces codes malicieux pour se propager via email. Ce type de requête fournit le nom et l’adresse IP du(des) serveur(s) SMTP réceptionnant pour le domaine passé en paramètre ;</li>
+<li>les requêtes de type <code>A</code> représentent la majeure partie des requêtes restantes. Ces requêtes peuvent alors correspondre à des demandes de résolution de noms de futures cibles, de serveurs de téléchargement de nouveaux codes malicieux (ou de mises à jour) ou encore de sites fournissant des ordres aux codes malicieux(serveurs IRC par exemple) .</li>
+</ul>
+<p>Pour les requêtes <code>MX</code>, on peut en avoir la trace pas plus loin que dans sa messagerie. Exemple d’entête de spam dans la BAL de votre serviteur :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#f92672">...</span>]
+</span></span><span style="display:flex;"><span>Received: <span style="color:#f92672">from</span> <span style="color:#ae81ff">200.253.154.11</span> (HELO data<span style="color:#f92672">-</span>app<span style="color:#f92672">.</span>com) (<span style="color:#ae81ff">200.253.154.11</span>)
+</span></span><span style="display:flex;"><span>  by mrelay5<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>free<span style="color:#f92672">.</span>fr <span style="color:#66d9ef">with</span> SMTP; <span style="color:#ae81ff">14</span> Dec <span style="color:#ae81ff">2006</span> <span style="color:#ae81ff">19</span>:<span style="color:#ae81ff">44</span>:<span style="color:#ae81ff">31</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0000</span>
+</span></span><span style="display:flex;"><span>Message<span style="color:#f92672">-</span>ID: <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">01</span>c71fb7<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">588313</span>d0<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#ae81ff">0200</span>a8c0<span style="color:#a6e22e">@servidor</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>Reply<span style="color:#f92672">-</span>To: <span style="color:#e6db74">&#34;Kalpana Lo&#34;</span> 
+</span></span><span style="display:flex;"><span>From: <span style="color:#e6db74">&#34;Kalpana Lo&#34;</span> 
+</span></span><span style="display:flex;"><span>To: <span style="color:#e6db74">&#34;Charles Chickering&#34;</span> 
+</span></span><span style="display:flex;"><span>Subject: Re:
+</span></span><span style="display:flex;"><span>[<span style="color:#f92672">...</span>]
+</span></span></code></pre></div><p>On y voit un mail émis directement depuis un poste sur l’Internet vers le serveur <code>MX</code> de l’hébergeur de ma BAL. Cette émission a donc fait l’objet d’une demande de résolution <code>MX</code> pour le domaine <code>free.fr</code> sur le serveur DNS du poste internet.</p>
+<h2 id="5-exploitation-des-logs-dns">5. Exploitation des logs DNS</h2>
+<h3 id="51-extraction-des-données">5.1 Extraction des données</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ egrep -v -i <span style="color:#e6db74">&#34;@IP1|@IP2&#34;</span> /var/log/queries.1og | egrep -v -i mondomaine.fr
+</span></span></code></pre></div><p>La ligne de commandes précédente permet :</p>
+<ul>
+<li>d’isoler l’ensemble des requêtes émises par les postes de travail (premier grep) ;</li>
+<li>demandant une requête sur un domaine différent du domaine de l’entreprise ici nommé mondomaine.fr (second grep).</li>
+</ul>
+<p>Les données produites par cette commande correspondent à une liste d’adresses IP ayant un comportement DNS anormal selon les critères décrit dans le <a href="#42-requ%C3%AAtes-dns-%C3%A9mises-par-des-codes-malicieux">chapitre 4</a> :</p>
+<pre tabindex="0"><code>[...]
+22-Jan-2007 22:55:24.978 queries: client 192.168.0.190#32788: query: google.fr IN A +
+22-Jan-2007 22:55:49.228 queries: client 192.168.0.190#32788: query: hotmail.com IN MX +
+[...]
+</code></pre><p>On voit dans l’exemple ci-dessus un poste interne d’adresse IP <code>192.168.0.190</code> demander au DNS l’adresse IP de google.fr ainsi que celle du serveur SMTP gérant le domaine <code>hotmail.com</code>. Or, ces deux requêtes ne devraient jamais être émises par un poste du LAN car elles portent sur un domaine différent de celui de l’entreprise.</p>
+<p>En effet, ces deux requêtes DNS devraient avoir été émises respectivement par le proxy HTTP et par le relais de messagerie de l’entreprise. Ces deux machines ayant auparavant demandé son habilitation HTTP ou l’utilisateur de messagerie à l’utilisateur du poste.</p>
+<p><strong>NB :</strong> On peut bien entendu spécialiser cette ligne de commandes pour obtenir soit les requêtes de type <code>MX</code> soit les requêtes de type <code>A</code>.</p>
+<h3 id="52-faux-positifs--explications-et-actions-correctrices">5.2 Faux positifs ? Explications et actions correctrices</h3>
+<p>Nous avons décrit dans le chapitre 2 un <a href="#2-architecture-%C3%A0-base-de-proxies-et-de-relais--un-pr%C3%A9-requis-n%C3%A9cessaire">pré-requis ambitieux</a> qui était que toutes les communications ou tentatives de communication vers Internet émises par les postes de travail passaient par un proxy ou une machine relais. Or, la première analyse que vous allez mener sur les données extraites des logs de votre serveur DNS risque fort de plus vous mettre sur la trace de postes lançant des Windows Update que sur celle de postes zombies (du moins je l’espère pour votre LAN ;-) ).</p>
+<p>Vos premières actions vont donc être de travailler sur ces mécanismes légitimes s’exécutant sur vos postes et émettant des requêtes vers l’Internet :</p>
+<ul>
+<li>de forcer le passage par proxy des actions qui le peuvent ;</li>
+<li>d’inactiver les mécanismes s’exécutant mais finalement ne le devant pas ;</li>
+<li>de noter les mécanismes devant absolument exécuter des connexions externes directes afin de les exclure des remontées des logs DNS. Notez bien que ce type de connexion devrait être rarissime car étant anormales en termes de politique de sécurité.</li>
+</ul>
+<h3 id="53-gestion-des-alarmes">5.3 Gestion des alarmes</h3>
+<p>La liste des adresses IP ainsi remontées par la scrutation du fichier queries.log permet aux administrateurs des postes et au responsable sécurité de déclencher les actions appropriées.</p>
+<p>Parmi elles, on peut lister les quelques actions suivantes :</p>
+<ul>
+<li>mise hors réseau du poste incriminé ;</li>
+<li>recherche du code malicieux ;</li>
+<li>recherche de l’explication de la compromission : manque de suivi des mises à jour antivirales, mise en ligne du poste directement sur le net (ex: à domicile), contournement de la politique de sécurité etc ;</li>
+<li>remasterisation du poste avec restauration des données sauvegardées à une date antérieure à la compromission si la date est identifiée ;</li>
+</ul>
+<h2 id="6-limites-et-pistes-daméliorations">6. Limites et pistes d’améliorations</h2>
+<h3 id="61-limites">6.1 Limites</h3>
+<p>Le processus de recherche de postes compromis que nous venons de décrire possède des limites liées au fait que nous travaillons sur le serveur DNS.</p>
+<p>Les limites majeures viennent du fait que l’on suppose que le code malicieux n’utilisera pas de données d’authentification dérobées à l’utilisateur du poste. Ainsi, l’émission de mails en SMTP authentifié à travers le relais SMTP de l’entreprise. Idem pour l’utilisation du proxy HTTP de l’entreprise pour attaquer un site extérieur ou récupérer des ordres d’un serveur de synchronisation.</p>
+<p>La remarque que l’on peut faire est que la majorité des codes malicieux sont conçus pour travailler sur des architectures ouvertes (DNS/SMTP/HTTP ouverts vers l’extérieur).</p>
+<h3 id="62-pistes-damélioration">6.2 Pistes d’amélioration</h3>
+<p>Elles sont de deux ordres : exploitabilité de la solution et consolidation des données DNS avec les tentatives d’accès direct à l’extérieur par adresses IP.</p>
+<p>L’exploitabilité de cette solution serait de travailler sur l’enchainement des opérations de recherche dans les fichiers de logs, cyclage, compression et suppression de ces fichiers.</p>
+<p>Pour ce qui est de la consolidation, il faudrait déclencher de telles recherches sur les rejets du Firewall concernant des requêtes en provenance de postes en plan d’adressage interne (ex: <code>10.0.0.0/8</code>) à destination d’adresses externes (vers l’internet donc).</p>
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>Comme nous venons de le voir, une architecture qui permet de bien maîtriser les flux de données couplée à une analyse des logs de son (ses) serveur(s) DNS permet de disposer d’une sonde de détection de postes compromis. Cette solution a l’avantage d’être légère, non structurante et &hellip; ne coûte rien ! Cela n’empêche en aucun cas le RSSI ou le DSI de doter l’entreprise de solutions plus complète (et complexe), intrusive et chère.</p>
+ </content>
+
+<p>
+  
+</p>
+
+
+
+
+
+
+ 
+<div class="toc">
+
+
+<aside class="toc-nav" role="navigation" aria-label="目录">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mon-serveur-dns-mon-ids-préféré">Mon serveur DNS, mon IDS préféré</a>
+      <ul>
+        <li><a href="#1-introduction">1. Introduction</a>
+          <ul>
+            <li><a href="#11-compromission-de-postes--une-détection-quelle-détection-">1.1 Compromission de postes : une détection, quelle détection ?</a></li>
+            <li><a href="#12-avoir-un-ids-sans-le-savoir">1.2 Avoir un IDS sans le savoir</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-architecture-à-base-de-proxies-et-de-relais--un-pré-requis-nécessaire">2. Architecture à base de proxies et de relais : un pré-requis nécessaire</a>
+          <ul>
+            <li><a href="#21-flux-vers-linternet--authentication-required-">2.1 Flux vers l’Internet : &ldquo;authentication required&rdquo; !</a></li>
+            <li><a href="#22-proxies-et-relais-uniques-émetteurs-de-requêtes-dns-vers-internet">2.2 Proxies et relais, uniques émetteurs de requêtes DNS vers Internet</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-configuration-du-serveur-dns-bind">3. Configuration du serveur DNS Bind</a>
+          <ul>
+            <li><a href="#31-configuration-par-défaut--état-des-lieux">3.1 Configuration par défaut : état des lieux</a></li>
+            <li><a href="#32-collecte-des-requêtes-clientes-dans-les-logs-de-bind">3.2 Collecte des requêtes clientes dans les logs de Bind</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-que-chercher-dans-les-logs-">4. Que chercher dans les logs ?</a>
+          <ul>
+            <li><a href="#41-topologie-du-comportement-réseaux-des-codes-malicieux">4.1 Topologie du comportement réseaux des codes malicieux</a></li>
+            <li><a href="#42-requêtes-dns-émises-par-des-codes-malicieux">4.2 Requêtes DNS émises par des codes malicieux</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-exploitation-des-logs-dns">5. Exploitation des logs DNS</a>
+          <ul>
+            <li><a href="#51-extraction-des-données">5.1 Extraction des données</a></li>
+            <li><a href="#52-faux-positifs--explications-et-actions-correctrices">5.2 Faux positifs ? Explications et actions correctrices</a></li>
+            <li><a href="#53-gestion-des-alarmes">5.3 Gestion des alarmes</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-limites-et-pistes-daméliorations">6. Limites et pistes d’améliorations</a>
+          <ul>
+            <li><a href="#61-limites">6.1 Limites</a></li>
+            <li><a href="#62-pistes-damélioration">6.2 Pistes d’amélioration</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-conclusion">7. Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tocNav = document.querySelector('.toc-nav');
+    if (!tocNav) return;
+
+    const tocLinks = Array.from(tocNav.querySelectorAll('a'));
+    if (!tocLinks.length) return;
+
+    
+    const idToLink = new Map();
+    const headings = [];
+    const seen = new Set();
+
+    for (const link of tocLinks) {
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') continue;
+        const id = decodeURIComponent(hash.slice(1));
+        idToLink.set(id, link);
+
+        if (!seen.has(id)) {
+            const h = document.getElementById(id);
+            if (h) {
+                headings.push(h);
+                seen.add(id);
+            }
+        }
+    }
+
+    if (!headings.length) return;
+
+    const OFFSET = 100; 
+
+    
+    let currentActive = null;
+    let currentChain = [];
+
+    function buildChainFromLink(link) {
+        const chain = [];
+        if (!link) return chain;
+        chain.push(link);
+        let li = link.closest('li');
+        while (li) {
+            const parentLi = li.parentElement ? li.parentElement.closest('li') : null;
+            if (parentLi) {
+                const parentLink = parentLi.querySelector('a');
+                if (parentLink) chain.push(parentLink);
+            }
+            li = parentLi;
+        }
+        return chain;
+    }
+
+    function applyActiveChain(newLink) {
+        if (newLink === currentActive) return;
+        const newChain = buildChainFromLink(newLink);
+
+        
+        for (const el of currentChain) {
+            if (!newChain.includes(el)) el.classList.remove('active');
+        }
+        
+        for (const el of newChain) {
+            if (!el.classList.contains('active')) el.classList.add('active');
+        }
+
+        currentActive = newLink || null;
+        currentChain = newChain;
+    }
+
+    
+    tocNav.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (!link || !tocNav.contains(link)) return;
+
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return;
+
+        const id = decodeURIComponent(hash.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
+
+        
+        applyActiveChain(link);
+    });
+
+    
+    function updateActiveLink() {
+        let linkToActivate = null;
+        for (let i = headings.length - 1; i >= 0; i--) {
+            const top = headings[i].getBoundingClientRect().top;
+            if (top <= OFFSET) {
+                linkToActivate = idToLink.get(headings[i].id) || null;
+                break;
+            }
+        }
+        applyActiveChain(linkToActivate);
+    }
+
+    
+    let ticking = false;
+    function onScrollOrResize() {
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                updateActiveLink();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+
+    
+    updateActiveLink();
+});
+</script>
+
+
+</div>
+
+
+
+  </main>
+  <footer>
+
+
+
+
+
+
+
+
+
+
+
+Made with
+<a href="https://gohugo.io/">Hugo</a> & customized Bear Neo theme.
+<br />
+
+
+<a href="https://www.brocas.org">My homepage</a> | 
+
+
+
+<a href="/index.xml">RSS</a> | 
+
+
+
+
+
+
+<a href="/sitemap.xml">Sitemap</a>
+
+</footer>
+
+    
+
+
+</body>
+
+</html>
