@@ -9,7 +9,7 @@ echo "Content-type: text/plain"
 echo
 echo "Checking for updates to blog..."
 exec 2>&1
-cd /var/www/blog
+cd /var/www/newblog
 
 #Check if there are changes
 if git checkout main &&
