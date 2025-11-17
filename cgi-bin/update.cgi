@@ -12,10 +12,10 @@ exec 2>&1
 cd /var/www/blog
 
 #Check if there are changes
-if git checkout master &&
-    git fetch origin master &&
-    [ `git rev-list HEAD...origin/master --count` != 0 ] &&
-    git merge origin/master
+if git checkout main &&
+    git fetch origin main &&
+    [ `git rev-list HEAD...origin/main --count` != 0 ] &&
+    git merge origin/main
 then
     echo 'Changes found, syncing.'
     #jekyll build
