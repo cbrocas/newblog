@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,6 @@ Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr
 Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible." />
 <meta name="keywords" content="" />
 
-<link rel="canonical" href="https://blog.brocas.org/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/">
-
 
 <meta property="og:title" content="Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié" />
 <meta property="og:description" content="Cet article est issu de l’article publié dans le numéro de MISC n°31 de Mai 2007. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC.
@@ -22,7 +20,7 @@ Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l�
 Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr
 Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.brocas.org/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2009-05-28T00:00:00+00:00" />
 <meta property="article:modified_time" content="2009-05-28T00:00:00+00:00" />
 
@@ -47,7 +45,7 @@ Le Système d’Information (SI) des entreprises est un capital de ressources à
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <style>
+    <style>
      
     :root {
         --width-max: 720px;
@@ -589,51 +587,20 @@ Le Système d’Information (SI) des entreprises est un capital de ressources à
 <link rel="apple-touch-icon" sizes="180x180" href="https://avatars0.githubusercontent.com/cbrocas"></head>
 
 <body>
-  <header>
-<nav><a href="/">&lt;</a>
+  <header><a href="/">&lt;</a>
+<nav>
 <aside class="logo">
   <a href="https://blog.brocas.org/"> 
      <img src="https://avatars0.githubusercontent.com/cbrocas" width="15%" alt="home" class="logo-avatar"> 
   </a>
-</aside>
-
-
-</nav>
+</aside></nav>
 </header>
   <main>
-
-
-<center>
-<h2>Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié</h2>
-</center>
-
-<center>
-
-<p>
-  <i>
-    <time datetime='2009-05-28' pubdate>
-      28 May 2009
-    </time>
-  </i>
-</p>
-</center>
-<div class="divider"></div>
-
-
-
  
 
 <content> <p><em>Cet article est issu de l’article publié dans le numéro de <strong>MISC n°31 de Mai 2007</strong>. J’en suis l’auteur (<a href="mailto:christophe.brocas@free.fr">christophe.brocas@free.fr</a>). Tous droits réservés à MISC.</em></p>
 <p>Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.</p>
-<p><figure
-    class="image-caption"
->
-    
-    <img src="/assets/articles/dns-mort1.jpg" alt="" loading="lazy" />
-    
-    <figcaption></figcaption>
-</figure>
-</p>
+<p><img src="/assets/articles/dns-mort1.jpg" alt=""></p>
 <h1 id="mon-serveur-dns-mon-ids-préféré">Mon serveur DNS, mon IDS préféré</h1>
 <p><em>Christophe Brocas, <a href="mailto:christophe.brocas@free.fr">christophe.brocas@free.fr</a></em></p>
 <p>Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible. Pour détecter des postes compromis sur le réseau de l’entreprise, des solutions complexes et onéreuses sont souvent proposées aux Directeurs Informatiques (DSI) mais le plus souvent, peu de solutions de détection anti-intrusions sont effectivement en place. Or, la bonne compréhension à la fois de son architecture et du comportement des codes malicieux présents sur les postes compromis permet de proposer une première réponse élégante, peu couteuse et efficiente à cette problématique.</p>
@@ -659,28 +626,12 @@ Le Système d’Information (SI) des entreprises est un capital de ressources à
 <li>mais aussi émis de manière invisible pour l’utilisateur : mise à jour du système d’exploitation, rapatriement de mises à jour antivirales etc .</li>
 </ul>
 <p>Et je ne parle que des flux légitimes !</p>
-<p><figure
-    class="image-caption"
->
-    
-    <img src="/assets/articles/dns-ids-oublie/trame11.jpg" alt="" loading="lazy" />
-    
-    <figcaption></figcaption>
-</figure>
-
+<p><img src="/assets/articles/dns-ids-oublie/trame11.jpg" alt="">
 <em><strong>Figure 1 :</strong> architecture proxies et serveurs relais</em></p>
 <p>Et pour être reconnus comme légitimes, l’ensemble de ces flux doivent être soumis à habilitation. Pour cela, il faut que ces flux soient reroutés de manière systématique vers des équipements de filtrage nécessitant une habilitation, à savoir les proxies ou serveur relais. Habilitation que devra renseigner l’utilisateur pour chaque type de flux.</p>
 <h3 id="22-proxies-et-relais-uniques-émetteurs-de-requêtes-dns-vers-internet">2.2 Proxies et relais, uniques émetteurs de requêtes DNS vers Internet</h3>
 <p>Les machines proxies ou relais se doivent, pour être utilisées, d’exiger de l’utilisateur une authentification. Cela se traduit par des demandes d’identification HTTP par le proxy HTTP ou l’utilisation de SMTP AUTH pour l’envoi de mail via le serveur SMTP de votre entreprise. Les flux émis par les postes vers Internet sont alors authentifiés, donc moins sujet à être vecteur d’attaques.</p>
-<p><figure
-    class="image-caption"
->
-    
-    <img src="/assets/articles/dns-ids-oublie/trame31.jpg" alt="" loading="lazy" />
-    
-    <figcaption></figcaption>
-</figure>
-
+<p><img src="/assets/articles/dns-ids-oublie/trame31.jpg" alt="">
 <em><strong>Figure 2 :</strong> étapes d’une requête HTTP</em></p>
 <p>Le gain de cette architecture en termes de détection d’intrusion ? Tout le trafic émis par les postes à destination de l’Internet est dans un premier temps redirigé vers ces machines intermédiaires. Les requêtes DNS de résolution de domaines internet ne sont alors plus émises que par ces équipements proxies et relais :</p>
 <ul>
@@ -969,7 +920,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-
 </div>
 
 
@@ -977,22 +927,12 @@ document.addEventListener('DOMContentLoaded', function () {
   </main>
   <footer>
 
-
-
-
-
-
-
-
-
-
-
-Made with
-<a href="https://gohugo.io/">Hugo</a> & customized Bear Neo theme.
+made with <a href="https://gohugo.io/">Hugo</a> & customized theme <a href="https://github.com/rokcso/hugo-bearneo/">Bear Neo</a>
 <br />
 
 
-<a href="https://www.brocas.org">My homepage</a> | 
+
+<a href="https://www.brocas.org">Homepage</a> | 
 
 
 
@@ -1003,13 +943,11 @@ Made with
 
 
 
-<a href="/sitemap.xml">Sitemap</a>
 
+<a href="/sitemap.xml">Sitemap</a>
 </footer>
 
-    
-
-
+  
 </body>
 
 </html>

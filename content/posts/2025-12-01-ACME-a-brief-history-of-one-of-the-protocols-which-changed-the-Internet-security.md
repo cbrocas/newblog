@@ -6,7 +6,8 @@ publishdate: 2025-12-01
 
 ![](/assets/acme-meme.jpg)
 
-## ***DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT 3***
+
+## ***** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT *****
 
 ## Internet and Network Protocols 
 
