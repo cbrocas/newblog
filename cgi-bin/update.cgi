@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # From https://theowinter.ch/articles/Use-cgi-bin-to-automate-Jekyll/
