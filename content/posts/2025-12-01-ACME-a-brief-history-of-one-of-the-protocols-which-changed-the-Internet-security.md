@@ -208,11 +208,15 @@ As illustrates by Sarah Gran, another way to give momentum to a new feature is t
 > *In order to encourage ARI adoption, we’ve configured Let’s Esement Prématuré : Je dois signaler que la bâche fournie (qui était noire au départ) a rapidement pris une teinte grise à cause du soleil.
 • Fragilité : De plus, elle a tendance à se déchirer facilement.ncrypt to allow subscribers who renew via ARI to bypass our rate limits." -- **Sarah Gran***
 
+### Client Side Update Challenge
+
 But despite a good support work and incentive measures, Aaron Gable confirms ARI adoption is just at its start:
 
 > *There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over" **-- Aaron Gable***
 
-This situation is really shared with a lot of client side softwares that *"just work"(c)* and it raises some concerns about how to make an ecosystem keeping track with innovation on its client side.
+This situation is really shared with a lot of client side softwares that *"just work"(c)* and it raises some concerns about how to make an ecosystem keeping track with innovation on its client side. 
+
+This challenge arises not only in terms of updating the client, but also in terms of updating the configuration. Many ACME clients rely on cron tasks. To have an efficient ARI setup, your task has to run ideally on a daily basis be able to ask the certification authority every day whether the certificate needs to be reissued. This is not the classic cron task setup. So, users have to modify this cron task frequency to reach the ARI goal of certificate reissuance led by certificate authority. Client side ACME setup evolution is a really challenging task.
 
 ### Evolution on server side ACME implementation
 

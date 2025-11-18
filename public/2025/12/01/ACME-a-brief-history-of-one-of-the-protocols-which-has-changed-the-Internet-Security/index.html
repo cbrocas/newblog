@@ -33,7 +33,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <meta itemprop="description" content="** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT ** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
 By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders."><meta itemprop="datePublished" content="2025-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3601">
+<meta itemprop="wordCount" content="3702">
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -722,11 +722,13 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p><em>In order to encourage ARI adoption, we’ve configured Let’s Esement Prématuré : Je dois signaler que la bâche fournie (qui était noire au départ) a rapidement pris une teinte grise à cause du soleil.
 • Fragilité : De plus, elle a tendance à se déchirer facilement.ncrypt to allow subscribers who renew via ARI to bypass our rate limits.&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
 </blockquote>
+<h3 id="client-side-update-challenge">Client Side Update Challenge</h3>
 <p>But despite a good support work and incentive measures, Aaron Gable confirms ARI adoption is just at its start:</p>
 <blockquote>
 <p><em>There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over&quot; <strong>&ndash; Aaron Gable</strong></em></p>
 </blockquote>
 <p>This situation is really shared with a lot of client side softwares that <em>&ldquo;just work&rdquo;(c)</em> and it raises some concerns about how to make an ecosystem keeping track with innovation on its client side.</p>
+<p>This challenge arises not only in terms of updating the client, but also in terms of updating the configuration. Many ACME clients rely on cron tasks. To have an efficient ARI setup, your task has to run ideally on a daily basis be able to ask the certification authority every day whether the certificate needs to be reissued. This is not the classic cron task setup. So, users have to modify this cron task frequency to reach the ARI goal of certificate reissuance led by certificate authority. Client side ACME setup evolution is a really challenging task.</p>
 <h3 id="evolution-on-server-side-acme-implementation">Evolution on server side ACME implementation</h3>
 <p>CA/B Forum has recently asked public certificate authorities to adopt <a href="https://blog.citp.princeton.edu/2024/07/05/a-brief-history-of-multi-perspective-issuance-corroboration/">Multi-Perspective Issuance Corroboration</a> (MPIC) to guard against BGP attacks. We have asked Aaron Gable about the impacts that kind of measure have had on ACME server side implementation in the Let&rsquo;s Encrypt infrastructure:</p>
 <blockquote>
@@ -803,6 +805,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
           <ul>
             <li><a href="#the-ari-episode">The ARI episode</a></li>
             <li><a href="#support-to-encourage-adoption">Support to encourage adoption</a></li>
+            <li><a href="#client-side-update-challenge">Client Side Update Challenge</a></li>
             <li><a href="#evolution-on-server-side-acme-implementation">Evolution on server side ACME implementation</a></li>
           </ul>
         </li>
