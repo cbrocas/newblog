@@ -2,87 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog</title>
-    <link>http://localhost:1313/</link>
+    <link>https://blog.brocas.org/</link>
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.brocas.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ACME, a brief history of one of the protocols which has changed the Internet Security</title>
-      <link>http://localhost:1313/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/</link>
+      <link>https://blog.brocas.org/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/</link>
       <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/</guid>
+      <guid>https://blog.brocas.org/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/</guid>
       <description>***** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT ***** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &amp;ldquo;The Network is the Computer&amp;rdquo;.&#xA;By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders.</description>
     </item>
     <item>
       <title>Sharing some thoughts from a conference organizer</title>
-      <link>http://localhost:1313/2022/08/23/Sharing-some-thoughts-from-a-conference-organizer/</link>
+      <link>https://blog.brocas.org/2022/08/23/Sharing-some-thoughts-from-a-conference-organizer/</link>
       <pubDate>Tue, 23 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2022/08/23/Sharing-some-thoughts-from-a-conference-organizer/</guid>
+      <guid>https://blog.brocas.org/2022/08/23/Sharing-some-thoughts-from-a-conference-organizer/</guid>
       <description>2022 has been quite a crucial year in the Pass the SALT conference short history. We had to switch back to an in-person form of event.&#xA;It can seem quite obvious, but after two years of full remote conference, it has been quite challenging.&#xA;As often said, #SharingIsCaring!&#xA;So, in this blogpost, I will share:&#xA;some doubts I have crossed during the restart of the conference some thoughts about conference organization after 15 years of involvement as a volunteer conference founder and organizer.</description>
     </item>
     <item>
       <title>Réanimation à l&#39;hôpital Saint André de Bordeaux. Merci, simplement et intensément merci.</title>
-      <link>http://localhost:1313/2021/06/27/R%C3%A9a-Saint-Andr%C3%A9-Merci/</link>
+      <link>https://blog.brocas.org/2021/06/27/R%C3%A9a-Saint-Andr%C3%A9-Merci/</link>
       <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2021/06/27/R%C3%A9a-Saint-Andr%C3%A9-Merci/</guid>
+      <guid>https://blog.brocas.org/2021/06/27/R%C3%A9a-Saint-Andr%C3%A9-Merci/</guid>
       <description>Ce court témoignage est là pour expliquer notre vécu au sein du service de réanimation de l&amp;rsquo;hôpital Saint André de Bordeaux. Et pour dire merci à tous les soignants de ce service. Vraiment.&#xA;Quand la vie bascule Mi février 2021 : suite à un appel au 15 pour un de nos proches après une angine qui semble dégénérer, le médecin régulateur décide de l&amp;rsquo;envoyer au service des urgences du CHU de Bordeaux.</description>
     </item>
     <item>
       <title>RMLL Security track - why, how and for which results</title>
-      <link>http://localhost:1313/2017/09/13/RMLL-Security-track-why-how-and-for-which-results/</link>
+      <link>https://blog.brocas.org/2017/09/13/RMLL-Security-track-why-how-and-for-which-results/</link>
       <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2017/09/13/RMLL-Security-track-why-how-and-for-which-results/</guid>
+      <guid>https://blog.brocas.org/2017/09/13/RMLL-Security-track-why-how-and-for-which-results/</guid>
       <description>RMLL Security track : why, how and for which results Note: after the lost of the original blogpost from 2017, I have restored an original version that I have updated with additions from late 2019.&#xA;After many years of curation of the Security Track of the RMLL (a French generalist multi tracks conference about Free Software), we have decided to create in 2018 a free (as in free beer) event dedicated to Security and Free Software: Pass the SALT, Security And Libre Talks.</description>
     </item>
     <item>
       <title>My first Unix session was a password hijack experience</title>
-      <link>http://localhost:1313/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/</link>
+      <link>https://blog.brocas.org/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/</link>
       <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/</guid>
+      <guid>https://blog.brocas.org/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/</guid>
       <description>I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.&#xA;This computer was a HP 9000 server running a Unix OS. The &amp;ldquo;machine room&amp;rdquo; was in fact divided in two rooms. The first one was the &amp;ldquo;white room&amp;rdquo;, a restricted access area with only the big box inside aka the main server : 1,5m high and several meters long.</description>
     </item>
     <item>
       <title>F., 10 ans, découvre le web, wikipedia et un peu plus</title>
-      <link>http://localhost:1313/2012/12/18/F.-10-ans-d%C3%A9couvre-le-web-wikipedia-et-un-peu-plus/</link>
+      <link>https://blog.brocas.org/2012/12/18/F.-10-ans-d%C3%A9couvre-le-web-wikipedia-et-un-peu-plus/</link>
       <pubDate>Tue, 18 Dec 2012 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2012/12/18/F.-10-ans-d%C3%A9couvre-le-web-wikipedia-et-un-peu-plus/</guid>
+      <guid>https://blog.brocas.org/2012/12/18/F.-10-ans-d%C3%A9couvre-le-web-wikipedia-et-un-peu-plus/</guid>
       <description>Je voulais vous faire un petit retour sur un moment que j&amp;rsquo;ai vécu l&amp;rsquo;an passé avec ma fille cadette. Contrairement à l&amp;rsquo;ainée, elle n&amp;rsquo;avait jamais eu envie d&amp;rsquo;aller sur Internet et je me disais que son apprentissage allait être plus laborieux que pour sa sœur.&#xA;L&amp;rsquo;an passé, ma fille de 10 ans, en CM2, a donc découvert le web.&#xA;Elle n&amp;rsquo;avait jusque là utiliser les ordis de la maison, tant sous Ubuntu que Vista, que pour jouer.</description>
     </item>
     <item>
       <title>RMLL LSM 2010 - Perfect setup</title>
-      <link>http://localhost:1313/2010/07/16/RMLL-LSM-2010-Perfect-setup/</link>
+      <link>https://blog.brocas.org/2010/07/16/RMLL-LSM-2010-Perfect-setup/</link>
       <pubDate>Fri, 16 Jul 2010 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2010/07/16/RMLL-LSM-2010-Perfect-setup/</guid>
+      <guid>https://blog.brocas.org/2010/07/16/RMLL-LSM-2010-Perfect-setup/</guid>
       <description>Ce billet est le dernier d&amp;rsquo;une série de trois sur le debriefing des RMLL 2010. 3 sujets seront couverts :&#xA;Topics and sharing a same vision (fr) Internationalization (en) RMLL : perfect setup (ce billet) Disclamer : les idées développées ci-dessous sont uniquement les miennes et n&amp;rsquo;impliquent d&amp;rsquo;aucune manière l&amp;rsquo;équipe d&amp;rsquo;organisation des RMLL 2010.&#xA;Et si un seul point était à modifier, lequel serait-ce ? Et bien, incontestablement, ce serait l&amp;rsquo;éclatement géographique en N lieux (chez nous 4) différents pendant la semaine.</description>
     </item>
     <item>
       <title>RMLL LSM 2010 - Internationalization</title>
-      <link>http://localhost:1313/2010/07/13/RMLL-LSM-2010-Internationalization/</link>
+      <link>https://blog.brocas.org/2010/07/13/RMLL-LSM-2010-Internationalization/</link>
       <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2010/07/13/RMLL-LSM-2010-Internationalization/</guid>
+      <guid>https://blog.brocas.org/2010/07/13/RMLL-LSM-2010-Internationalization/</guid>
       <description>This post is part of 3 posts about 2010 LSM debriefing. The 3 topics covered will be :&#xA;Topics and sharing a same vision (fr) internationalization (this post) RMLL : perfect setup (fr) Disclamer : the ideas below are only mine and any way not those of the 2010 LSM organization team.&#xA;Prelude Well, let&amp;rsquo;s speak about something that has been quite important for me this year : setting up a cross technical topics track in english.</description>
     </item>
     <item>
       <title>RMLL LSM 2010 -Thèmes et partage d&#39;une vision commune</title>
-      <link>http://localhost:1313/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/</link>
+      <link>https://blog.brocas.org/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/</link>
       <pubDate>Tue, 13 Jul 2010 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/</guid>
+      <guid>https://blog.brocas.org/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/</guid>
       <description>Voilà, les RMLL 2010 ont fermé leurs portes au public (beaucoup sont encore en train de ranger &amp;hellip;).&#xA;Préambule Il est désormais temps de mettre par écrit quelques sentiments, impressions et enseignements que j’ai pu tirer de cette semaine très chargée en termes de boulot, rencontres et échanges.&#xA;Ce billet est le premier d’une série de 3 qui auront pour sujet :&#xA;Thèmes et partage d’une vision commune (ce billet) Internationalization (en) RMLL : perfect setup (fr) Disclamer : ces idées/sentiments/enseignements ne sont que des idées personnelles et ne représentent en aucun cas les idées/sentiments/enseignements du comité d’organisation des RMLL 2010 sur cette édition.</description>
     </item>
     <item>
       <title>Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié</title>
-      <link>http://localhost:1313/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/</link>
+      <link>https://blog.brocas.org/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/</link>
       <pubDate>Thu, 28 May 2009 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/</guid>
+      <guid>https://blog.brocas.org/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/</guid>
       <description>Cet article est issu de l’article publié dans le numéro de MISC n°31 de Mai 2007. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC.&#xA;Je le poste ici car l’idée d’utiliser son serveur DNS semble être dans l’actualité du monde de la détection d’intrusions.&#xA;Mon serveur DNS, mon IDS préféré Christophe Brocas, christophe.brocas@free.fr&#xA;Le Système d’Information (SI) des entreprises est un capital de ressources à protéger des attaques et, si une attaque réussit, la compromission et les évasions de données doivent être détectées le plus tôt possible.</description>
     </item>
     <item>
       <title>Article MISC janvier 2006 - De la sécurité d&#39;une architecture DNS d&#39;entreprise</title>
-      <link>http://localhost:1313/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/</link>
+      <link>https://blog.brocas.org/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/</link>
       <pubDate>Thu, 22 Jun 2006 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/</guid>
+      <guid>https://blog.brocas.org/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/</guid>
       <description>De la sécurité d&amp;rsquo;une architecture DNS d&amp;rsquo;entreprise Cet article est issu de l’article publié dans le numéro 23 de MISC. Ses auteurs sont Christophe Brocas (christophe.brocas@free.fr) et Jean-Michel Farin (jeanmichel.farin@free.fr). Tous droits réservés à MISC.&#xA;Ces dix dernières années, les entreprises ont vu une interconnexion toujours croissante de leurs systèmes d’informations (SI), entre eux ainsi qu’avec l’internet. Cette interconnexion s’est accompagnée d’une adoption massive de protocoles standards. Parmi ces protocoles, le DNS (Domain Name Service) affiche la double caractéristique d’être le plus systématiquement utilisé et sûrement le moins correctement surveillé.</description>
     </item>
   </channel>

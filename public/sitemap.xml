@@ -2,47 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/</loc>
+    <loc>https://blog.brocas.org/2025/12/01/ACME-a-brief-history-of-one-of-the-protocols-which-has-changed-the-Internet-Security/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://blog.brocas.org/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://blog.brocas.org/posts/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2022/08/23/Sharing-some-thoughts-from-a-conference-organizer/</loc>
+    <loc>https://blog.brocas.org/2022/08/23/Sharing-some-thoughts-from-a-conference-organizer/</loc>
     <lastmod>2022-08-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2021/06/27/R%C3%A9a-Saint-Andr%C3%A9-Merci/</loc>
+    <loc>https://blog.brocas.org/2021/06/27/R%C3%A9a-Saint-Andr%C3%A9-Merci/</loc>
     <lastmod>2021-06-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2017/09/13/RMLL-Security-track-why-how-and-for-which-results/</loc>
+    <loc>https://blog.brocas.org/2017/09/13/RMLL-Security-track-why-how-and-for-which-results/</loc>
     <lastmod>2017-09-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/</loc>
+    <loc>https://blog.brocas.org/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/</loc>
     <lastmod>2015-01-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2012/12/18/F.-10-ans-d%C3%A9couvre-le-web-wikipedia-et-un-peu-plus/</loc>
+    <loc>https://blog.brocas.org/2012/12/18/F.-10-ans-d%C3%A9couvre-le-web-wikipedia-et-un-peu-plus/</loc>
     <lastmod>2012-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2010/07/16/RMLL-LSM-2010-Perfect-setup/</loc>
+    <loc>https://blog.brocas.org/2010/07/16/RMLL-LSM-2010-Perfect-setup/</loc>
     <lastmod>2010-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2010/07/13/RMLL-LSM-2010-Internationalization/</loc>
+    <loc>https://blog.brocas.org/2010/07/13/RMLL-LSM-2010-Internationalization/</loc>
     <lastmod>2010-07-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/</loc>
+    <loc>https://blog.brocas.org/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/</loc>
     <lastmod>2010-07-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/</loc>
+    <loc>https://blog.brocas.org/2009/05/28/Article-MISC-mai-2007-Mon-serveur-DNS-mon-IDS-oubli%C3%A9/</loc>
     <lastmod>2009-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/</loc>
+    <loc>https://blog.brocas.org/2006/06/22/Article-MISC-janvier-2006-De-la-s%C3%A9curit%C3%A9-dune-architecture-DNS-dentreprise/</loc>
     <lastmod>2006-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://blog.brocas.org/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://blog.brocas.org/tags/</loc>
   </url>
 </urlset>
