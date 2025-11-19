@@ -33,7 +33,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <meta itemprop="description" content="** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT ** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
 By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders."><meta itemprop="datePublished" content="2025-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3679">
+<meta itemprop="wordCount" content="3702">
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -635,7 +635,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p>Indeed, it is worth noting that Let’s Encrypt has operated on an Internet scale from the start with a small team of about fifteen engineers, or even fewer at launch. For this team, automation was the only viable way to fulfill the immense mission they had set for themselves.</p>
 <h2 id="acme">ACME</h2>
 <h3 id="the-open-and-automated-protocol-that-powers-lets-encrypt">The Open and automated Protocol That Powers Let’s Encrypt</h3>
-<p>When we talk about automation in relation to Let’s Encrypt, we are talking about ACME (Automated Certificate Management Environment).</p>
+<p>When we talk about automation in relation to Let’s Encrypt, we are talking about <a href="https://tools.ietf.org/html/rfc8555">ACME</a> (Automated Certificate Management Environment).</p>
 <p>This protocol allows client software to prove to an ACME-compatible certificate authority that it controls the domain for which it is requesting a certificate.</p>
 <p>Sarah Gran clarifies an important point:</p>
 <blockquote>
@@ -643,7 +643,8 @@ By interconnecting individual computers, the Internet enabled its users to commu
 </blockquote>
 <p>Control vs. ownership of a domain—a nuance everyone should keep in mind.</p>
 <p>This proof of control involves the client responding to a challenge issued by the ACME-compatible certificate authority. The challenge can be an HTTP, DNS, or TLS challenge, depending on the client’s choice and certificate authority support. Completing the challenge requires the ACME client to place a value provided by the ACME server—in a standardized HTTP path, a DNS zone, or a TLS response, respectively. All of these operations are cryptographically verified, of course.</p>
-<p>The key point is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.</p>
+<p>The key point with ACME is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.</p>
+<p>On the Let&rsquo;s Encrypt website, you can discover more information about <a href="https://letsencrypt.org/how-it-works/">how ACME works</a> and get more <a href="https://letsencrypt.org/docs/">detailled information</a> about it.</p>
 <h3 id="birth-of-acme">Birth of ACME</h3>
 <p>One might wonder whether ACME was part of Let’s Encrypt’s design from the beginning.</p>
 <p>J.C. Jones confirms:</p>

@@ -79,7 +79,7 @@ Indeed, it is worth noting that Let’s Encrypt has operated on an Internet scal
 
 ### The Open and automated Protocol That Powers Let’s Encrypt
 
-When we talk about automation in relation to Let’s Encrypt, we are talking about ACME (Automated Certificate Management Environment).
+When we talk about automation in relation to Let’s Encrypt, we are talking about [ACME](https://tools.ietf.org/html/rfc8555) (Automated Certificate Management Environment).
 
 This protocol allows client software to prove to an ACME-compatible certificate authority that it controls the domain for which it is requesting a certificate.
 
@@ -91,7 +91,9 @@ Control vs. ownership of a domain—a nuance everyone should keep in mind.
 
 This proof of control involves the client responding to a challenge issued by the ACME-compatible certificate authority. The challenge can be an HTTP, DNS, or TLS challenge, depending on the client’s choice and certificate authority support. Completing the challenge requires the ACME client to place a value provided by the ACME server—in a standardized HTTP path, a DNS zone, or a TLS response, respectively. All of these operations are cryptographically verified, of course.
 
-The key point is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.
+The key point with ACME is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.
+
+On the Let's Encrypt website, you can discover more information about [how ACME works](https://letsencrypt.org/how-it-works/) and get more [detailled information](https://letsencrypt.org/docs/) about it.
 
 ### Birth of ACME
 
