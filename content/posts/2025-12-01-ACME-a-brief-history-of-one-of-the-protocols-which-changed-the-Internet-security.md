@@ -170,7 +170,7 @@ I spoke about the [External Account Binding](https://datatracker.ietf.org/doc/ht
 Using the example of EAB, J.C. Jones confirms the collaboration with certificate authorities that happens during the IETF standardization process:
 > *"EAB was an early addition at the IETF ACME Working Group. Many in the room were worried that without a means to bind to a payment method, ACME would not get adoption. In fact, some of the counterarguments to forming ACME were blunted by EAB, as such a mechanism wasn’t in the theoretically-competing, already-existent standard: SCEP. SCEP, it was argued, already handled 'free' certificate issuance, for private certificate authorities. Anything else needed a feasible path for usage payment." -- **J.C. Jones***
 
-Beyond billing, the addition of EAB allowed also some certificate authorities to integrate their existing domain control validation systems with ACME.
+Beyond billing, the addition of EAB allowed also some commercial certificate authorities to integrate their existing domain control validation systems with ACME, allowing them to skip the challenge step of the ACME protocol.
 
 The IETF standardization process, based on an open process, created the necessary discussion space for cooperation among entities that did not necessarily share the same objectives.
 
