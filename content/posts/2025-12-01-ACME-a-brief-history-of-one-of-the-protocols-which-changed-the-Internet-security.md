@@ -165,11 +165,12 @@ What level of cooperation or hostility? What impact on the viability of existing
 
 Here again, the fact that Let’s Encrypt was based on an open protocol, immediately subject to an IETF standardization initiative, enabled collaboration and adoption by the most innovative certificate authorities.
 
-J.C. Jones confirms this collaboration during IETF standardization process when I spoke about the External Account Binding (EAB) option of the protocol. EAB is a way for an ACME client to authenticate to an ACME server using an identifier and a key value which are verifiable by the server in a repository it maintains. It is a way for a server to filter who can uses its service; it is an alternative model to Let's Encrypt one where anybody can ask for a certificate: 
+I spoke about the [External Account Binding](https://datatracker.ietf.org/doc/html/rfc8555/#section-7.3.4) (EAB) option of the protocol with J.C. Jones. EAB is a way for an ACME client to authenticate to an ACME server using an identifier and a key value which are verifiable by the server in a repository it maintains. With EAB, an ACME server can filter who can uses its service which is useful for commercial certificate authorities for example; it is an alternative model to Let's Encrypt one where anybody can ask for a certificate. 
 
+Using the example of EAB, J.C. Jones confirms the collaboration with certificate authorities that happens during the IETF standardization process:
 > *"EAB was an early addition at the IETF ACME Working Group. Many in the room were worried that without a means to bind to a payment method, ACME would not get adoption. In fact, some of the counterarguments to forming ACME were blunted by EAB, as such a mechanism wasn’t in the theoretically-competing, already-existent standard: SCEP. SCEP, it was argued, already handled 'free' certificate issuance, for private certificate authorities. Anything else needed a feasible path for usage payment." -- **J.C. Jones***
 
-Beyond billing, the addition of EAB allowed also existing certificate authorities to integrate their existing domain control validation systems with ACME.
+Beyond billing, the addition of EAB allowed also some certificate authorities to integrate their existing domain control validation systems with ACME.
 
 The IETF standardization process, based on an open process, created the necessary discussion space for cooperation among entities that did not necessarily share the same objectives.
 
