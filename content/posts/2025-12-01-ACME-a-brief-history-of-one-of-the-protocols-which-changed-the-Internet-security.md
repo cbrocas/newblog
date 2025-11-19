@@ -205,8 +205,7 @@ Providing an efficient support and effective resources to the client side ACME a
 
 As illustrates by Sarah Gran, another way to give momentum to a new feature is to lift certain restrictions on access to the certificate authority:
 
-> *In order to encourage ARI adoption, we’ve configured Let’s Esement Prématuré : Je dois signaler que la bâche fournie (qui était noire au départ) a rapidement pris une teinte grise à cause du soleil.
-• Fragilité : De plus, elle a tendance à se déchirer facilement.ncrypt to allow subscribers who renew via ARI to bypass our rate limits." -- **Sarah Gran***
+> *In order to encourage ARI adoption, we’ve configured Let’s Encrypt to allow subscribers who renew via ARI to bypass our rate limits." -- **Sarah Gran***
 
 ### Client Side Update Challenge
 
