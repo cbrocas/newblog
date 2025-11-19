@@ -41,7 +41,7 @@ When asked about the main obstacles to the widespread adoption of encryption, [J
 
 Obtaining a certificate was the main obstacle, and this was the priority to address.
 
-This view was shared by a group of partners who, starting in 2014, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. [Sarah Gran](https://www.linkedin.com/in/sarah-gran-saline/), Director of Communications at Let’s Encrypt, shares: 
+This view was shared by a group of partners who, starting in 2014, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. [Sarah Gran](https://letsencrypt.org/2023/12/28/eoy-letter-2023), Director of Communications at Let’s Encrypt, shares: 
 
 ![](/assets/sarah-gran100.png)
 
@@ -55,9 +55,9 @@ And so, Let's Encrypt is since 2015 a certificate authority that delivers for fr
 
 On the legal/administrative side, Let's Encrypt certificate authority operates for the public’s benefit and is a service provided by the Internet Security Research Group (ISRG), a California public benefit corporation.
 
-Regarding [Let's Encrypt results](https://letsencrypt.org/stats/) ten years after its birth, they are really impressive and as Sarah Gran points out, so is the global HTTPS usage:
+Regarding [Let's Encrypt results](https://letsencrypt.org/stats/) ten years after its birth, they are really impressive (over 700M active certificates, over [60%](https://w3techs.com/technologies/details/sc-letsencrypt) of all the public TLS server certificates) and as Sarah Gran points out, so is the global HTTPS usage:
 
-> *"Our stated mission from day one was to get the web to 100% encryption. When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years" -- **Sarah Gran***
+> *"When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years" -- **Sarah Gran***
 
 Let's Encrypt delivers certificates in a automated manner using the ACME protocol which implies no manual action from the site owner nor the certificate authority. So, let's speak now a little about the automation aspect!
 
@@ -109,7 +109,7 @@ Speaking of use cases, one might wonder whether the Web was Let’s Encrypt’s 
 
 Sarah Gran provides an unambiguous first-level answer: 
 
-> *"Our stated mission from day one was to get the web to 100% encryption. When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years" -- **Sarah Gran***
+> *"Our stated mission from day one was to get the web to 100% encryption" -- **Sarah Gran***
 
 But when asked about the various types of challenges in the protocol, J.C. Jones offers a nuance: 
 
@@ -163,7 +163,7 @@ What level of cooperation or hostility? What impact on the viability of existing
 
 Here again, the fact that Let’s Encrypt was based on an open protocol, immediately subject to an IETF standardization initiative, enabled collaboration and adoption by the most innovative certificate authorities.
 
-J.C. Jones confirms this, discussing the External Account Binding (EAB) option of the protocol which is a way for an ACME client to authenticate to the server using an identifier and a key value which are verifiable by the server in repository he maintains: 
+J.C. Jones confirms this collaboration during IETF standardization process when I spoke about the External Account Binding (EAB) option of the protocol. EAB is a way for an ACME client to authenticate to an ACME server using an identifier and a key value which are verifiable by the server in a repository it maintains. It is a way for a server to filter who can uses its service; it is an alternative model to Let's Encrypt one where anybody can ask for a certificate: 
 
 > *"EAB was an early addition at the IETF ACME Working Group. Many in the room were worried that without a means to bind to a payment method, ACME would not get adoption. In fact, some of the counterarguments to forming ACME were blunted by EAB, as such a mechanism wasn’t in the theoretically-competing, already-existent standard: SCEP. SCEP, it was argued, already handled 'free' certificate issuance, for private certificate authorities. Anything else needed a feasible path for usage payment." -- **J.C. Jones***
 
@@ -173,7 +173,7 @@ The IETF standardization process, based on an open process, created the necessar
 
 The result, ten years after the introduction of ACME and the completion of its standardization process in 2019, is that ACME has become the primary means by which all public certificate authorities—both free and commercial—rely on for their transition to an automated future of issuing short-lived certificates. 
 
-Effectively, until march 2026, the maximum lifespan of a public TLS server certificate has been set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. After the vote of the [ballot SC081](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/) at the CA/B Forum, the certificate lifespan will decrease gradually to reach 47 days in March 2029. And the automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.
+Effectively, until march 2026, the maximum lifespan of a public TLS server certificate has been set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. After the vote of the [ballot SC081](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/) at the CA/B Forum in April 2025, it has decided that the certificate lifespan will decrease gradually to reach 47 days in March 2029. And the automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.
 
 ### Created at Let's Encrypt, adopted everywhere 
 
@@ -211,7 +211,7 @@ As illustrates by Sarah Gran, another way to give momentum to a new feature is t
 
 But despite a good support work and incentive measures, Aaron Gable confirms ARI adoption is just at its start:
 
-> *There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over" **-- Aaron Gable***
+> *"There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over" **-- Aaron Gable***
 
 This situation is really shared with a lot of client side softwares that *"just work"(c)* and it raises some concerns about how to make an ecosystem keeping track with innovation on its client side. 
 
@@ -253,4 +253,4 @@ As a community, I really think we can thank these organizations, teams, and engi
 
 I would like to extend a special thank you to the members of the Let's Encrypt team, **J.C. Jones**, **Aaron Gable**, **Sarah Gran** and **Jacob Hoffman-Andrews**, for the time and effort they dedicated to answering my questions. Without them, this article would not have been possible. 
 
-A big shout out also to [Eric Leblond](https://github.com/regit) and [Philippe Teuwen](https://infosec.exchange/@doegox) who carefully proofread early drafts of this article and gave me valuable and insightful advices 🙏
+A big shout out also to [Eric Leblond](https://github.com/regit) and [Philippe Teuwen](https://infosec.exchange/@doegox) who carefully proofread early drafts and [Philippe Bonnef](https://github.com/phbnf) the last draft of this article. They all gave me so valuable and insightful advices 🙏

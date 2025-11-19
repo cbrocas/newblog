@@ -33,7 +33,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <meta itemprop="description" content="** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT ** Internet and Network Protocols Open and Standardized Protocols at the Heart of the Internet’s Success During the 1990s, computing underwent a true revolution driven by the rise and global spread of the Internet. The Internet fulfilled the promise embodied in Sun Microsystems’ slogan &ldquo;The Network is the Computer&rdquo;.
 By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders."><meta itemprop="datePublished" content="2025-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3669">
+<meta itemprop="wordCount" content="3679">
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -610,7 +610,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p><em>&ldquo;More and more information was flowing across the Web, and most data being transferred did not have integrity or confidential protections from TLS. The biggest stumbling block to using TLS everywhere was obtaining and managing server-side certificates, and so: Let’s Encrypt&rdquo; &ndash;  <strong>J.C. Jones</strong></em></p>
 </blockquote>
 <p>Obtaining a certificate was the main obstacle, and this was the priority to address.</p>
-<p>This view was shared by a group of partners who, starting in 2014, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. <a href="https://www.linkedin.com/in/sarah-gran-saline/">Sarah Gran</a>, Director of Communications at Let’s Encrypt, shares:</p>
+<p>This view was shared by a group of partners who, starting in 2014, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. <a href="https://letsencrypt.org/2023/12/28/eoy-letter-2023">Sarah Gran</a>, Director of Communications at Let’s Encrypt, shares:</p>
 <p><img src="/assets/sarah-gran100.png" alt=""></p>
 <blockquote>
 <p><em>&ldquo;Early collaborators included people from Mozilla, Electronic Frontier Foundation, Akamai, Cisco, and the University of Michigan&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
@@ -619,9 +619,9 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p>In the Web ecosystem, certificate authorities are organizations from which you can obtain a certificate for a domain  after proving you control it.</p>
 <p>And so, Let&rsquo;s Encrypt is since 2015 a certificate authority that delivers for free (as in free beer) TLS Server certificates.</p>
 <p>On the legal/administrative side, Let&rsquo;s Encrypt certificate authority operates for the public’s benefit and is a service provided by the Internet Security Research Group (ISRG), a California public benefit corporation.</p>
-<p>Regarding <a href="https://letsencrypt.org/stats/">Let&rsquo;s Encrypt results</a> ten years after its birth, they are really impressive and as Sarah Gran points out, so is the global HTTPS usage:</p>
+<p>Regarding <a href="https://letsencrypt.org/stats/">Let&rsquo;s Encrypt results</a> ten years after its birth, they are really impressive (over 700M active certificates, over <a href="https://w3techs.com/technologies/details/sc-letsencrypt">60%</a> of all the public TLS server certificates) and as Sarah Gran points out, so is the global HTTPS usage:</p>
 <blockquote>
-<p><em>&ldquo;Our stated mission from day one was to get the web to 100% encryption. When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+<p><em>&ldquo;When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
 </blockquote>
 <p>Let&rsquo;s Encrypt delivers certificates in a automated manner using the ACME protocol which implies no manual action from the site owner nor the certificate authority. So, let&rsquo;s speak now a little about the automation aspect!</p>
 <h3 id="automation-the-core-of-the-operation">Automation: The Core of the Operation</h3>
@@ -655,7 +655,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p>Speaking of use cases, one might wonder whether the Web was Let’s Encrypt’s primary target, or if securing the Internet with its multiple protocols was also part of the objectives.</p>
 <p>Sarah Gran provides an unambiguous first-level answer:</p>
 <blockquote>
-<p><em>&ldquo;Our stated mission from day one was to get the web to 100% encryption. When we started issuance, only about 39% of website visits were HTTPS. Today, it’s nearly 95% in the United States, and over 83% globally. We still have work to do, but we are proud of the progress we’ve made over the last ten years&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
+<p><em>&ldquo;Our stated mission from day one was to get the web to 100% encryption&rdquo; &ndash; <strong>Sarah Gran</strong></em></p>
 </blockquote>
 <p>But when asked about the various types of challenges in the protocol, J.C. Jones offers a nuance:</p>
 <blockquote>
@@ -693,14 +693,14 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p>In 2015, the arrival of Let’s Encrypt in the public certificate authorities ecosystem raised a number of questions.</p>
 <p>What level of cooperation or hostility? What impact on the viability of existing certificate authorities?</p>
 <p>Here again, the fact that Let’s Encrypt was based on an open protocol, immediately subject to an IETF standardization initiative, enabled collaboration and adoption by the most innovative certificate authorities.</p>
-<p>J.C. Jones confirms this, discussing the External Account Binding (EAB) option of the protocol which is a way for an ACME client to authenticate to the server using an identifier and a key value which are verifiable by the server in repository he maintains:</p>
+<p>J.C. Jones confirms this collaboration during IETF standardization process when I spoke about the External Account Binding (EAB) option of the protocol. EAB is a way for an ACME client to authenticate to an ACME server using an identifier and a key value which are verifiable by the server in a repository it maintains. It is a way for a server to filter who can uses its service; it is an alternative model to Let&rsquo;s Encrypt one where anybody can ask for a certificate:</p>
 <blockquote>
 <p><em>&ldquo;EAB was an early addition at the IETF ACME Working Group. Many in the room were worried that without a means to bind to a payment method, ACME would not get adoption. In fact, some of the counterarguments to forming ACME were blunted by EAB, as such a mechanism wasn’t in the theoretically-competing, already-existent standard: SCEP. SCEP, it was argued, already handled &lsquo;free&rsquo; certificate issuance, for private certificate authorities. Anything else needed a feasible path for usage payment.&rdquo; &ndash; <strong>J.C. Jones</strong></em></p>
 </blockquote>
 <p>Beyond billing, the addition of EAB allowed also existing certificate authorities to integrate their existing domain control validation systems with ACME.</p>
 <p>The IETF standardization process, based on an open process, created the necessary discussion space for cooperation among entities that did not necessarily share the same objectives.</p>
 <p>The result, ten years after the introduction of ACME and the completion of its standardization process in 2019, is that ACME has become the primary means by which all public certificate authorities—both free and commercial—rely on for their transition to an automated future of issuing short-lived certificates.</p>
-<p>Effectively, until march 2026, the maximum lifespan of a public TLS server certificate has been set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. After the vote of the <a href="https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/">ballot SC081</a> at the CA/B Forum, the certificate lifespan will decrease gradually to reach 47 days in March 2029. And the automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.</p>
+<p>Effectively, until march 2026, the maximum lifespan of a public TLS server certificate has been set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. After the vote of the <a href="https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/">ballot SC081</a> at the CA/B Forum in April 2025, it has decided that the certificate lifespan will decrease gradually to reach 47 days in March 2029. And the automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.</p>
 <h3 id="created-at-lets-encrypt-adopted-everywhere">Created at Let&rsquo;s Encrypt, adopted everywhere</h3>
 <p>It is important to note that although ACME was developed by the team managing Let&rsquo;s Encrypt, this protocol is now one of the main protocols for automated certificate acquisition adopted by all public certificate authorities.</p>
 <p>And outside the public certificate authorities ecosystem, I think it&rsquo;s fair to say that this protocol is also becoming increasingly popular with technical architects in companies with private certificate authorities.</p>
@@ -724,7 +724,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <h3 id="client-side-update-challenge">Client Side Update Challenge</h3>
 <p>But despite a good support work and incentive measures, Aaron Gable confirms ARI adoption is just at its start:</p>
 <blockquote>
-<p><em>There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over&quot; <strong>&ndash; Aaron Gable</strong></em></p>
+<p><em>&ldquo;There is still much progress to be made. Part of the appeal of the Automated Certificate Management Environment is that many users can set-and-forget their client and configuration. This means that most clients never receive software updates, and even client projects that have implemented ARI in their latest version still have massive install bases that aren’t running that version. We’ve worked closely with many clients developers to implement ARI, and contributed implementations ourselves in several cases, but for widespread adoption the whole ecosystem will need to slowly turn over&rdquo; <strong>&ndash; Aaron Gable</strong></em></p>
 </blockquote>
 <p>This situation is really shared with a lot of client side softwares that <em>&ldquo;just work&rdquo;(c)</em> and it raises some concerns about how to make an ecosystem keeping track with innovation on its client side.</p>
 <p>This challenge arises not only in terms of updating the client, but also in terms of updating the configuration. Many ACME clients rely on cron tasks. To have an efficient ARI setup, your task has to run ideally on a daily basis be able to ask the certification authority every day whether the certificate needs to be reissued. This is not the classic cron task setup. So, users have to modify this cron task frequency to reach the ARI goal of certificate reissuance led by certificate authority. Client side ACME setup evolution is a really challenging task.</p>
@@ -751,7 +751,7 @@ By interconnecting individual computers, the Internet enabled its users to commu
 <p>Having been able to do it inside a non profit organization, providing the Internet with an open and standardized protocol is a great success for all people believing in FreeSoftware and an Open Internet.</p>
 <p>As a community, I really think we can thank these organizations, teams, and engineers who continue to uphold the promise of efficiency and Freedom brought about by cooperation around open protocols. They inspire new generations (and older ones I guess 😉) demonstrating big things can still be achevied today in the open for the common good!</p>
 <p>I would like to extend a special thank you to the members of the Let&rsquo;s Encrypt team, <strong>J.C. Jones</strong>, <strong>Aaron Gable</strong>, <strong>Sarah Gran</strong> and <strong>Jacob Hoffman-Andrews</strong>, for the time and effort they dedicated to answering my questions. Without them, this article would not have been possible.</p>
-<p>A big shout out also to <a href="https://github.com/regit">Eric Leblond</a> and <a href="https://infosec.exchange/@doegox">Philippe Teuwen</a> who carefully proofread early drafts of this article and gave me valuable and insightful advices 🙏</p>
+<p>A big shout out also to <a href="https://github.com/regit">Eric Leblond</a> and <a href="https://infosec.exchange/@doegox">Philippe Teuwen</a> who carefully proofread early drafts and <a href="https://github.com/phbnf">Philippe Bonnef</a> the last draft of this article. They all gave me so valuable and insightful advices 🙏</p>
  </content>
 
 <p>
