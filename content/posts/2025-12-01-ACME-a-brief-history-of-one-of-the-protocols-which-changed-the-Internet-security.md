@@ -27,7 +27,7 @@ There were, of course, isolationist or monopolistic temptations from certain man
 
 The success of this communication utopia was achieved without much concern for ensuring authentication, integrity, and confidentiality of exchanges.
 
-In 2015, less than 30% of websites used encryption. The consequences of this negligence in addressing security risks were confirmed by Edward Snowden’s revelations in 2013: our data was exposed to anyone who wanted and could intercept and collect it.
+In 2015, only [~40%](https://transparencyreport.google.com/https/overview) of websites used encryption. The consequences of this negligence in addressing security risks were confirmed by Edward Snowden’s revelations in 2013: our data was exposed to anyone who wanted and could intercept and collect it.
 
 ## Let's Encrypt is coming
 
@@ -41,7 +41,7 @@ When asked about the main obstacles to the widespread adoption of encryption, [J
 
 Obtaining a certificate was the main obstacle, and this was the priority to address.
 
-This view was shared by a group of partners who, starting in 2014, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. [Sarah Gran](https://letsencrypt.org/2023/12/28/eoy-letter-2023), Director of Communications at Let’s Encrypt, shares: 
+This view was shared by a group of partners who, starting in 2013, pooled resources to establish Let’s Encrypt, an automated and free certificate authority. [Sarah Gran](https://letsencrypt.org/2023/12/28/eoy-letter-2023), VP of Advancement at Let’s Encrypt, shares: 
 
 ![](/assets/sarah-gran100.png)
 
@@ -111,7 +111,7 @@ Speaking of use cases, one might wonder whether the Web was Let’s Encrypt’s 
 
 Sarah Gran provides an unambiguous first-level answer: 
 
-> *"Our stated mission from day one was to get the web to 100% encryption" -- **Sarah Gran***
+> *"From Day One, we have sought to get the web to 100% encryption" -- **Sarah Gran***
 
 But when asked about the various types of challenges in the protocol, J.C. Jones offers a nuance: 
 
