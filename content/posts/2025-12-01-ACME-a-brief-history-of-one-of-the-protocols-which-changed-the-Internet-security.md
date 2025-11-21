@@ -105,7 +105,7 @@ J.C. Jones confirms:
 
 ACME was indeed at the core of Let’s Encrypt from the start and underwent a refinement process to cover all use cases as thoroughly as possible. 
 
-To learn about the origins of the protocol, there is a very informative document to read: the Let's Encrypt paper for [ACM CCS 2019](https://ccs2019.sigsac.org/) in London. It mentions the previous work of two teams: *"a group led by Alex Halderman at the University of Michigan and Peter Eckersley at EFF was developing a protocol for automatically issuing and renewing certificates. Simultaneously, a team at Mozilla led by Josh Aas and Eric Rescorla was working on creating a free and automated certificate authority"*. When these two teams discovered each other's work, they joined forces, and ACME and its implementation in Let's Encrypt were finally born.
+To learn more about the roots of ACME and Let's Encrypt, there is a very informative document to read: the [Let's Encrypt paper](https://dl.acm.org/doi/pdf/10.1145/3319535.3363192) for [ACM CCS 2019](https://ccs2019.sigsac.org/) in London. It mentions the previous work of two teams: *"a group led by Alex Halderman at the University of Michigan and Peter Eckersley at EFF was developing a protocol for automatically issuing and renewing certificates. Simultaneously, a team at Mozilla led by Josh Aas and Eric Rescorla was working on creating a free and automated certificate authority"*. When these two teams discovered each other's work, they joined forces, and ACME and its implementation in Let's Encrypt were the result of this joint effort supported by the initial partners mentioned above.
 
 ### Securing the Web or the Internet?
 
