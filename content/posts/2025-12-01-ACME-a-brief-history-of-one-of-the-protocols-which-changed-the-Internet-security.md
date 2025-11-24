@@ -17,11 +17,11 @@ During the 1990s, computing underwent a true revolution driven by the rise and g
 
 By interconnecting individual computers, the Internet enabled its users to communicate without limits and without worrying about borders.
 
-This unrestricted interconnection emerged at a pivotal moment in modern history: the opposition between the West and the Eastern Bloc led by the USSR had—albeit temporarily, as we now know—faded away, China was becoming the world’s factory, and the movement and collaboration between were much freer and open than ever.
+This unrestricted interconnection emerged at a pivotal moment in modern history: the opposition between the West and the Eastern Bloc led by the USSR had—albeit temporarily, as we now know—faded away, China was becoming the world’s factory, and the movement and collaboration between people were much freer and open than ever.
 
 The Internet supported a kind of utopia of instant communication and sharing, previously unknown. This utopia was made possible by a set of open and standardized protocols. This was the key to enabling all kinds of different systems to cooperate and communicate seamlessly.
 
-There were, of course, isolationist or monopolistic temptations from certain manufacturers or software editors. But open and standardized protocols ultimately prevailed, enabling unprecedented expansion. Built on top of TCP/IP, UDP, and DNS, among others, the HTTP and HTML duo would propel the Web as the Internet’s preferred communication platform for the next 30 years.
+There were, of course, isolationist or monopolistic temptations from certain manufacturers or software editors. But open and standardized protocols ultimately prevailed, enabling unprecedented expansion. Built on top of IP, TCP, UDP, and DNS, among others, the HTTP and HTML duo would propel the Web as the Internet’s preferred communication platform for the next 30 years.
 
 ### Limited Use of Encryption
 
@@ -33,7 +33,7 @@ In 2015, only [~40%](https://transparencyreport.google.com/https/overview) of we
 
 ### The Birth of an Automated and Free Certificate Authority
 
-When asked about the main obstacles to the widespread adoption of encryption, [J.C. Jones](https://insufficient.coffee/about/), one of the architects of Let’s Encrypt and now a Site Reliability Engineer after leading Firefox’s cryptographic team, responds: 
+When asked about the main obstacles to the widespread adoption of encryption, [J.C. Jones](https://insufficient.coffee/about/), one of the architects of Let’s Encrypt and now one of its site reliability engineers after leading Firefox’s cryptographic team, responds: 
 
 ![](/assets/jc-jones100.png)
 
@@ -105,7 +105,11 @@ J.C. Jones confirms:
 
 ACME was indeed at the core of Let’s Encrypt from the start and underwent a refinement process to cover all use cases as thoroughly as possible. 
 
-To learn more about the roots of ACME and Let's Encrypt, there is a very informative document to read: the [Let's Encrypt paper](https://dl.acm.org/doi/pdf/10.1145/3319535.3363192) for [ACM CCS 2019](https://ccs2019.sigsac.org/) in London. It mentions the previous work of two teams: *"a group led by Alex Halderman at the University of Michigan and Peter Eckersley at EFF was developing a protocol for automatically issuing and renewing certificates. Simultaneously, a team at Mozilla led by Josh Aas and Eric Rescorla was working on creating a free and automated certificate authority"*. When these two teams discovered each other's work, they joined forces, and ACME and its implementation in Let's Encrypt were the result of this joint effort supported by the initial partners mentioned above.
+To learn more about the roots of ACME and Let's Encrypt, there is a very informative document to read: the [Let's Encrypt paper](https://dl.acm.org/doi/pdf/10.1145/3319535.3363192) for [ACM CCS 2019](https://ccs2019.sigsac.org/) in London. It mentions the previous work of two teams: 
+
+> *"A group led by Alex Halderman at the University of Michigan and Peter Eckersley at EFF was developing a protocol for automatically issuing and renewing certificates. Simultaneously, a team at Mozilla led by Josh Aas and Eric Rescorla was working on creating a free and automated certificate authority"*. 
+
+When these two teams discovered each other's work, they joined forces. ACME and its implementation in Let's Encrypt were the result of this joint effort supported by the initial partners mentioned above.
 
 ### Securing the Web or the Internet?
 
@@ -127,7 +131,7 @@ The challenge was ultimately met, and this DNS challenge—though not its primar
 
 ### Developed in the Open
 
-ACME was documented openly from the start, and [Certbot](https://certbot.eff.org/), the first open-source ACME client co-developed with the EFF, served as the reference implementation.
+ACME was documented openly from the start, and [Certbot](https://certbot.eff.org/), the first open-source ACME client co-developed with the EFF, served as the client side reference implementation.
 
 Similarly, a standardization process through the IETF resulted in [RFC 8555](https://datatracker.ietf.org/doc/rfc8555/) in March, 2019.
 
@@ -137,7 +141,7 @@ J.C. Jones confirms that this was the goal:
 
 > *"This is what we foresaw, or at least hoped for. The initial client development often had conversations like, ‘oh, if someone wants that, then they’ll write their own client.’ It was a key part of why the REST API needed to be an IETF standard, and was part of the argument at the IETF BoF that resulted in the formation of the ACME Working Group in Q3 2015" -- **J.C. Jones***
 
-Let’s Encrypt has always provided constant support to developers by responding in its forum or on its GitHub issue tracker, and all this work has truly paid off. [An interesting post](https://letsencrypt.org/2025/10/07/ten-yrs-community-forum) has been recently written about this topic on Let's Encrypt blog.
+Let’s Encrypt has also always provided constant support to developers by responding in its forum or on its GitHub issue tracker, and all this work has truly paid off. [An interesting post](https://letsencrypt.org/2025/10/07/ten-yrs-community-forum) has been recently written about support on the Let's Encrypt blog.
 
 ### Standardization for what benefits?
 
@@ -153,9 +157,9 @@ Aside this first design improvement, Jacob details a second major improvement of
 
 > *"Another big change, also originated from within the IETF, was to make all requests authenticated, including GET requests. Since ACME is authenticated with signed POSTs, this necessitated the POST-as-GET concept that’s in ACME today" -- **Jacob Hoffman-Andrews***  
 
-We can see there how IETF iterations can challenge the Security of a protocol and leads its development to innovative solutions to tackle the challenge it faces!
+We can see there how IETF iterations can challenge the security of a protocol and leads its development to innovative solutions to tackle the challenges it faces!
 
-Last, Jacob adds another information that illustrates the benefits of developing a protocol into the open: it allows the community to challenge (and sometimes, fix) its Security level due to the availability of all materials and often, of the  reference implementation: 
+Last, Jacob adds another information that illustrates the benefits of developing a protocol into the open: it allows the community to evaluate (and sometimes, fix) its security level due to the availability of all materials and often, of the reference implementation: 
 
 > *"Another very important evolution was the deprecation of the tls-sni-01 challenge method. This was found to be flawed by Frans Rosen, a security researcher. It was replaced with TLS-ALPN-01, developed at IETF with significant input from Google" -- **Jacob Hoffman-Andrews***
 
@@ -172,13 +176,13 @@ I spoke about the [External Account Binding](https://datatracker.ietf.org/doc/ht
 Using the example of EAB, J.C. Jones confirms the collaboration with certificate authorities that happens during the IETF standardization process:
 > *"EAB was an early addition at the IETF ACME Working Group. Many in the room were worried that without a means to bind to a payment method, ACME would not get adoption. In fact, some of the counterarguments to forming ACME were blunted by EAB, as such a mechanism wasn’t in the theoretically-competing, already-existent standard: SCEP. SCEP, it was argued, already handled 'free' certificate issuance, for private certificate authorities. Anything else needed a feasible path for usage payment." -- **J.C. Jones***
 
-Beyond billing, the addition of EAB enabled also some commercial certificate authorities to integrate their existing domain control validation systems with ACME, allowing them to skip the challenge step of the ACME protocol.
+Beyond billing, the addition of EAB enabled also some commercial certificate authorities to integrate their existing domain control validation systems with ACME, allowing some of them to skip the challenge step of the ACME protocol.
 
 The IETF standardization process, based on an open process, created the necessary discussion space for cooperation among entities that did not necessarily share the same objectives.
 
 The result, ten years after the introduction of ACME and the completion of its standardization process in 2019, is that ACME has become the primary means by which all public certificate authorities—both free and commercial—rely on for their transition to an automated future of issuing short-lived certificates. 
 
-Effectively, until early this year, the maximum lifespan of a public TLS server certificate was set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. With the vote of the [ballot SC081](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/) at the CA/B Forum in April 2025, it has been decided that the certificate lifespan will decrease gradually starting March 2026 to reach 47 days in March 2029. And the automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.
+Effectively, until early this year, the maximum lifespan of a public TLS server certificate was set to 398 days by the CA/B Forum, the organization that set the rules for public certificate authorities. With the vote of the [ballot SC081](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/) at the CA/B Forum in April 2025, it has been decided that the certificate lifespan will decrease gradually starting March 2026 to reach 47 days in March 2029. The automation provided by ACME seems to be one of the main identified levers to help organizations to adapt to this drastic reduction in the lifespan of public TLS server certificates.
 
 ### Created at Let's Encrypt, adopted everywhere 
 
@@ -254,7 +258,7 @@ ACME and its Let's Encrypt implementation at scale have enabled the widespread a
 
 Having been able to do it inside a non profit organization, providing the Internet with an open and standardized protocol is a great success for all people believing in FreeSoftware and an Open Internet. 
 
-As a community, I really think we can thank these organizations, teams, and engineers who continue to uphold the promise of efficiency and Freedom brought about by cooperation around open protocols. They inspire new generations (and older ones I guess 😉) demonstrating big things can still be achevied today in the open for the common good!
+As a community, I really think we can thank these organizations, teams, and engineers who continue to uphold the promise of efficiency and Freedom brought about by cooperation around open protocols. They inspire new generations (and older ones I guess 😉) demonstrating big things can still be achevied today in the open for the common good at the Internet scale!
 
 I would like to extend a special thank you to the members of the Let's Encrypt team, **J.C. Jones**, **Aaron Gable**, **Sarah Gran** and **Jacob Hoffman-Andrews**, for the time and effort they dedicated to answering my questions. Without them, this article would not have been possible. 
 
