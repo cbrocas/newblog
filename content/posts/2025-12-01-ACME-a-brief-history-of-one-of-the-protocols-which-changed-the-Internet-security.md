@@ -264,4 +264,4 @@ As a community, I really think we can thank these organizations, teams, and engi
 
 I would like to extend a special thank you to the members of the Let's Encrypt team, **J.C. Jones**, **Aaron Gable**, **Sarah Gran** and **Jacob Hoffman-Andrews**, for the time and effort they dedicated to answering my questions. Without them, this article would not have been possible. 
 
-A big shout out also to [Eric Leblond](https://github.com/regit) and [Philippe Teuwen](https://infosec.exchange/@doegox) who carefully proofread early drafts and [Philippe Bonnef](https://github.com/phbnf) the last draft of this article. They all gave me so valuable and insightful advices 🙏
+A big shout out also to [Eric Leblond](https://github.com/regit) and [Philippe Teuwen](https://infosec.exchange/@doegox) who carefully proofread some early drafts of the article and [Philippe Bonnef](https://github.com/phbnf) for proofreading one of the last drafts. They all gave me so valuable and insightful advices 🙏
