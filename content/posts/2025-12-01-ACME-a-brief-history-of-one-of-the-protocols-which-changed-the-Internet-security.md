@@ -10,7 +10,9 @@ publishdate: 2025-12-01
 
 *I would like to share with you this article I wrote about the ACME protocol, which I "fell in love with" about ten years ago. It is for me a way to give back to this fantastic Free Software and Open Protocols developers community.* 
 
-*This article is about the conception, the standardization, the relation with the ecosystem and the evolution challenges faced by the ACME protocoI. To write this article, I had the privilege of interviewing several people who have been involved in the creation and the evolution of ACME: [J.C. Jones](https://insufficient.coffee/about/), [Aaron Gable](https://aarongable.com/#about), [Sarah Gran](https://letsencrypt.org/2023/12/28/eoy-letter-2023) and [Jacob Hoffman-Andrews](https://www.eff.org/about/staff/jacob-hoffman-andrews) (more below).* 
+*This article is about the roots, the conception, the standardization, the relation with its ecosystem and the evolution challenges faced by the ACME protocol.*
+
+*To write this article, I had the privilege of interviewing several people who have been involved in the creation and the evolution of ACME: [Aaron Gable](https://aarongable.com/#about), [Sarah Gran](https://letsencrypt.org/2023/12/28/eoy-letter-2023), [Jacob Hoffman-Andrews](https://www.eff.org/about/staff/jacob-hoffman-andrews) and [J.C. Jones](https://insufficient.coffee/about/) (more below).* 
 
 *Thank you so much to all of you for your time and support! 💚*
 
