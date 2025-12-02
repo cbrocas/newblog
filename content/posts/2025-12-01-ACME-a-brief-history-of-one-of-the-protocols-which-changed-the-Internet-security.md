@@ -6,6 +6,13 @@ publishdate: 2025-12-01
 
 ![](/assets/acme-meme.jpg)
 
+### Preamble
+
+*I would like to share with you this article I wrote about the ACME protocol, which I "fell in love with" about ten years ago. It is for me a way to give back to this fantastic Free Software and Open Protocols developers community.* 
+
+*This article is about the conception, the standardization, the relation with the ecosystem and the evolution challenges faced by the ACME protocoI. To write this article, I had the privilege of interviewing several people who have been involved in the creation and the evolution of ACME: [J.C. Jones](https://insufficient.coffee/about/), [Aaron Gable](https://aarongable.com/#about), [Sarah Gran](https://letsencrypt.org/2023/12/28/eoy-letter-2023) and [Jacob Hoffman-Andrews](https://www.eff.org/about/staff/jacob-hoffman-andrews) (more below).* 
+
+*Thank you so much to all of you for your time and support! 💚*
 
 ## Internet and Network Protocols 
 
@@ -244,11 +251,11 @@ We have asked the question to Aaron Gable who gave us two upcoming developments:
 
 Fastly has also recently [contributed](https://www.fastly.com/blog/smarter-acme-challenge-for-multi-cdn-world) to ACME in order to improve the `dns-01` challenge in a multi-cloud and multi-PKI environment. An [IETF draft](https://datatracker.ietf.org/doc/html/draft-ietf-acme-dns-account-label/) describing this `dns-account-01` challenge is online. This is further proof that the public TLS ecosystem has truly embraced the ACME protocol as its primary automation tool.
 
-Indeed, we can venture to say that ACME's future looks bright 😊
-
 Another recent development based on ACME has also shed new light on the potential of this protocol: since 2022, a [draft](https://datatracker.ietf.org/doc/draft-acme-device-attest/) is under progress at the IETF in order to write an ACME extension. The goal of this extension is to use ACME to obtain a certificate for a device in order to prove its identity. The challenge is based on device attestation and what's new in this case is the arrival of a third party, the attestation server.
 
 What is remarkable here is that we are no longer dealing with ACME's initial use case, namely obtaining TLS server certificates: we can see in this IETF draft the potential of ACME as a challenge-based framework to obtain certificate in very different contexts. 
+
+Indeed, we can venture to say that ACME's future looks bright 😊
 
 ## Conclusion
 
