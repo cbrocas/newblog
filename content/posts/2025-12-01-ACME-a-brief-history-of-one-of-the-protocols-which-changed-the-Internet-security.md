@@ -7,8 +7,6 @@ publishdate: 2025-12-01
 ![](/assets/acme-meme.jpg)
 
 
-## ** DRAFT ARTICLE: CURRENT CONTENT CAN BE MODIFIED AT ANY TIME, DO NOT TRUST IT FOR THE MOMENT **
-
 ## Internet and Network Protocols 
 
 ### Open and Standardized Protocols at the Heart of the Internet’s Success
@@ -89,7 +87,7 @@ Sarah Gran clarifies an important point:
 
 Control vs. ownership of a domain—a nuance everyone should keep in mind.
 
-This proof of control involves the client responding to a challenge issued by the ACME-compatible certificate authority. The challenge can be an HTTP, DNS, or TLS challenge, depending on the client’s choice and certificate authority support. Completing the challenge requires the ACME client to place a value provided by the ACME server—in a standardized HTTP path, a DNS zone, or a TLS response, respectively. All of these operations are cryptographically verified, of course.
+This proof of control involves the client responding to a challenge issued by the ACME-compatible certificate authority. The challenge can be an HTTP, DNS, or TLS challenge, depending on the client’s choice and certificate authority support. Completing the challenge requires the ACME client to place a value provided by the ACME server—in a standardized HTTP path, a DNS zone, or a TLS response, respectively. All of these operations involve cryptography, of course.
 
 The key point with ACME is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.
 
@@ -264,4 +262,4 @@ As a community, I really think we can thank these organizations, teams, and engi
 
 I would like to extend a special thank you to the members of the Let's Encrypt team, **J.C. Jones**, **Aaron Gable**, **Sarah Gran** and **Jacob Hoffman-Andrews**, for the time and effort they dedicated to answering my questions. Without them, this article would not have been possible. 
 
-A big shout out also to [Eric Leblond](https://github.com/regit) and [Philippe Teuwen](https://infosec.exchange/@doegox) who carefully proofread some early drafts of the article and [Philippe Bonnef](https://github.com/phbnf) for proofreading one of the last drafts. They all gave me so valuable and insightful advices 🙏
+A big shout out also to [Eric Leblond](https://github.com/regit) and [Philippe Teuwen](https://infosec.exchange/@doegox) who carefully proofread some early drafts of the article and [Philippe Bonnef](https://github.com/phbnf) and [Thibault Meunier](https://thibmeu.com/) for proofreading some of the last drafts. They all gave me so valuable and insightful advices 🙏
