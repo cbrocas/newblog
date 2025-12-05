@@ -8,6 +8,12 @@ publishdate: 2025-12-01
 
 ## ACME, a brief history of one of the protocols which has changed the Internet Security
 
+### Changelog
+- *03 December 2025: article announced on [Mastodon](https://infosec.exchange/@cbrocas/115654600635216276), [LinkedIn](https://www.linkedin.com/posts/cbrocas_a-brief-history-of-acme-blogpost-i-activity-7401895621802131456-WL5j) and [X](https://x.com/cbrocas/status/1996131769221865621).*
+- *03 December 2025: J.C. Jones published his [reflections](https://insufficient.coffee/2025/12/03/reflecting-on-lets-encrypt/) about 10 years of Let's Encrypt. **A must read!***
+- *03 December 2025: J.C. has also been kind enough to announce this article on [Hacker News](https://news.ycombinator.com/item?id=46141745). It makes it jump in the TOP 25 on the [HN homepage](/assets/screenshot_hackernews.png) and in stats (31k reads after 24h) 💚*
+- *04 December 2025: add a link to the [ACME website](https://acmeprotocol.dev/acme/overview/) of [Fabien Hochstrasser](https://www.linkedin.com/in/fhchstr/).*
+
 ### Preamble
 
 *I would like to share with you this article I wrote about the ACME protocol, which I "fell in love with" about ten years ago. It is for me a way to give back to this fantastic Free Software and Open Protocols developers community.* 
@@ -102,7 +108,7 @@ This proof of control involves the client responding to a challenge issued by th
 
 The key point with ACME is that this entire dialogue between the client and the ACME server is executed without any human intervention, enabling the automatic issuance of certificates. Their deployment and integration into the web service can also generally be automated using scripts triggered after issuance.
 
-On the Let's Encrypt website, you can discover more information about [how ACME works](https://letsencrypt.org/how-it-works/) and get more [detailled information](https://letsencrypt.org/docs/) about it.
+On the Let's Encrypt website, you can discover more information about [how ACME works](https://letsencrypt.org/how-it-works/) and get more [detailled information](https://letsencrypt.org/docs/) about it. Even more details on the protocol are available on the [acmeprotocol.dev](https://acmeprotocol.dev/acme/overview/) website maintained by [Fabien Hochstrasser](https://www.linkedin.com/in/fhchstr/).
 
 ### Birth of ACME
 
