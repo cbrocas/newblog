@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>My first Unix session was a password hijack experience | Blog</title>
 <meta name="title" content="My first Unix session was a password hijack experience" />
-<meta name="description" content="I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
+<meta name="description" content="My first Unix session was a password hijack experience I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
 This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rdquo; was in fact divided in two rooms. The first one was the &ldquo;white room&rdquo;, a restricted access area with only the big box inside aka the main server : 1,5m high and several meters long." />
 <meta name="keywords" content="" />
 
 
 <meta property="og:title" content="My first Unix session was a password hijack experience" />
-<meta property="og:description" content="I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
+<meta property="og:description" content="My first Unix session was a password hijack experience I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
 This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rdquo; was in fact divided in two rooms. The first one was the &ldquo;white room&rdquo;, a restricted access area with only the big box inside aka the main server : 1,5m high and several meters long." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.brocas.org/2015/01/28/My-first-Unix-session-was-a-password-hijack-experience/" /><meta property="article:section" content="posts" />
@@ -24,16 +24,16 @@ This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rd
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="My first Unix session was a password hijack experience"/>
-<meta name="twitter:description" content="I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
+<meta name="twitter:description" content="My first Unix session was a password hijack experience I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
 This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rdquo; was in fact divided in two rooms. The first one was the &ldquo;white room&rdquo;, a restricted access area with only the big box inside aka the main server : 1,5m high and several meters long."/>
 
 
 
 <meta itemprop="name" content="My first Unix session was a password hijack experience">
-<meta itemprop="description" content="I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
+<meta itemprop="description" content="My first Unix session was a password hijack experience I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
 This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rdquo; was in fact divided in two rooms. The first one was the &ldquo;white room&rdquo;, a restricted access area with only the big box inside aka the main server : 1,5m high and several meters long."><meta itemprop="datePublished" content="2015-01-28T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2015-01-28T00:00:00+00:00" />
-<meta itemprop="wordCount" content="343">
+<meta itemprop="wordCount" content="352">
 <meta itemprop="keywords" content="" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -591,6 +591,7 @@ This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rd
  
 
 <content> <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/DEC_vt220.jpg/1920px-DEC_vt220.jpg" alt="VT220 terminal - Photo under Public Domain license by Shansov.net / Wikimedia"></p>
+<h1 id="my-first-unix-session-was-a-password-hijack-experience">My first Unix session was a password hijack experience</h1>
 <p>I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.</p>
 <p>This computer was a <a href="https://en.wikipedia.org/wiki/HP_9000#Server_models">HP 9000 server</a> running a Unix OS. The &ldquo;machine room&rdquo; was in fact divided in two rooms. The first one was the &ldquo;white room&rdquo;, a restricted access area with only the big box inside aka the main server : 1,5m high and several meters long. The second room was the room dedicated to the twenty passive terminals (VT100/VT220 emulation maybe) used to login on the Unix system.</p>
 <p>So, with my user account and password, I sat in front of one of the terminals. I entered my user account and my password. <strong>Failed</strong>. I just thinked that I mispelled one of them, I retried and I managed to log in. The rest of the session was successful : I was able to try the few commands I learned during my first lesson.</p>
@@ -611,6 +612,140 @@ This computer was a HP 9000 server running a Unix OS. The &ldquo;machine room&rd
  
 <div class="toc">
 
+
+<aside class="toc-nav" role="navigation" aria-label="目录">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#my-first-unix-session-was-a-password-hijack-experience">My first Unix session was a password hijack experience</a></li>
+  </ul>
+</nav>
+</aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tocNav = document.querySelector('.toc-nav');
+    if (!tocNav) return;
+
+    const tocLinks = Array.from(tocNav.querySelectorAll('a'));
+    if (!tocLinks.length) return;
+
+    
+    const idToLink = new Map();
+    const headings = [];
+    const seen = new Set();
+
+    for (const link of tocLinks) {
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') continue;
+        const id = decodeURIComponent(hash.slice(1));
+        idToLink.set(id, link);
+
+        if (!seen.has(id)) {
+            const h = document.getElementById(id);
+            if (h) {
+                headings.push(h);
+                seen.add(id);
+            }
+        }
+    }
+
+    if (!headings.length) return;
+
+    const OFFSET = 100; 
+
+    
+    let currentActive = null;
+    let currentChain = [];
+
+    function buildChainFromLink(link) {
+        const chain = [];
+        if (!link) return chain;
+        chain.push(link);
+        let li = link.closest('li');
+        while (li) {
+            const parentLi = li.parentElement ? li.parentElement.closest('li') : null;
+            if (parentLi) {
+                const parentLink = parentLi.querySelector('a');
+                if (parentLink) chain.push(parentLink);
+            }
+            li = parentLi;
+        }
+        return chain;
+    }
+
+    function applyActiveChain(newLink) {
+        if (newLink === currentActive) return;
+        const newChain = buildChainFromLink(newLink);
+
+        
+        for (const el of currentChain) {
+            if (!newChain.includes(el)) el.classList.remove('active');
+        }
+        
+        for (const el of newChain) {
+            if (!el.classList.contains('active')) el.classList.add('active');
+        }
+
+        currentActive = newLink || null;
+        currentChain = newChain;
+    }
+
+    
+    tocNav.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (!link || !tocNav.contains(link)) return;
+
+        const hash = link.hash || link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return;
+
+        const id = decodeURIComponent(hash.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
+
+        
+        applyActiveChain(link);
+    });
+
+    
+    function updateActiveLink() {
+        let linkToActivate = null;
+        for (let i = headings.length - 1; i >= 0; i--) {
+            const top = headings[i].getBoundingClientRect().top;
+            if (top <= OFFSET) {
+                linkToActivate = idToLink.get(headings[i].id) || null;
+                break;
+            }
+        }
+        applyActiveChain(linkToActivate);
+    }
+
+    
+    let ticking = false;
+    function onScrollOrResize() {
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                updateActiveLink();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+
+    
+    updateActiveLink();
+});
+</script>
 
 </div>
 

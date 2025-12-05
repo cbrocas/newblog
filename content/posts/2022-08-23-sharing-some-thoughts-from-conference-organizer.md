@@ -7,6 +7,8 @@ aliases:
 
 ![Chilling moment during #PTS22, photo by doegox under CC BY-NC-SA](/assets/articles/sharing-thoughts/IMG_1681.JPG)
 
+# Sharing some thoughts from a conference organizer
+
 2022 has been quite a crucial year in the [Pass the SALT](https://www.pass-the-salt-org/) conference short history. We had to switch back to an in-person form of event. 
 
 It can seem quite obvious, but after two years of full remote conference, it has been quite challenging. 

@@ -7,6 +7,7 @@ aliases:
 
 ![](/assets/direction.jpg)
 
+# RMLL LSM 2010 -Thèmes et partage d'une vision commune
 
 Voilà, les [RMLL 2010](http://2010.rmll.info) ont fermé leurs portes au public (beaucoup sont encore en train de ranger ...).
 

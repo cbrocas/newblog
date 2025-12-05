@@ -8,6 +8,8 @@ aliases:
 
 ![](/assets/earth.jpg)
 
+# RMLL LSM 2010 - Internationalization
+
 This post is part of 3 posts about 2010 LSM debriefing. The 3 topics covered will be :
 
 * [Topics and sharing a same vision (fr)](/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/)

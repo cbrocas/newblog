@@ -7,6 +7,8 @@ aliases:
 
 ![](/assets/building.jpg)
 
+# RMLL LSM 2010 - Perfect setup
+
 Ce billet est le dernier d'une série de trois sur le debriefing des RMLL 2010. 3 sujets seront couverts :
 
 * [Topics and sharing a same vision (fr)](/2010/07/13/RMLL-LSM-2010-Th%C3%A8mes-et-partage-dune-vision-commune/)

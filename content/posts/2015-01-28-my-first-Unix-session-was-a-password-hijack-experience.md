@@ -7,6 +7,7 @@ aliases:
 
 ![VT220 terminal - Photo under Public Domain license by Shansov.net / Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/DEC_vt220.jpg/1920px-DEC_vt220.jpg)
 
+# My first Unix session was a password hijack experience
 
 I discovered Unix (not Linux) at college in Bordeaux, in 1989. After a first course about Unix and its concepts, our professor gave us our credentials to be able to login on our school Unix system.
 

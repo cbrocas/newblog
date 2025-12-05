@@ -6,6 +6,8 @@ slug: Réa-Saint-André-Merci
 
 ![](/assets/rea.jpg)<br> 
 
+# Réanimation à l'hôpital Saint André de Bordeaux. Merci, simplement et intensément merci.
+
 Ce court témoignage est là pour expliquer notre vécu au sein du **service de réanimation de l'hôpital Saint André de Bordeaux**. Et pour dire merci à _**tous**_ les soignants de ce service. **Vraiment**.
 
 # Quand la vie bascule
