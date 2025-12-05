@@ -1,6 +1,8 @@
 ---
 title: My first Unix session was a password hijack experience
 date: 2015-01-28
+aliases:
+- /2015/01/28/my-first-Unix-session-was-a-password-hijack-experience
 ---
 
 ![VT220 terminal - Photo under Public Domain license by Shansov.net / Wikimedia](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/DEC_vt220.jpg/1920px-DEC_vt220.jpg)

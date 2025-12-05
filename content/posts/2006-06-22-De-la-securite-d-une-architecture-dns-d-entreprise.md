@@ -1,6 +1,8 @@
 ---
 title: Article MISC janvier 2006 - De la sécurité d'une architecture DNS d'entreprise
 date: 2006-06-22
+aliases:
+- /2006/06/22/De-la-securite-d-une-architecture-dns-d-entreprise/
 ---
 
 # De la sécurité d'une architecture DNS d'entreprise

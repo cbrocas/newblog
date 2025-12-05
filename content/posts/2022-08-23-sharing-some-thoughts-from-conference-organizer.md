@@ -1,6 +1,8 @@
 ---
 title: Sharing some thoughts from a conference organizer
 date: 2022-08-23
+aliases:
+- /2022/08/23/sharing-some-thoughts-from-conference-organizer/
 ---
 
 ![Chilling moment during #PTS22, photo by doegox under CC BY-NC-SA](/assets/articles/sharing-thoughts/IMG_1681.JPG)

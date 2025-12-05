@@ -1,6 +1,8 @@
 ---
 title: Article MISC mai 2007 - Mon serveur DNS, mon IDS oublié
 date: 2009-05-28
+aliases:
+- /2009/05/28/Mon-serveur-DNS,-mon-IDS-oublié/
 ---
 
 _Cet article est issu de l’article publié dans le numéro de **MISC n°31 de Mai 2007**. J’en suis l’auteur (christophe.brocas@free.fr). Tous droits réservés à MISC._
